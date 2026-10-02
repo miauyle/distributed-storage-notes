@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复，第四阶段把运行余量、持续证据与健康目标连接起来；Failure Drill 与 Troubleshooting 仍属于后续规划。
+从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复，第四阶段把运行余量、持续证据与健康目标连接起来，第五阶段把跨域与历史材料转化为灾难后的业务恢复；Failure Drill 与 Troubleshooting 仍属于后续规划。
 
 ## 核心问题
 
@@ -15,6 +15,7 @@
 - 长期不读取的数据如何获得验证，怎样区分扫描覆盖、修复完成与当前健康状态？
 - 集群还有多少安全写入和恢复余量，怎样避免总体平均值隐藏局部容量风险？
 - 哪些信号支持运行判断，怎样区分服务目标、可行动告警与内部可靠性风险？
+- 大范围服务域不可用后，怎样选择恢复点、切换合法资格，并验证 RPO / RTO 与服务恢复？
 
 ## 已完成第一阶段：Failure Recovery Core
 
@@ -64,11 +65,21 @@ Data Integrity 的机制基础在 07，本章只承接 **主动验证 → 发现
 
 第四阶段形成 **Resource / Risk State → Evidence → Health Objective**：把前三阶段的 Repair、移动与 Scrub，以及 Data Path 的 Queueing / P99，连接为持续运行的 Operational View。Benchmark 是受控实验，Observability 是持续生产证据；本阶段不重复性能测试方法，也不展开完整 Troubleshooting。
 
+## 已完成第五阶段：Disaster Recovery
+
+前置按 **[Cross-region Protection](../07-data-protection/06-cross-region-protection.md) → [Backup / Restore](../07-data-protection/07-backup-restore.md)** 阅读，再进入本章正文。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 11 | [Disaster Recovery / RPO / RTO](11-disaster-recovery-rpo-rto.md) | 恢复材料怎样成为可服务状态？区分恢复点、时间目标、Authority / Fencing、Failover / Failback 与验证条件 |
+
+07 维护 Protection Mechanism / Recovery Material，本章承接 **合法资格 → 有效恢复状态 → 服务激活与验证**。不重复跨域复制或 Backup 基础，不把远端副本存在、字节复制完成或流量已切换直接当作业务恢复。
+
 ## 后续规划
 
 - Failure Drill / Troubleshooting。
 - Incident Timeline / Postmortem。
 
-以上仍为规划，不表示已有正文。本章当前止于四阶段十篇，不提前展开 Incident Response、工具配置或 DR 专题。
+以上仍为规划，不表示已有正文。本章当前止于五阶段十一篇，不提前展开 Failure Drill、Incident Response、Postmortem 或工具配置。
 
 [数据保护机制](../07-data-protection/README.md) · [返回 Knowledge Map](../../README.md)
