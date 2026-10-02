@@ -229,6 +229,27 @@
           "title": "Data Path / Performance",
           "label": "专题入口",
           "summary": "端到端成本、瓶颈与基准测试方法"
+        },
+        {
+          "id": "09-data-path-performance-01-end-to-end-cost-model",
+          "path": "docs/09-data-path-performance/01-end-to-end-cost-model.md",
+          "title": "End-to-End Cost Model：性能成本发生在哪里",
+          "label": "端到端成本模型",
+          "summary": "控制与数据路径、资源工作量和端到端测量边界"
+        },
+        {
+          "id": "09-data-path-performance-02-latency-throughput-queueing",
+          "path": "docs/09-data-path-performance/02-latency-throughput-queueing.md",
+          "title": "Latency / Throughput / Queueing：成本如何变成等待",
+          "label": "延迟、吞吐与排队",
+          "summary": "并发、Saturation、Little’s Law 与分布式尾延迟"
+        },
+        {
+          "id": "09-data-path-performance-03-benchmark-bottleneck-analysis",
+          "path": "docs/09-data-path-performance/03-benchmark-bottleneck-analysis.md",
+          "title": "Benchmark / Bottleneck Analysis：把性能判断变成实验",
+          "label": "基准测试与瓶颈分析",
+          "summary": "工作负载、环境、客户端边界和受控实验"
         }
       ]
     },
