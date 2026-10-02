@@ -4,7 +4,7 @@
 
 本仓库不作为 Dell ECS / ObjectScale 项目复盘、AI Storage 面试教程或面试速记；产品案例只使用公开资料，不记录内部实现细节。
 
-**当前阶段：Object Storage 基础主线已有 6 篇正文，并开始进入 Data Protection 等共用分布式机制。** 数据保护首组三篇覆盖 Replication、Erasure Coding 与 Failure Domain / Placement；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
+**当前建设顺序：Object Storage 基础主线 → Data Protection 第一阶段 → Distributed Systems Foundations → 后续 Consistency / Metadata / Recovery。** 前三阶段分别已有 6 / 3 / 3 篇正文；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
 
 ## Knowledge Map
 
@@ -58,10 +58,12 @@ flowchart TD
 
 ## 下一阶段建议优先专题
 
+以下建议承接已完成的 Distributed Systems Foundations，不跳过故障、修改资格与重试这些公共边界。
+
 1. 一致性与提交边界：承接现有 API 语义和写入确认，解释并发状态与读取契约。
 2. 元数据与分区：解释对象索引、数据归属、热点与布局映射的职责。
 3. Repair / Rebuild：承接数据保护机制，建立故障后的补齐、限流与结果验证流程。
 4. 数据路径与性能：比较大对象、小对象、复制和编码在正常及故障状态下的成本。
 5. Integrity / Silent Corruption：区分可恢复冗余与完整性检测的责任。
 
-以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，本轮止于数据保护首组三篇。
+以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，本轮止于分布式系统基础三篇。
