@@ -4,7 +4,7 @@
 
 本仓库不作为 Dell ECS / ObjectScale 项目复盘、AI Storage 面试教程或面试速记；产品案例只使用公开资料，不记录内部实现细节。
 
-**当前建设顺序：Object Storage 基础主线已完成 → Data Protection 第一阶段已完成 → Distributed Systems Foundations 已完成 → Consistency / Metadata / Partitioning 第一阶段已完成 → 下一阶段准备进入 Failure Recovery。** 前四阶段分别已有 6 / 3 / 3 / 3 篇正文；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
+**当前建设顺序：Object Storage 基础主线已完成 → Data Protection 第一阶段已完成 → Distributed Systems Foundations 已完成 → Consistency / Metadata / Partitioning 第一阶段已完成 → Failure Recovery 第一阶段已完成。** 五阶段分别已有 6 / 3 / 3 / 3 / 3 篇正文；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
 
 ## Knowledge Map
 
@@ -58,12 +58,10 @@ flowchart TD
 
 ## 下一阶段建议优先专题
 
-以下建议承接已完成的四阶段基础，下一阶段优先进入 Failure Recovery。
+以下建议承接已完成的五阶段基础，具体范围由后续任务确定。
 
-1. Failure Recovery / Repair / Rebuild：承接数据保护和状态归属，建立故障后的补齐、限流与结果验证流程。
-2. Metadata / Data commit coordination 深入：在现有提交边界上进一步解释发布协议与失败判定。
-3. Partition / Ownership 演进：在现有归属与路由基础上进一步讨论 Split / Merge 与 Migration。
-4. 数据路径与性能：比较大对象、小对象、复制和编码在正常及故障状态下的成本。
-5. Integrity / Silent Corruption：区分可恢复冗余与完整性检测的责任。
+1. Recovery / Operations 第二阶段。
+2. Data Path / Performance。
+3. Integrity / Silent Corruption。
 
-以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，本轮止于 Consistency / Metadata / Partitioning 基础三篇。
+以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，本轮止于 Failure Recovery 第一阶段三篇。
