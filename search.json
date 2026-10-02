@@ -1,0 +1,9 @@
+---
+layout: null
+sitemap: false
+---
+[
+{% for item in site.docs %}
+  {"title": {{ item.title | jsonify }}, "url": {{ item.url | relative_url | jsonify }}, "category": {{ item.category | jsonify }}, "excerpt": {{ item.description | jsonify }}, "content": {{ item.content | strip_html | normalize_whitespace | jsonify }}}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

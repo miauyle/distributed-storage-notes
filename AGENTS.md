@@ -30,3 +30,16 @@
 - 阅读正文中的正常路径、并发覆盖、失败与重试例子，核对确认时机和可见状态是否自洽。
 - 确认官方来源支持对应结论，且未把未实现的章节描述为已完成。
 - PR 说明具体新增内容、适用边界和实际完成的验证；未运行的检查不得声称通过。
+
+## 网站维护规范
+
+- 使用 Jekyll + DocSteer 1.1.1；沿用 `miauyle/ai-systems-notes` 的设计体系、aqua 默认 skin、auto mode、主题切换与响应式规则，不另建前端框架。
+- 正文唯一维护源为现有 `docs/<section>/*.md`。不得搬家、拍平或复制到 `_docs`；`_plugins/knowledge_site.rb` 在构建时生成内存文档与嵌套路由，专题 README 映射到专题目录 URL。
+- `navigation.json` 维护十二个专题及实际文章的标题、可读标签、摘要与阅读顺序；新增真实正文时同步目录。首页 Knowledge Map、Sidebar、文档目录及 pager 由同一目录生成；规划不得伪装成已完成正文。
+- 首页使用 `knowledge-map` 布局，Object Storage 是重点主线，其他存储机制与 AI 连接保持原有定位；Core Topics 只链接真实页面。
+- 所有本站资源和链接使用 `relative_url` 或生成器的 baseurl 重写，必须支持 `/distributed-storage-notes`；Edit this page 回到原始 `docs/...` 源文件的 `master`。
+- Mermaid 与 KaTeX 通过 `tools/prepare_site_assets.sh` 准备本地资源，不使用运行时公共 CDN。公式沿用 fenced `math` 与 `$` 包裹的反引号内联约定；不要为验证增加正文。
+- 保留 1440px 以上的宽屏变量（17px root、1640px shell、300px Sidebar、248px TOC、900px content、76ch measure、1480px 首页）；宽屏改动不得影响普通桌面和手机。
+- 网站改动执行 `python tools/check_docs.py`、`JEKYLL_ENV=production bundle exec jekyll build --baseurl /distributed-storage-notes`、`python tools/check_site.py` 与 `NODE_PATH=<site-deps>/node_modules node tools/check_site_ui.cjs`。先运行资源准备脚本和安装 Chromium；具体步骤见 `maintenance/publishing.md`。
+- Chromium 校验覆盖全部正文的 Mermaid / 公式、搜索、编辑入口、Sidebar / TOC / pager、light / dark / skin，以及 2560×1440、1280×900、390×844、320×720 下的布局与 overflow；保存 `site-qa` evidence。
+- `.github/workflows/pages.yml` 对 PR 执行构建和验证；仅 master push 部署 GitHub Pages。合并前检查实际 diff 和 CI，不声称未运行的检查已通过。

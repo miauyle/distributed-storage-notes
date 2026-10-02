@@ -1,0 +1,13 @@
+---
+layout: doc
+---
+<p>按原有十二个专题浏览。专题入口保留已有正文、阅读顺序与后续规划；编号只用于目录标识。</p>
+{% for group in site.data.knowledge_map.groups %}
+<h2>{{ group.title }}</h2>
+<p>{{ group.summary }} · {% assign count = group.pages.size | minus: 1 %}{% if count > 0 %}{{ count }} 篇正文{% else %}正文待展开{% endif %}</p>
+<ul>
+{% for item in group.pages %}
+<li><a href="{{ item.url | relative_url }}">{% if forloop.first %}专题入口{% else %}{{ item.label }}{% endif %}</a> — {{ item.summary }}</li>
+{% endfor %}
+</ul>
+{% endfor %}

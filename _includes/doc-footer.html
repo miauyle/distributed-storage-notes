@@ -1,0 +1,57 @@
+{%- comment -%}
+Local override for DocSteer 1.1.1 doc-footer.html.
+
+Fixes the upstream Previous/Next pagination issue where dynamic
+Liquid array indexing can resolve to an empty object and generate href="".
+
+Pagination order is derived automatically from:
+_data/navigation.yml -> sidebar -> children
+
+Remove this override if a future DocSteer release fixes the issue.
+{%- endcomment -%}
+{%- assign flat = "" | split: "" -%}
+{%- for group in site.data.navigation.sidebar -%}
+  {%- for link in group.children -%}
+    {%- assign flat = flat | push: link -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign idx = -1 -%}
+{%- for link in flat -%}
+  {%- if link.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+
+{% if idx >= 0 %}
+<nav class="doc-pager" aria-label="Documentation pages">
+  {% if idx > 0 %}
+    {%- assign prev_idx = idx | minus: 1 -%}
+    {%- assign prev = flat[prev_idx] -%}
+    <a class="doc-pager__link doc-pager__prev" href="{{ prev.url | relative_url }}">
+      <span class="doc-pager__dir"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous</span>
+      <span class="doc-pager__title">{{ prev.title }}</span>
+    </a>
+  {% else %}<span></span>{% endif %}
+
+  {%- assign last = flat.size | minus: 1 -%}
+  {% if idx < last %}
+    {%- assign next_idx = idx | plus: 1 -%}
+    {%- assign next = flat[next_idx] -%}
+    <a class="doc-pager__link doc-pager__next" href="{{ next.url | relative_url }}">
+      <span class="doc-pager__dir">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+      <span class="doc-pager__title">{{ next.title }}</span>
+    </a>
+  {% endif %}
+</nav>
+{% endif %}
+
+{% if page.tags and page.tags.size > 0 %}
+<div class="doc-tags">
+  {% for t in page.tags %}
+    {%- if site.docsteer.search.enabled -%}
+      <button type="button" class="badge badge--soft doc-tag"
+              data-search-open="{{ t }}" aria-label="Search for {{ t }}">#{{ t }}</button>
+    {%- else -%}
+      <span class="badge badge--soft">#{{ t }}</span>
+    {%- endif -%}
+  {% endfor %}
+</div>
+{% endif %}
