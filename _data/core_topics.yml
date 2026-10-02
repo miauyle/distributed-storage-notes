@@ -1,0 +1,24 @@
+- title: Object Storage
+  url: /docs/03-object-storage/01-object-model/
+  text: 对象身份、内容与内部布局
+- title: S3 Semantics
+  url: /docs/03-object-storage/02-s3-core-semantics/
+  text: PUT / GET / DELETE / LIST 的状态边界
+- title: Object Read / Write Path
+  url: /docs/03-object-storage/03-read-write-path/
+  text: 从请求到持久化与可读状态
+- title: Replication
+  url: /docs/07-data-protection/01-replication/
+  text: 副本、确认条件与故障窗口
+- title: Erasure Coding
+  url: /docs/07-data-protection/02-erasure-coding/
+  text: 编码组、容量预算与重构成本
+- title: Metadata / Partitioning
+  url: /docs/08-consistency-metadata-partitioning/02-metadata-object-index/
+  text: 对象索引、布局引用与分区入口
+- title: Failure Recovery
+  url: /docs/10-recovery-operations-observability/02-repair-rebuild/
+  text: 从有效来源到持久修复与保护恢复
+- title: Failure Domain / Placement
+  url: /docs/07-data-protection/03-failure-domain-placement/
+  text: 让冗余覆盖实际故障域

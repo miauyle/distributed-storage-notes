@@ -1,0 +1,123 @@
+title: Distributed Storage Notes
+tagline: 以对象存储为主线的分布式存储系统知识库
+description: 从存储模型、对象存储、数据保护与一致性，到故障恢复、数据路径与 AI Storage 的系统知识库。
+
+url: "https://miauyle.github.io"
+baseurl: "/distributed-storage-notes"
+lang: zh-CN
+timezone: Asia/Shanghai
+
+theme: jekyll-theme-docsteer
+
+docsteer:
+  skin: aqua
+  mode: auto
+  skin_switcher: true
+  mode_switcher: true
+  doc_layouts: [doc, knowledge-directory]
+
+  sidebar:
+    enabled: true
+    collapse_inactive: true
+    sticky: true
+
+  toc:
+    enabled: true
+    min_headings: 2
+
+  search:
+    enabled: true
+    collections: [docs]
+    include_pages: true
+    hotkey: true
+    placeholder: "搜索文档…"
+    max_results: 8
+    index_questions: false
+
+  lightbox:
+    enabled: true
+
+  code:
+    copy_button: true
+    line_numbers: false
+
+  fontawesome:
+    enabled: true
+    source: local
+    cdn_url: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    cdn_integrity: ""
+
+  logo: /assets/images/logo-theme.svg
+  favicon: /assets/images/favicon-storage.svg
+
+  footer:
+    show_credit: false
+    copyright: "Distributed Storage Notes"
+    links:
+      - { label: "首页", url: "/" }
+      - { label: "GitHub", url: "https://github.com/miauyle/distributed-storage-notes" }
+
+  social:
+    github: "miauyle/distributed-storage-notes"
+    rss: true
+
+  edit_page:
+    enabled: true
+    repo: "https://github.com/miauyle/distributed-storage-notes"
+    branch: "master"
+    # Documents are generated in memory from their original docs/ paths.
+    path: ""
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+defaults:
+  - scope: { path: "", type: "docs" }
+    values:
+      layout: doc
+      seo:
+        type: TechArticle
+  - scope: { path: "" }
+    values:
+      layout: page
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: plaintext
+
+sass:
+  style: compressed
+  sourcemap: never
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+
+feed:
+  path: feed.xml
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md
+  - docs
+  - maintenance
+  - templates
+  - tools
+  - navigation.json
+  - AGENTS.md
+  - CONTRIBUTING.md
+  - CHANGELOG.md
+  - package.json
+  - package-lock.json
+  - site-qa

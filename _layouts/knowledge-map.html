@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<div class="knowledge-home">
+  <header class="knowledge-intro">
+    <p class="knowledge-eyebrow">Distributed Storage Knowledge Map</p>
+    <h1>Distributed Storage Notes</h1>
+    <p class="knowledge-lead">以对象存储为主线的分布式存储系统知识库。</p>
+    <p>从存储访问模型进入，沿着对象存储、分布式机制、数据保护、一致性与元数据、故障恢复和数据路径，理解一个分布式存储系统如何工作。</p>
+    <div class="knowledge-actions">
+      <a class="btn btn--primary" href="{{ '/docs/03-object-storage/' | relative_url }}">进入对象存储主线 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <button class="btn btn--ghost" type="button" data-search-open><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> 搜索知识库 <kbd>/</kbd></button>
+      <a href="{{ '/docs/' | relative_url }}">完整专题目录</a>
+      <a href="#core-topics">核心专题</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="knowledge-map" class="knowledge-section">
+    <div class="knowledge-section-head"><h2 id="knowledge-map">知识地图</h2><p>十二个专题保留原有知识结构；专题入口说明已有正文与后续规划。</p></div>
+    <div class="knowledge-root"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Distributed Storage Notes <span>→ 十二个知识专题</span></div>
+    <nav class="knowledge-overview" aria-label="知识分组快速定位">
+      {% for group in site.data.knowledge_map.groups %}<a href="#group-{{ group.id }}"><span aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ group.title }}</a>{% endfor %}
+    </nav>
+    <ol class="knowledge-groups">
+      {% for group in site.data.knowledge_map.groups %}
+      <li class="knowledge-group" id="group-{{ group.id }}">
+        <header><span class="knowledge-number" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span><h3>{{ group.title }}</h3></header>
+        <p>{{ group.summary }} · {% assign article_count = group.pages.size | minus: 1 %}{% if article_count > 0 %}{{ article_count }} 篇正文{% else %}专题入口，正文待展开{% endif %}</p>
+        <ul>
+          {% for item in group.pages %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a>{% unless forloop.first %}<p>{{ item.summary }}</p>{% endunless %}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ol>
+    <p class="knowledge-connection">Object Storage 是重点主线；分布式机制、数据保护、状态与索引、恢复和性能构成共用基础。AI Storage 是连接工作负载的一层。<a href="{{ '/docs/' | relative_url }}">查看完整目录 →</a></p>
+  </section>
+
+  <section aria-labelledby="core-topics" class="knowledge-section">
+    <div class="knowledge-section-head"><h2 id="core-topics">核心专题</h2><p>直接进入机制解释，不只查询名词。</p></div>
+    <div class="knowledge-topics">
+      {% for topic in site.data.core_topics %}
+      <a class="knowledge-topic" href="{{ topic.url | relative_url }}"><strong>{{ topic.title }}</strong><span>{{ topic.text }}</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      {% endfor %}
+    </div>
+  </section>
+  <nav class="knowledge-resources" aria-label="相关知识入口">
+    <a href="{{ '/docs/' | relative_url }}">完整专题目录</a>
+    <a href="{{ '/docs/11-typical-storage-systems/' | relative_url }}">公开系统案例入口</a>
+  </nav>
+</div>

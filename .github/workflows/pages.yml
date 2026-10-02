@@ -1,0 +1,70 @@
+name: Build, verify and deploy docs
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Check content sources
+        run: python tools/check_docs.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare local math and diagram assets
+        run: |
+          SITE_DEPS_DIR="$RUNNER_TEMP/site-deps" bash tools/prepare_site_assets.sh
+      - name: Build Jekyll
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --baseurl /distributed-storage-notes
+      - name: Check rendered routes, links and index
+        run: python tools/check_site.py
+      - name: Browser verification
+        run: |
+          "$RUNNER_TEMP/site-deps/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+          NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node tools/check_site_ui.cjs
+      - name: Save browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-ui-evidence
+          path: site-qa
+          if-no-files-found: ignore
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

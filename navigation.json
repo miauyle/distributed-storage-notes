@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "groups": [
+    {
+      "id": "01-overview",
+      "title": "全景与存储架构",
+      "summary": "访问模型、系统分层与设计目标",
+      "pages": [
+        {
+          "id": "01-overview-index",
+          "path": "docs/01-overview/README.md",
+          "title": "Overview / Storage Architecture",
+          "label": "专题入口",
+          "summary": "访问模型、系统分层与设计目标"
+        }
+      ]
+    },
+    {
+      "id": "02-storage-fundamentals",
+      "title": "存储基础",
+      "summary": "介质、I/O、持久化与性能指标",
+      "pages": [
+        {
+          "id": "02-storage-fundamentals-index",
+          "path": "docs/02-storage-fundamentals/README.md",
+          "title": "Storage Fundamentals",
+          "label": "专题入口",
+          "summary": "介质、I/O、持久化与性能指标"
+        }
+      ]
+    },
+    {
+      "id": "03-object-storage",
+      "title": "对象存储 · 重点主线",
+      "summary": "对象语义、读写提交、上传、版本与布局",
+      "pages": [
+        {
+          "id": "03-object-storage-index",
+          "path": "docs/03-object-storage/README.md",
+          "title": "Object Storage",
+          "label": "专题入口",
+          "summary": "对象语义、读写提交、上传、版本与布局"
+        },
+        {
+          "id": "03-object-storage-01-object-model",
+          "path": "docs/03-object-storage/01-object-model.md",
+          "title": "Object Model：对象身份、内容与底层布局",
+          "label": "对象模型",
+          "summary": "Bucket / Key / Version 与逻辑、物理身份"
+        },
+        {
+          "id": "03-object-storage-02-s3-core-semantics",
+          "path": "docs/03-object-storage/02-s3-core-semantics.md",
+          "title": "S3 Core Semantics：操作如何改变对象状态",
+          "label": "S3 核心语义",
+          "summary": "操作、原子性、可见性、覆盖与重试边界"
+        },
+        {
+          "id": "03-object-storage-03-read-write-path",
+          "path": "docs/03-object-storage/03-read-write-path.md",
+          "title": "Read / Write Path：从请求到可读状态",
+          "label": "对象读写路径",
+          "summary": "鉴权、寻址、正文持久化与状态发布"
+        },
+        {
+          "id": "03-object-storage-04-multipart-upload",
+          "path": "docs/03-object-storage/04-multipart-upload.md",
+          "title": "Multipart Upload：上传会话与对象发布",
+          "label": "分段上传",
+          "summary": "Part、上传会话、Complete 与 Abort"
+        },
+        {
+          "id": "03-object-storage-05-versioning-delete",
+          "path": "docs/03-object-storage/05-versioning-delete.md",
+          "title": "Versioning / Delete：当前状态、历史版本与删除标记",
+          "label": "版本与删除",
+          "summary": "当前状态、历史版本与 Delete Marker"
+        },
+        {
+          "id": "03-object-storage-06-object-layout",
+          "path": "docs/03-object-storage/06-object-layout.md",
+          "title": "Object Layout：逻辑对象与物理单元的解耦",
+          "label": "对象布局",
+          "summary": "大对象分块、小对象聚合与放大成本"
+        }
+      ]
+    },
+    {
+      "id": "04-block-storage",
+      "title": "块存储",
+      "summary": "卷、块寻址与上层文件系统的责任边界",
+      "pages": [
+        {
+          "id": "04-block-storage-index",
+          "path": "docs/04-block-storage/README.md",
+          "title": "Block Storage",
+          "label": "专题入口",
+          "summary": "卷、块寻址与上层文件系统的责任边界"
+        }
+      ]
+    },
+    {
+      "id": "05-file-storage",
+      "title": "文件存储",
+      "summary": "文件、目录、共享访问与缓存语义",
+      "pages": [
+        {
+          "id": "05-file-storage-index",
+          "path": "docs/05-file-storage/README.md",
+          "title": "File Storage",
+          "label": "专题入口",
+          "summary": "文件、目录、共享访问与缓存语义"
+        }
+      ]
+    },
+    {
+      "id": "06-distributed-systems",
+      "title": "分布式系统基础",
+      "summary": "故障观察、修改资格与重复执行的边界",
+      "pages": [
+        {
+          "id": "06-distributed-systems-index",
+          "path": "docs/06-distributed-systems/README.md",
+          "title": "Distributed Systems",
+          "label": "专题入口",
+          "summary": "故障观察、修改资格与重复执行的边界"
+        },
+        {
+          "id": "06-distributed-systems-01-failure-model-timeout",
+          "path": "docs/06-distributed-systems/01-failure-model-timeout.md",
+          "title": "Failure Model / Timeout：远端发生了什么？",
+          "label": "故障模型与超时",
+          "summary": "Partial Failure、Unknown Result 与检测取舍"
+        },
+        {
+          "id": "06-distributed-systems-02-quorum-leader-lease-fencing",
+          "path": "docs/06-distributed-systems/02-quorum-leader-lease-fencing.md",
+          "title": "Quorum / Leader / Lease / Fencing：谁现在有资格修改状态？",
+          "label": "Quorum、Leader、Lease 与 Fencing",
+          "summary": "修改资格、Split Brain 与旧执行者隔离"
+        },
+        {
+          "id": "06-distributed-systems-03-retry-idempotency-deduplication",
+          "path": "docs/06-distributed-systems/03-retry-idempotency-deduplication.md",
+          "title": "Retry / Idempotency / Deduplication：不确定时重新执行会怎样？",
+          "label": "重试、幂等与去重",
+          "summary": "稳定操作身份、重复效果与记录边界"
+        }
+      ]
+    },
+    {
+      "id": "07-data-protection",
+      "title": "数据保护",
+      "summary": "完整副本、纠删码与故障域放置",
+      "pages": [
+        {
+          "id": "07-data-protection-index",
+          "path": "docs/07-data-protection/README.md",
+          "title": "Replication / Erasure Coding / Data Protection",
+          "label": "专题入口",
+          "summary": "完整副本、纠删码与故障域放置"
+        },
+        {
+          "id": "07-data-protection-01-replication",
+          "path": "docs/07-data-protection/01-replication.md",
+          "title": "Replication：副本数量与写入承诺",
+          "label": "复制",
+          "summary": "副本数量、Write ACK 与写入承诺"
+        },
+        {
+          "id": "07-data-protection-02-erasure-coding",
+          "path": "docs/07-data-protection/02-erasure-coding.md",
+          "title": "Erasure Coding：减少冗余字节，把成本放在哪里？",
+          "label": "纠删码",
+          "summary": "k+m、Stripe、恢复预算与工程成本"
+        },
+        {
+          "id": "07-data-protection-03-failure-domain-placement",
+          "path": "docs/07-data-protection/03-failure-domain-placement.md",
+          "title": "Failure Domain & Placement：冗余必须放在正确的地方",
+          "label": "故障域与放置",
+          "summary": "相关故障、域内集中度与布局约束"
+        }
+      ]
+    },
+    {
+      "id": "08-consistency-metadata-partitioning",
+      "title": "一致性、元数据与分区",
+      "summary": "可观察状态、对象索引、归属与路由",
+      "pages": [
+        {
+          "id": "08-consistency-metadata-partitioning-index",
+          "path": "docs/08-consistency-metadata-partitioning/README.md",
+          "title": "Consistency / Metadata / Partitioning",
+          "label": "专题入口",
+          "summary": "可观察状态、对象索引、归属与路由"
+        },
+        {
+          "id": "08-consistency-metadata-partitioning-01-consistency-observable-state",
+          "path": "docs/08-consistency-metadata-partitioning/01-consistency-observable-state.md",
+          "title": "Consistency / Observable State：客户端应该看到什么",
+          "label": "一致性与可观察状态",
+          "summary": "单 Key、Namespace 与多 Key 的语义边界"
+        },
+        {
+          "id": "08-consistency-metadata-partitioning-02-metadata-object-index",
+          "path": "docs/08-consistency-metadata-partitioning/02-metadata-object-index.md",
+          "title": "Metadata / Object Index：如何记录与定位对象状态",
+          "label": "元数据与对象索引",
+          "summary": "定位、布局引用及 Metadata / Data 提交"
+        },
+        {
+          "id": "08-consistency-metadata-partitioning-03-partition-ownership-routing",
+          "path": "docs/08-consistency-metadata-partitioning/03-partition-ownership-routing.md",
+          "title": "Partition / Ownership / Routing：谁负责状态，请求去哪里",
+          "label": "分区、归属与路由",
+          "summary": "逻辑划分、有效 Owner 与旧资格处理"
+        }
+      ]
+    },
+    {
+      "id": "09-data-path-performance",
+      "title": "数据路径与性能",
+      "summary": "端到端成本、瓶颈与基准测试方法",
+      "pages": [
+        {
+          "id": "09-data-path-performance-index",
+          "path": "docs/09-data-path-performance/README.md",
+          "title": "Data Path / Performance",
+          "label": "专题入口",
+          "summary": "端到端成本、瓶颈与基准测试方法"
+        }
+      ]
+    },
+    {
+      "id": "10-recovery-operations-observability",
+      "title": "故障恢复、运维与观测",
+      "summary": "从故障信号到修复、任务协调与保护恢复",
+      "pages": [
+        {
+          "id": "10-recovery-operations-observability-index",
+          "path": "docs/10-recovery-operations-observability/README.md",
+          "title": "Failure Recovery / Operations / Observability",
+          "label": "专题入口",
+          "summary": "从故障信号到修复、任务协调与保护恢复"
+        },
+        {
+          "id": "10-recovery-operations-observability-01-failure-detection-state-transition",
+          "path": "docs/10-recovery-operations-observability/01-failure-detection-state-transition.md",
+          "title": "Failure Detection / State Transition：什么时候开始恢复",
+          "label": "故障检测与状态转换",
+          "summary": "保护缺口、Grace Period 与恢复触发"
+        },
+        {
+          "id": "10-recovery-operations-observability-02-repair-rebuild",
+          "path": "docs/10-recovery-operations-observability/02-repair-rebuild.md",
+          "title": "Repair / Rebuild：补回字节，更要补回保护布局",
+          "label": "修复与重建",
+          "summary": "来源与目标验证、持久补齐及布局提交"
+        },
+        {
+          "id": "10-recovery-operations-observability-03-recovery-task-coordination",
+          "path": "docs/10-recovery-operations-observability/03-recovery-task-coordination.md",
+          "title": "Recovery Task Coordination：让大量修复工作可靠推进",
+          "label": "恢复任务协调",
+          "summary": "稳定任务身份、接管、Checkpoint 与限流"
+        }
+      ]
+    },
+    {
+      "id": "11-typical-storage-systems",
+      "title": "典型存储系统",
+      "summary": "用公开系统对照通用架构模型",
+      "pages": [
+        {
+          "id": "11-typical-storage-systems-index",
+          "path": "docs/11-typical-storage-systems/README.md",
+          "title": "Typical Storage Systems",
+          "label": "专题入口",
+          "summary": "用公开系统对照通用架构模型"
+        }
+      ]
+    },
+    {
+      "id": "12-ai-storage-connections",
+      "title": "AI Storage 连接",
+      "summary": "连接训练与推理的实际数据需求",
+      "pages": [
+        {
+          "id": "12-ai-storage-connections-index",
+          "path": "docs/12-ai-storage-connections/README.md",
+          "title": "AI Storage Connections",
+          "label": "专题入口",
+          "summary": "连接训练与推理的实际数据需求"
+        }
+      ]
+    }
+  ],
+  "reference_pages": []
+}
