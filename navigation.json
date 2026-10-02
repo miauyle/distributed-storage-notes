@@ -194,6 +194,20 @@
           "title": "Silent Corruption Detection：读成功，为什么还不能相信内容",
           "label": "静默损坏检测",
           "summary": "错误信号、可信来源、多数副本与潜伏损坏"
+        },
+        {
+          "id": "07-data-protection-06-cross-region-protection",
+          "path": "docs/07-data-protection/06-cross-region-protection.md",
+          "title": "Cross-region Protection：本地提交之后，远端保护何时成立",
+          "label": "跨区域保护",
+          "summary": "远端保护条件、传播顺序、Lag 与依赖独立性"
+        },
+        {
+          "id": "07-data-protection-07-backup-restore",
+          "path": "docs/07-data-protection/07-backup-restore.md",
+          "title": "Backup / Restore：保留过去状态，更要保留恢复能力",
+          "label": "备份与恢复",
+          "summary": "历史恢复点、材料与依赖、保留和恢复验证"
         }
       ]
     },
@@ -390,6 +404,13 @@
           "title": "SLI / SLO / Alerting：可用、达标与低风险不是同一件事",
           "label": "健康目标与告警",
           "summary": "服务指标、目标、预算、症状与可靠性风险"
+        },
+        {
+          "id": "10-recovery-operations-observability-11-disaster-recovery-rpo-rto",
+          "path": "docs/10-recovery-operations-observability/11-disaster-recovery-rpo-rto.md",
+          "title": "Disaster Recovery / RPO / RTO：从恢复材料到业务重新可服务",
+          "label": "灾难恢复与恢复目标",
+          "summary": "RPO / RTO、资格隔离、切换与业务恢复验证"
         }
       ]
     },
