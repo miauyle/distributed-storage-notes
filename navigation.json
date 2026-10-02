@@ -466,14 +466,35 @@
     {
       "id": "12-ai-storage-connections",
       "title": "AI Storage 连接",
-      "summary": "连接训练与推理的实际数据需求",
+      "summary": "AI 状态分类、训练数据供给与持久恢复点",
       "pages": [
         {
           "id": "12-ai-storage-connections-index",
           "path": "docs/12-ai-storage-connections/README.md",
           "title": "AI Storage Connections",
           "label": "专题入口",
-          "summary": "连接训练与推理的实际数据需求"
+          "summary": "AI 状态分类、训练数据供给与持久恢复点"
+        },
+        {
+          "id": "12-ai-storage-connections-01-ai-storage-workload-model",
+          "path": "docs/12-ai-storage-connections/01-ai-storage-workload-model.md",
+          "title": "AI Storage Workload Model：同一组存储机制，不同状态优先级",
+          "label": "AI 存储工作负载模型",
+          "summary": "六类状态、持久化责任与 GPU / 应用 Outcome"
+        },
+        {
+          "id": "12-ai-storage-connections-02-training-data-path",
+          "path": "docs/12-ai-storage-connections/02-training-data-path.md",
+          "title": "Training Data Path：存储字节怎样成为 GPU 可消费的 Batch",
+          "label": "训练数据路径",
+          "summary": "Sample / Shard、DataLoader、Pinned Memory 与流水线瓶颈"
+        },
+        {
+          "id": "12-ai-storage-connections-03-model-weights-checkpoints",
+          "path": "docs/12-ai-storage-connections/03-model-weights-checkpoints.md",
+          "title": "Model Weights / Checkpoints：加载模型与恢复训练是两种路径",
+          "label": "模型权重与检查点",
+          "summary": "加载 fan-out、分布式保存、发布边界与 Restore"
         }
       ]
     }
