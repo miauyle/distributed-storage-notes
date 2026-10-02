@@ -69,7 +69,7 @@ Pinned 指主机页锁定，不是 GPU Memory。它可以帮助 Host → GPU Tra
 
 ## 6. Pipeline Overlap：不同 Batch 重叠，而非一个 Batch 取消依赖
 
-训练输入应该按 **Storage Read || Decode / Transform || Batch Preparation || H2D || GPU Compute** 的流水线理解。下图是无真实时间刻度的调度示意，同一列方向表达 batch 自身依赖；同行表示在依赖、资源和缓冲允许时可尝试同时执行的工作：
+训练输入应该按 **Storage Read ∥ Decode / Transform ∥ Batch Preparation ∥ H2D ∥ GPU Compute** 的流水线理解。下图是无真实时间刻度的调度示意，同一列方向表达 batch 自身依赖；虚线连接在依赖、资源和缓冲允许时可尝试同时执行的工作：
 
 ```mermaid
 flowchart TD
