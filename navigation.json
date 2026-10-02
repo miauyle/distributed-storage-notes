@@ -446,6 +446,20 @@
           "title": "MinIO：以当前 AIStor 文档检验对象原生路径",
           "label": "MinIO",
           "summary": "当前 AIStor 的 Metadata、Erasure Set 与 Healing"
+        },
+        {
+          "id": "11-typical-storage-systems-04-openstack-swift",
+          "path": "docs/11-typical-storage-systems/04-openstack-swift.md",
+          "title": "OpenStack Swift：分开的 Namespace 职责与 Ring 驱动的收敛",
+          "label": "OpenStack Swift",
+          "summary": "2026.2 的 Namespace 职责、Ring 与后台收敛"
+        },
+        {
+          "id": "11-typical-storage-systems-05-object-storage-cross-system-comparison",
+          "path": "docs/11-typical-storage-systems/05-object-storage-cross-system-comparison.md",
+          "title": "Object Storage Cross-system Comparison：相同问题，不同架构边界",
+          "label": "对象存储跨系统比较",
+          "summary": "三系统的架构决策、证据边界与通用模型检验"
         }
       ]
     },
