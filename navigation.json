@@ -250,6 +250,27 @@
           "title": "Benchmark / Bottleneck Analysis：把性能判断变成实验",
           "label": "基准测试与瓶颈分析",
           "summary": "工作负载、环境、客户端边界和受控实验"
+        },
+        {
+          "id": "09-data-path-performance-04-cache-prefetch",
+          "path": "docs/09-data-path-performance/04-cache-prefetch.md",
+          "title": "Cache / Prefetch：减少慢层访问，承担状态责任",
+          "label": "缓存与预取",
+          "summary": "请求与字节命中率、状态资格和预取资源成本"
+        },
+        {
+          "id": "09-data-path-performance-05-batching-backpressure",
+          "path": "docs/09-data-path-performance/05-batching-backpressure.md",
+          "title": "Batching / Backpressure：摊薄成本，限制积压",
+          "label": "批处理与背压",
+          "summary": "合批等待、并发准入和过载重试反馈"
+        },
+        {
+          "id": "09-data-path-performance-06-foreground-background-interference",
+          "path": "docs/09-data-path-performance/06-foreground-background-interference.md",
+          "title": "Foreground / Background Interference：共享资源中的性能边界",
+          "label": "前后台资源干扰",
+          "summary": "共享资源预算、保护风险与前台性能的动态取舍"
         }
       ]
     },

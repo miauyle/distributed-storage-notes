@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-沿请求实际经过的路径拆解时间和资源开销，建立可测量的性能分析方法。第一阶段连接成本位置、吞吐与排队、可复现实验；后续再进入具体优化与高性能数据路径专题。
+沿请求实际经过的路径拆解时间和资源开销，建立可测量的性能分析方法。第一阶段连接成本位置、吞吐与排队、可复现实验；第二阶段讨论缓存、工作粒度与共享资源控制。高性能数据路径仍留待后续。
 
 ## 核心问题
 
@@ -25,15 +25,26 @@
 
 前置复用 [Object Read / Write Path](../03-object-storage/03-read-write-path.md)、[Object Layout](../03-object-storage/06-object-layout.md)、[Data Protection](../07-data-protection/README.md) 与 [Recovery Task Coordination](../10-recovery-operations-observability/03-recovery-task-coordination.md)。单机介质、I/O 与持久化仍由 [Storage Fundamentals](../02-storage-fundamentals/README.md) 承担，本章不重复底层教材。
 
+## 已完成第二阶段：Data Path Optimization / Control
+
+承接第一阶段，推荐顺序：**Cache / Prefetch → Batching / Backpressure → Foreground / Background Interference**。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 4 | [Cache / Prefetch](04-cache-prefetch.md) | 如何减少慢层访问？区分命中口径、状态有效性和预取的收益与浪费 |
+| 5 | [Batching / Backpressure](05-batching-backpressure.md) | 如何摊薄固定成本、控制并发与积压？明确等待代价及过载反馈边界 |
+| 6 | [Foreground / Background Interference](06-foreground-background-interference.md) | 多种工作如何共享资源？连接 Repair / Rebalance / Migration 的竞争、预算和动态取舍 |
+
+两阶段形成 **Cost → Queueing → Measurement → Optimization / Control**。控制措施要回到第一阶段验证：高命中、大 Batch 或高后台带宽，不自动意味着更好的端到端服务；正确性与保护契约也不能为性能让步。
+
 ## 后续规划
 
-- Cache / Prefetch。
-- Batching。
-- Backpressure。
-- Foreground / Background Interference。
 - Memory Copy / Zero-copy。
-- 高性能网络与设备数据路径连接。
+- High-performance Networking。
+- Device Data Path。
+- RDMA Connection。
+- AI / GPU Data Path Connection。
 
-以上仍为规划，不表示已有正文。当前止于第一阶段三篇，不提前进入 RDMA、GPUDirect Storage 或 AI Storage 教程。
+以上仍为规划，不表示已有正文。当前止于两阶段六篇，不提前展开 Zero-copy、RDMA、GPUDirect Storage 或 AI Storage；工作负载与 GPU 连接由 [AI Storage Connections](../12-ai-storage-connections/README.md) 后续承接。
 
 [Storage Fundamentals](../02-storage-fundamentals/README.md) · [返回 Knowledge Map](../../README.md)
