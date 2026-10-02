@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-从故障信号到保护恢复，串联触发判断、数据修复、任务协调与结果验证。第一阶段建立最小 Failure Recovery 闭环；更广泛的运维与观测方法仍属于后续规划。
+从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界；更广泛的运维与观测方法仍属于后续规划。
 
 ## 核心问题
 
@@ -10,8 +10,10 @@
 - 如何确定受影响数据，安全安排恢复任务并验证结果？
 - Repair 如何检查 Generation、Ownership、Placement 与提交结果？
 - 如何兼顾恢复窗口和前台 I/O，避免 Recovery Storm？
+- 如何区分平衡、迁移与撤离的目标，安全处理并发更新和旧资格？
+- 如何确认新布局可用，以及节点不再承担必须保留的责任？
 
-## 已完成：Failure Recovery 第一阶段
+## 已完成第一阶段：Failure Recovery Core
 
 推荐顺序：**Failure Detection / State Transition → Repair / Rebuild → Recovery Task Coordination**。
 
@@ -25,11 +27,20 @@
 
 前置知识复用 [Distributed Systems Foundations](../06-distributed-systems/README.md) 的 Timeout / Lease / Fencing / Retry、[Data Protection](../07-data-protection/README.md) 的 Replication / EC / Failure Domain，以及 [Metadata / Partitioning](../08-consistency-metadata-partitioning/README.md) 的 Generation / Layout / Ownership；本章不重复这些基础正文。
 
+## 已完成第二阶段：Planned Data Movement / Operations
+
+推荐顺序：**Rebalance → Online Data Migration → Node Evacuation**。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 4 | [Rebalance](04-rebalance.md) | 为什么需要主动移动？区分容量、数据和负载目标，选择候选并受控收敛 |
+| 5 | [Online Data Migration](05-data-migration.md) | 如何在并发变化中安全切换？建立 Base Copy、Catch-up、Cutover、Fencing 与回退边界 |
+| 6 | [Node Evacuation](06-node-evacuation.md) | 节点什么时候能退出？停止新分配，转移责任并验证保护、引用、归属与在途操作 |
+
+两阶段形成 **Reactive Recovery → Planned Data Movement**：前者补齐保护缺口，后者在数据仍有效时改善分布、改变位置或计划退出节点。共享复制、验证、任务协调和限流能力，但分别判断 Trigger、Priority、Completion Criteria 与失败处理；Source 在移动中失效时，可以重新进入第一阶段的 Repair 链。
+
 ## 后续规划
 
-- Rebalance。
-- Data Migration。
-- Node Evacuation。
 - Capacity Management。
 - Integrity / Silent Corruption / Scrubbing。
 - Recovery Observability。
@@ -37,6 +48,6 @@
 - SLI / SLO。
 - Failure Drill / Troubleshooting。
 
-以上仍为规划，不表示已有正文。本轮止于第一阶段三篇，不因 Repair 与搬迁共有复制动作就扩展 Migration / Rebalance，也不提前建设完整 Observability 专题。
+以上仍为规划，不表示已有正文。本章当前止于两阶段六篇，不提前展开 Capacity Management、Integrity 或完整 Observability 专题。
 
 [数据保护机制](../07-data-protection/README.md) · [返回 Knowledge Map](../../README.md)
