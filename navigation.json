@@ -271,6 +271,27 @@
           "title": "Foreground / Background Interference：共享资源中的性能边界",
           "label": "前后台资源干扰",
           "summary": "共享资源预算、保护风险与前台性能的动态取舍"
+        },
+        {
+          "id": "09-data-path-performance-07-memory-copy-zero-copy",
+          "path": "docs/09-data-path-performance/07-memory-copy-zero-copy.md",
+          "title": "Memory Copy / Zero-copy：少一次复制，不是少一次数据移动",
+          "label": "内存复制与零拷贝",
+          "summary": "Copy、Syscall、Context Switch、DMA 与 Buffer 生命周期"
+        },
+        {
+          "id": "09-data-path-performance-08-direct-async-io-device-path",
+          "path": "docs/09-data-path-performance/08-direct-async-io-device-path.md",
+          "title": "Direct / Async I/O & Device Path：缓存选择与等待模型分开",
+          "label": "直接与异步 I/O",
+          "summary": "缓存与等待两个维度、Device Queue 和持久化边界"
+        },
+        {
+          "id": "09-data-path-performance-09-high-performance-networking-rdma",
+          "path": "docs/09-data-path-performance/09-high-performance-networking-rdma.md",
+          "title": "High-performance Networking / RDMA：搬到远端内存，不等于提交存储状态",
+          "label": "高性能网络与 RDMA",
+          "summary": "注册内存、QP / CQ、传输类别与远端提交边界"
         }
       ]
     },

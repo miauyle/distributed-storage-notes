@@ -76,14 +76,13 @@ AWS 明确指出：current 已是 Marker 时，继续普通 DELETE 会再加一�
 
 ```mermaid
 flowchart TD
-    S["current 为正文版本 B"] -->|"普通 DELETE"| M["current 为 Marker dA"]
-    M -->|"再次普通 DELETE"| N["current 为 Marker dB"]
-    M -->|"删除历史 vA"| M
-    M -->|"指定版本删除 dA"| S
-    N -->|"指定版本删除 dB"| M
+    M["起点：current 为 dA"] -->|"普通 DELETE"| N["新增 dB · current 为 dB"]
+    M -->|"DELETE versionId=vA"| H["移除 vA · current 仍为 dA"]
+    M -->|"DELETE versionId=dA"| B["移除 dA · current 为 vB"]
+    N -->|"DELETE versionId=dB"| D["移除 dB · current 回到 dA"]
 ```
 
-图假设 vB 仍存在且没有其他修改。删除 dB 后若下面还有 dA，默认 GET 仍是删除状态，不能把“删掉一个标记”理解成“无条件恢复正文”。
+图中前三个分支与表格一样，都是从 vA、vB、dA 的共同起点独立执行；只有删除 dB 的箭头接续“新增 dB”后的状态。dA / dB 均为 Marker，vB 是正文版本 B；假设 vB 仍存在且没有其他修改。删除 dB 后下面还有 dA，默认 GET 仍是删除状态，不能把“删掉一个标记”理解成“无条件恢复正文”。
 
 ## 5. Logical visibility、Version existence 与 Physical existence
 

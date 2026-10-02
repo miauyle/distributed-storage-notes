@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-沿请求实际经过的路径拆解时间和资源开销，建立可测量的性能分析方法。第一阶段连接成本位置、吞吐与排队、可复现实验；第二阶段讨论缓存、工作粒度与共享资源控制。高性能数据路径仍留待后续。
+沿请求实际经过的路径拆解时间和资源开销，建立可测量的性能分析方法。第一阶段连接成本位置、吞吐与排队、可复现实验；第二阶段讨论缓存、工作粒度与共享资源控制；第三阶段补齐内存移动、设备 I/O 与跨节点传输的高性能路径边界。
 
 ## 核心问题
 
@@ -25,7 +25,7 @@
 
 前置复用 [Object Read / Write Path](../03-object-storage/03-read-write-path.md)、[Object Layout](../03-object-storage/06-object-layout.md)、[Data Protection](../07-data-protection/README.md) 与 [Recovery Task Coordination](../10-recovery-operations-observability/03-recovery-task-coordination.md)。单机介质、I/O 与持久化仍由 [Storage Fundamentals](../02-storage-fundamentals/README.md) 承担，本章不重复底层教材。
 
-## 已完成第二阶段：Data Path Optimization / Control
+## 已完成第二阶段：Optimization / Control
 
 承接第一阶段，推荐顺序：**Cache / Prefetch → Batching / Backpressure → Foreground / Background Interference**。
 
@@ -35,16 +35,25 @@
 | 5 | [Batching / Backpressure](05-batching-backpressure.md) | 如何摊薄固定成本、控制并发与积压？明确等待代价及过载反馈边界 |
 | 6 | [Foreground / Background Interference](06-foreground-background-interference.md) | 多种工作如何共享资源？连接 Repair / Rebalance / Migration 的竞争、预算和动态取舍 |
 
-两阶段形成 **Cost → Queueing → Measurement → Optimization / Control**。控制措施要回到第一阶段验证：高命中、大 Batch 或高后台带宽，不自动意味着更好的端到端服务；正确性与保护契约也不能为性能让步。
+前两阶段形成 **Cost → Queueing → Measurement → Optimization / Control**。控制措施要回到第一阶段验证：高命中、大 Batch 或高后台带宽，不自动意味着更好的端到端服务；正确性与保护契约也不能为性能让步。
+
+## 已完成第三阶段：High-performance Data Path
+
+承接资源控制，推荐顺序：**Memory Copy / Zero-copy → Direct / Async I/O & Device Path → High-performance Networking / RDMA**。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 7 | [Memory Copy / Zero-copy](07-memory-copy-zero-copy.md) | 数据为什么多次读写内存？区分 Copy、Syscall、Context Switch、DMA 与 Buffer 生命周期 |
+| 8 | [Direct / Async I/O & Device Path](08-direct-async-io-device-path.md) | 怎样到达设备？分开缓存路径、提交 / 完成模型与持久化条件 |
+| 9 | [High-performance Networking / RDMA](09-high-performance-networking-rdma.md) | 怎样跨节点搬运？理解注册内存、工作队列以及传输完成不等于存储提交 |
+
+三阶段形成 **Analysis → Control → Low-level Data Path**：先测清成本与等待，再约束工作和共享资源，最后讨论局部路径怎样降低开销。Zero-copy 不等于字节不移动，Direct 不等于 Zero-copy，Async 不保证单请求更快，RDMA Completion 也不代替应用提交与存储 Durability。
 
 ## 后续规划
 
-- Memory Copy / Zero-copy。
-- High-performance Networking。
-- Device Data Path。
-- RDMA Connection。
-- AI / GPU Data Path Connection。
+- 高性能路径的受控实验与成本验证，按明确任务确定范围。
+- AI / GPU Data Path Connection，由 [AI Storage Connections](../12-ai-storage-connections/README.md) 后续承接。
 
-以上仍为规划，不表示已有正文。当前止于两阶段六篇，不提前展开 Zero-copy、RDMA、GPUDirect Storage 或 AI Storage；工作负载与 GPU 连接由 [AI Storage Connections](../12-ai-storage-connections/README.md) 后续承接。
+以上仍为规划，不表示已有正文。当前止于三阶段九篇通用基础，不展开 GPU、GDS、S3 over RDMA 或 AI Storage 教程。
 
 [Storage Fundamentals](../02-storage-fundamentals/README.md) · [返回 Knowledge Map](../../README.md)
