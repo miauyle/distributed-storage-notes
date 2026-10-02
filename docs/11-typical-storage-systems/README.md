@@ -10,7 +10,7 @@
 - 相似工作负载下，接口、冗余、放置与恢复有哪些不同取舍？
 - 哪些结论属于通用机制，哪些依赖具体系统与版本？
 
-## 第一阶段已完成：Comparison Framework / Object Storage Cases
+## 第一阶段已完成：Framework / Initial Cases
 
 阅读链为 **统一观察坐标 → Ceph RGW → MinIO**。重点是不同 Architecture Decision 如何实例化通用机制，不是产品功能清单、优劣排名或完整 Object Storage 横评。
 
@@ -21,6 +21,17 @@
 | 3 | [MinIO](03-minio.md) | 当前 AIStor 如何组织共置 Metadata、Erasure Set 与 Healing？ |
 
 两篇案例保持相同十四个主标题，最后用映射表说明哪些概念仅部分对应。资料核对日期为 2026-10-02：Ceph 使用稳定 Tentacle 分支；MinIO 使用当前 AIStor 滚动文档，不无条件继承历史开源版行为。精确 ACK 或一致性保证没有足够公开证据时，正文明确保留边界。
+
+## 第二阶段已完成：Object Storage Comparison
+
+接续阅读 **Framework → Ceph → MinIO → Swift → Cross-system Comparison**，用第三个案例检验观察坐标，再比较三套系统的职责边界、状态与收敛方式。
+
+| 顺序 | 正文 | 关注的问题 |
+| --- | --- | --- |
+| 4 | [OpenStack Swift](04-openstack-swift.md) | 分开的 Namespace 职责、Ring、Storage Policy 与后台收敛如何合作？ |
+| 5 | [Object Storage Cross-system Comparison](05-object-storage-cross-system-comparison.md) | 相同问题由哪些不同架构选择实现，哪些保证不能直接横向等同？ |
+
+Swift 沿用相同十四节结构，范围固定为 2026.2 Hibiscus 稳定系列、`stable/2026.2` 与发布 tag 2.38.2；稳定文档的开发构建号和 `latest` 的开发版本另作区分。综合篇继承各案例的资料范围，比较 Architecture Decision，不做性能排名；最后检验通用模型能解释什么，以及哪里仍需产品模型。
 
 ## 回到通用比较坐标
 
@@ -36,10 +47,10 @@
 
 ## 后续规划
 
-- OpenStack Swift：下一阶段沿相同坐标研究，不在本轮创建正文。
-- Ceph RGW / MinIO / Swift Cross-system Comparison：三系统案例齐备后再综合对照。
-- 按需要再扩展 RBD / CephFS / HDFS / JuiceFS，不预创建空文章。
+- Ceph RBD / CephFS：按需要扩展 Block / File 案例。
+- HDFS：按需要扩展分布式文件系统案例。
+- JuiceFS：按需要研究文件接口与对象后端的组合。
 
-以上是规划，不表示已完成。本轮止于比较框架与两个对象存储案例，不展开 AI Storage。
+以上是规划，不表示已完成，不预创建空文章。本轮止于 Swift 与三系统综合比较，Object Storage 典型案例主线已完成，不自动展开其他产品或 AI Storage。
 
 [返回 Knowledge Map](../../README.md)
