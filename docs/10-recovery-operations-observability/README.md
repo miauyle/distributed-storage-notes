@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界；更广泛的运维与观测方法仍属于后续规划。
+从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复；更广泛的运维与观测方法仍属于后续规划。
 
 ## 核心问题
 
@@ -12,6 +12,7 @@
 - 如何兼顾恢复窗口和前台 I/O，避免 Recovery Storm？
 - 如何区分平衡、迁移与撤离的目标，安全处理并发更新和旧资格？
 - 如何确认新布局可用，以及节点不再承担必须保留的责任？
+- 长期不读取的数据如何获得验证，怎样区分扫描覆盖、修复完成与当前健康状态？
 
 ## 已完成第一阶段：Failure Recovery Core
 
@@ -37,17 +38,26 @@
 | 5 | [Online Data Migration](05-data-migration.md) | 如何在并发变化中安全切换？建立 Base Copy、Catch-up、Cutover、Fencing 与回退边界 |
 | 6 | [Node Evacuation](06-node-evacuation.md) | 节点什么时候能退出？停止新分配，转移责任并验证保护、引用、归属与在途操作 |
 
-两阶段形成 **Reactive Recovery → Planned Data Movement**：前者补齐保护缺口，后者在数据仍有效时改善分布、改变位置或计划退出节点。共享复制、验证、任务协调和限流能力，但分别判断 Trigger、Priority、Completion Criteria 与失败处理；Source 在移动中失效时，可以重新进入第一阶段的 Repair 链。
+前两阶段形成 **Reactive Recovery → Planned Data Movement**：前者补齐保护缺口，后者在数据仍有效时改善分布、改变位置或计划退出节点。共享复制、验证、任务协调和限流能力，但分别判断 Trigger、Priority、Completion Criteria 与失败处理；Source 在移动中失效时，可以重新进入第一阶段的 Repair 链。
+
+## 已完成第三阶段：Integrity Operations
+
+机制前置按 **[Checksum / Data Integrity](../07-data-protection/04-checksum-data-integrity.md) → [Silent Corruption Detection](../07-data-protection/05-silent-corruption-detection.md)** 阅读，再进入本章正文。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 7 | [Scrubbing / Integrity Repair](07-scrubbing-integrity-repair.md) | Cold Data 如何主动验证？明确 Coverage、Skipped / Unknown、可信修复输入、完成边界与前后台资源取舍 |
+
+Data Integrity 的机制基础在 07，本章只承接 **主动验证 → 发现 → Integrity Repair**，复用第一阶段的 Repair / Task Coordination。扫描结束不等于所有数据健康；歧义来源不能为任务完成而无条件覆盖。本轮不重复 Checksum / Silent Corruption 基础。
 
 ## 后续规划
 
 - Capacity Management。
-- Integrity / Silent Corruption / Scrubbing。
 - Recovery Observability。
 - Metrics / Logs / Tracing。
 - SLI / SLO。
 - Failure Drill / Troubleshooting。
 
-以上仍为规划，不表示已有正文。本章当前止于两阶段六篇，不提前展开 Capacity Management、Integrity 或完整 Observability 专题。
+以上仍为规划，不表示已有正文。本章当前止于三阶段七篇，不提前展开 Capacity Management、完整 Observability 或 DR 专题。
 
 [数据保护机制](../07-data-protection/README.md) · [返回 Knowledge Map](../../README.md)
