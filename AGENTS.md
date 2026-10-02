@@ -12,7 +12,7 @@
 - 以用户本轮明确指定的目录和专题为边界；跨章节需要引用时建立链接，不顺手补写未授权章节。
 - 每个一级目录由 README 提供定位、阅读入口与待展开主题。新增正文时更新所属 README，明确区分已有内容和后续规划。
 - 仅在存在实际内容时增加文件；使用语义化 Markdown 文件名，不预建大量空页面，不引入无必要的依赖或复杂 UI。
-- 当前对象存储基础阅读顺序为 Object Model → API Semantics → Read / Write Path。后续任务可以按用户要求扩展，不把本阶段范围当成永久禁令。
+- 当前对象存储基础阅读顺序为 Object Model → S3 Core Semantics → Read / Write Path → Multipart Upload → Versioning / Delete → Object Layout。后续任务可以按用户要求扩展，不把本阶段范围当成永久禁令。
 - 完成本轮范围后停止，不自动扩写下一阶段。是否创建、合并 PR 按用户当前指令及会话中已授权的流程执行。
 
 ## 内容准确性
