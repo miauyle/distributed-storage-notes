@@ -425,6 +425,27 @@
           "title": "Typical Storage Systems",
           "label": "专题入口",
           "summary": "用公开系统对照通用架构模型"
+        },
+        {
+          "id": "11-typical-storage-systems-01-comparison-framework",
+          "path": "docs/11-typical-storage-systems/01-comparison-framework.md",
+          "title": "Storage System Comparison Framework：比较架构决策，而不是功能清单",
+          "label": "存储系统比较框架",
+          "summary": "统一观察坐标、证据层次与概念映射边界"
+        },
+        {
+          "id": "11-typical-storage-systems-02-ceph-rgw",
+          "path": "docs/11-typical-storage-systems/02-ceph-rgw.md",
+          "title": "Ceph RGW：从对象接口映射到 RADOS 保护与放置",
+          "label": "Ceph RGW",
+          "summary": "Tentacle 对象接口、Metadata、PG / CRUSH 与恢复"
+        },
+        {
+          "id": "11-typical-storage-systems-03-minio",
+          "path": "docs/11-typical-storage-systems/03-minio.md",
+          "title": "MinIO：以当前 AIStor 文档检验对象原生路径",
+          "label": "MinIO",
+          "summary": "当前 AIStor 的 Metadata、Erasure Set 与 Healing"
         }
       ]
     },
