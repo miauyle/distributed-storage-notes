@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复；更广泛的运维与观测方法仍属于后续规划。
+从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复，第四阶段把运行余量、持续证据与健康目标连接起来；Failure Drill 与 Troubleshooting 仍属于后续规划。
 
 ## 核心问题
 
@@ -13,6 +13,8 @@
 - 如何区分平衡、迁移与撤离的目标，安全处理并发更新和旧资格？
 - 如何确认新布局可用，以及节点不再承担必须保留的责任？
 - 长期不读取的数据如何获得验证，怎样区分扫描覆盖、修复完成与当前健康状态？
+- 集群还有多少安全写入和恢复余量，怎样避免总体平均值隐藏局部容量风险？
+- 哪些信号支持运行判断，怎样区分服务目标、可行动告警与内部可靠性风险？
 
 ## 已完成第一阶段：Failure Recovery Core
 
@@ -50,14 +52,23 @@
 
 Data Integrity 的机制基础在 07，本章只承接 **主动验证 → 发现 → Integrity Repair**，复用第一阶段的 Repair / Task Coordination。扫描结束不等于所有数据健康；歧义来源不能为任务完成而无条件覆盖。本轮不重复 Checksum / Silent Corruption 基础。
 
+## 已完成第四阶段：Operational Health / Observability
+
+推荐顺序：**Capacity Management → Observability Signals → SLI / SLO / Alerting**。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 8 | [Capacity Management](08-capacity-management.md) | 还有多少安全运行余量？区分容量口径、合格目标、Headroom、水位与准入 |
+| 9 | [Observability Signals](09-observability-signals.md) | 通过什么证据知道发生了什么？区分 Metrics / Logs / Traces / Events，关联身份并控制采集成本 |
+| 10 | [SLI / SLO / Alerting](10-sli-slo-alerting.md) | 怎样定义健康并发出可行动告警？区分服务结果、目标、预算与内部风险，不把代理指标当作持久性概率 |
+
+第四阶段形成 **Resource / Risk State → Evidence → Health Objective**：把前三阶段的 Repair、移动与 Scrub，以及 Data Path 的 Queueing / P99，连接为持续运行的 Operational View。Benchmark 是受控实验，Observability 是持续生产证据；本阶段不重复性能测试方法，也不展开完整 Troubleshooting。
+
 ## 后续规划
 
-- Capacity Management。
-- Recovery Observability。
-- Metrics / Logs / Tracing。
-- SLI / SLO。
 - Failure Drill / Troubleshooting。
+- Incident Timeline / Postmortem。
 
-以上仍为规划，不表示已有正文。本章当前止于三阶段七篇，不提前展开 Capacity Management、完整 Observability 或 DR 专题。
+以上仍为规划，不表示已有正文。本章当前止于四阶段十篇，不提前展开 Incident Response、工具配置或 DR 专题。
 
 [数据保护机制](../07-data-protection/README.md) · [返回 Knowledge Map](../../README.md)

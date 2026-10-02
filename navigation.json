@@ -369,6 +369,27 @@
           "title": "Scrubbing / Integrity Repair：主动验证，不把扫描结束当作健康证明",
           "label": "扫描与完整性修复",
           "summary": "主动验证、扫描覆盖、歧义处理与安全修复"
+        },
+        {
+          "id": "10-recovery-operations-observability-08-capacity-management",
+          "path": "docs/10-recovery-operations-observability/08-capacity-management.md",
+          "title": "Capacity Management：空闲字节不等于安全写入余量",
+          "label": "容量与运行余量",
+          "summary": "容量口径、合格目标、恢复余量与准入边界"
+        },
+        {
+          "id": "10-recovery-operations-observability-09-observability-signals",
+          "path": "docs/10-recovery-operations-observability/09-observability-signals.md",
+          "title": "Operational Observability：用互补信号建立运行证据",
+          "label": "运行观测信号",
+          "summary": "指标、日志、追踪、状态历史与证据关联"
+        },
+        {
+          "id": "10-recovery-operations-observability-10-sli-slo-alerting",
+          "path": "docs/10-recovery-operations-observability/10-sli-slo-alerting.md",
+          "title": "SLI / SLO / Alerting：可用、达标与低风险不是同一件事",
+          "label": "健康目标与告警",
+          "summary": "服务指标、目标、预算、症状与可靠性风险"
         }
       ]
     },
