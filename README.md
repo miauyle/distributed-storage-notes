@@ -4,7 +4,7 @@
 
 本仓库不作为 Dell ECS / ObjectScale 项目复盘、AI Storage 面试教程或面试速记；产品案例只使用公开资料，不记录内部实现细节。
 
-**当前建设顺序：Object Storage 基础主线已完成 → Data Protection 第一阶段已完成 → Distributed Systems Foundations 已完成 → Consistency / Metadata / Partitioning 第一阶段已完成 → Failure Recovery 第一阶段已完成。** 五阶段分别已有 6 / 3 / 3 / 3 / 3 篇正文；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
+**当前建设顺序：Object Storage 基础主线已完成 → Data Protection 第一阶段已完成 → Distributed Systems Foundations 已完成 → Consistency / Metadata / Partitioning 第一阶段已完成 → Failure Recovery 第一阶段已完成 → Recovery / Operations 第二阶段已完成。** 六阶段分别已有 6 / 3 / 3 / 3 / 3 / 3 篇正文；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
 
 ## Knowledge Map
 
@@ -58,10 +58,10 @@ flowchart TD
 
 ## 下一阶段建议优先专题
 
-以下建议承接已完成的五阶段基础，具体范围由后续任务确定。
+以下建议承接已完成的六阶段基础，具体范围由后续任务确定。
 
-1. Recovery / Operations 第二阶段。
-2. Data Path / Performance。
-3. Integrity / Silent Corruption。
+1. Data Path / Performance。
+2. Integrity / Silent Corruption / Scrubbing。
+3. Observability / Capacity Operations。
 
-以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，本轮止于 Failure Recovery 第一阶段三篇。
+以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，本轮止于 Recovery / Operations 第二阶段三篇。

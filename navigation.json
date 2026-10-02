@@ -235,14 +235,14 @@
     {
       "id": "10-recovery-operations-observability",
       "title": "故障恢复、运维与观测",
-      "summary": "从故障信号到修复、任务协调与保护恢复",
+      "summary": "从故障恢复到主动数据移动、布局维护与安全退出",
       "pages": [
         {
           "id": "10-recovery-operations-observability-index",
           "path": "docs/10-recovery-operations-observability/README.md",
           "title": "Failure Recovery / Operations / Observability",
           "label": "专题入口",
-          "summary": "从故障信号到修复、任务协调与保护恢复"
+          "summary": "从故障恢复到主动数据移动、布局维护与安全退出"
         },
         {
           "id": "10-recovery-operations-observability-01-failure-detection-state-transition",
@@ -264,6 +264,27 @@
           "title": "Recovery Task Coordination：让大量修复工作可靠推进",
           "label": "恢复任务协调",
           "summary": "稳定任务身份、接管、Checkpoint 与限流"
+        },
+        {
+          "id": "10-recovery-operations-observability-04-rebalance",
+          "path": "docs/10-recovery-operations-observability/04-rebalance.md",
+          "title": "Rebalance：改善分布，保持保护边界",
+          "label": "重平衡",
+          "summary": "容量、数据与负载分布、候选选择和收敛"
+        },
+        {
+          "id": "10-recovery-operations-observability-05-data-migration",
+          "path": "docs/10-recovery-operations-observability/05-data-migration.md",
+          "title": "Online Data Migration：并发更新与安全切换",
+          "label": "在线数据迁移",
+          "summary": "Base Copy、变更追平、Cutover 与回退边界"
+        },
+        {
+          "id": "10-recovery-operations-observability-06-node-evacuation",
+          "path": "docs/10-recovery-operations-observability/06-node-evacuation.md",
+          "title": "Node Evacuation：计划退出前清空责任",
+          "label": "节点撤离",
+          "summary": "Draining、责任枚举、有效引用与安全退出"
         }
       ]
     },
