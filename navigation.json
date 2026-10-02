@@ -466,14 +466,14 @@
     {
       "id": "12-ai-storage-connections",
       "title": "AI Storage 连接",
-      "summary": "AI 状态分类、训练数据供给与持久恢复点",
+      "summary": "AI 状态、训练供给与 Host / GPU / RDMA 数据路径",
       "pages": [
         {
           "id": "12-ai-storage-connections-index",
           "path": "docs/12-ai-storage-connections/README.md",
           "title": "AI Storage Connections",
           "label": "专题入口",
-          "summary": "AI 状态分类、训练数据供给与持久恢复点"
+          "summary": "AI 状态、训练供给与 Host / GPU / RDMA 数据路径"
         },
         {
           "id": "12-ai-storage-connections-01-ai-storage-workload-model",
@@ -495,6 +495,27 @@
           "title": "Model Weights / Checkpoints：加载模型与恢复训练是两种路径",
           "label": "模型权重与检查点",
           "summary": "加载 fan-out、分布式保存、发布边界与 Restore"
+        },
+        {
+          "id": "12-ai-storage-connections-04-host-gpu-memory-data-path",
+          "path": "docs/12-ai-storage-connections/04-host-gpu-memory-data-path.md",
+          "title": "Host / GPU Memory Data Path：跨过内存边界，而不只提高存储吞吐",
+          "label": "Host / GPU 内存数据路径",
+          "summary": "Pageable / Pinned、H2D、异步完成与流水线拓扑"
+        },
+        {
+          "id": "12-ai-storage-connections-05-gpudirect-storage-cufile",
+          "path": "docs/12-ai-storage-connections/05-gpudirect-storage-cufile.md",
+          "title": "GPUDirect Storage / cuFile：直接数据路径与文件语义分开",
+          "label": "GPUDirect Storage / cuFile",
+          "summary": "当前 GDS、Direct / Compatibility、文件语义与路径验证"
+        },
+        {
+          "id": "12-ai-storage-connections-06-object-storage-cuobject-rdma",
+          "path": "docs/12-ai-storage-connections/06-object-storage-cuobject-rdma.md",
+          "title": "Object Storage / cuObject / RDMA：对象控制语义与 GPU 数据面分开",
+          "label": "对象存储 / cuObject / RDMA",
+          "summary": "S3 控制、RDMA 正文、注册生命周期与对象提交"
         }
       ]
     }

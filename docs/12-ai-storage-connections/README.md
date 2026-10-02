@@ -24,14 +24,19 @@ DataLoader 与 Distributed Checkpoint 使用当前 PyTorch 官方文档实例，
 
 第一阶段建立：Dataset ≠ Checkpoint；Weight ≠ KV Cache；Sample ≠ Object / File；对象吞吐 ≠ GPU 数据供给率；高存储吞吐 ≠ 高 GPU 利用率；Pinned Memory ≠ GDS；Bytes Written ≠ Checkpoint Committed；Async Started ≠ 新持久恢复点可用；Checkpoint Exists ≠ Fast Restore；Cacheable ≠ 不需持久保护。
 
-## 后续规划：第二阶段 GPU Data Path
+## 已完成第二阶段：GPU Data Path
 
-以下仅是待展开方向，没有创建正文：
+按 **Host / Pinned Memory → GPU → GPUDirect Storage / cuFile → Object Storage / cuObject / RDMA** 阅读，形成 **Traditional Host Staging → File-oriented Direct GPU Storage → Object-oriented RDMA GPU Data Path**。
 
-- Host / Pinned Memory → GPU 的复制、DMA、重叠与生命周期。
-- GPUDirect Storage 的路径、适用条件与回退边界。
-- Object Storage / cuObject 与 GPU-oriented Storage Access。
-- RDMA、GPU Direct 与对象协议之间的关系。
+| 顺序 | 文章 | 回答的问题 |
+| --- | --- | --- |
+| 4 | [Host / GPU Memory Data Path：跨过内存边界，而不只提高存储吞吐](04-host-gpu-memory-data-path.md) | Pageable / Pinned / GPU Memory 怎样区分；H2D DMA、异步完成、Buffer Lifetime、Pipeline 与拓扑成本在哪里？ |
+| 5 | [GPUDirect Storage / cuFile：直接数据路径与文件语义分开](05-gpudirect-storage-cufile.md) | File-oriented GDS 怎样减少 Host Staging；non-O_DIRECT、Direct / Compatibility 条件与存储完成语义怎样区分？ |
+| 6 | [Object Storage / cuObject / RDMA：对象控制语义与 GPU 数据面分开](06-object-storage-cuobject-rdma.md) | S3 Control 与 RDMA Payload 怎样结合；GET / PUT、注册、服务端成本、故障与对象提交怎样验证？ |
+
+当前 NVIDIA 官方资料的 release / 文档范围与 2026-10-03 核对日期记录在正文。基础复用 Memory Copy / Zero-copy、Direct / Async I/O 与 RDMA；不提供 CUDA / Verbs 代码、驱动安装或产品配置教程。
+
+第二阶段建立：Pinned Memory ≠ GDS；Pinned H2D ≠ Storage → GPU Direct Path；GDS ≠ GPUDirect RDMA；cuFile ≠ cuObject；GPUDirect ≠ No Data Movement；调用 cuFile ≠ 每次 I/O 都 Direct；RDMA ≠ S3；S3 Control ≠ Payload Data Plane；S3 over RDMA ≠ 统一标准；RDMA Completion ≠ Object Commit；GPU-direct ≠ 后端成本消失；更高搬运带宽 ≠ 更高端到端训练吞吐。
 
 ## 后续规划：第三阶段 Inference State / KV Cache
 
@@ -42,6 +47,6 @@ DataLoader 与 Distributed Checkpoint 使用当前 PyTorch 官方文档实例，
 - Remote / Disaggregated Cache 与资源竞争。
 - 重建成本、持久化边界及端到端验证。
 
-本轮止于第一阶段三篇，不展开 GDS、S3 over RDMA、KV Cache 机制、推理产品案例或 Demo。
+本轮止于第二阶段三篇；第三阶段仅保留规划，不创建 KV Cache 正文、推理产品案例或 Demo。
 
 [数据路径与性能基础](../09-data-path-performance/README.md) · [对象存储主线](../03-object-storage/README.md) · [返回 Knowledge Map](../../README.md)
