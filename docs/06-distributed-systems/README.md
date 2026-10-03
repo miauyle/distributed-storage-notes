@@ -33,6 +33,6 @@
 - Clock / Ordering：时间假设、事件顺序与状态代际；现有 Lease 正文只说明必要约束。
 - CAP 的适用边界：保留后续专题入口，本轮不展开。
 
-后续应用机制见[一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md)，故障后的执行流程见[恢复与运维](../10-recovery-operations-observability/README.md)，两者目前仍为骨架。本轮止于上述三篇公共基础。
+后续应用机制见[一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md)，故障后的执行流程见[恢复与运维](../10-recovery-operations-observability/README.md)，两者均已有正文。本章止于上述三篇公共基础，其他专题继续保留规划。
 
 [一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md) · [返回 Knowledge Map](../../README.md)

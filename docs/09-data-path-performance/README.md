@@ -52,8 +52,7 @@
 ## 后续规划
 
 - 高性能路径的受控实验与成本验证，按明确任务确定范围。
-- AI / GPU Data Path Connection，由 [AI Storage Connections](../12-ai-storage-connections/README.md) 后续承接。
 
-以上仍为规划，不表示已有正文。当前止于三阶段九篇通用基础，不展开 GPU、GDS、S3 over RDMA 或 AI Storage 教程。
+以上仍为规划，不表示已有正文。GPU Data Path 已由 [AI Storage Connections](../12-ai-storage-connections/README.md) 第二阶段承接，连接 Host / GPU Memory、GDS / cuFile 与 Object Storage / cuObject / RDMA。本章仍止于三阶段九篇通用基础，不重复 GPU、GDS 或对象存储 RDMA 路径正文。
 
 [Storage Fundamentals](../02-storage-fundamentals/README.md) · [返回 Knowledge Map](../../README.md)

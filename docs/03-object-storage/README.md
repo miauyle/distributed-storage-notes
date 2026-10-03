@@ -17,7 +17,7 @@
 | 5 | [Versioning / Delete：当前状态、历史版本与删除标记](05-versioning-delete.md) | Current / Noncurrent、版本寻址、普通删除与指定版本删除 |
 | 6 | [Object Layout：逻辑对象与物理单元的解耦](06-object-layout.md) | 大对象分块、小对象聚合、映射成本、放大与空间回收边界 |
 
-具体 S3 行为以 AWS general purpose bucket 为主要范围，版本状态等前提由各篇明确指定，来源核对日期写在正文中。读写流程与内部布局图属于通用架构示意；API Part、Object Version 与 Internal Storage Unit 不混为同一层。其他一级章节仍保持原有骨架。
+具体 S3 行为以 AWS general purpose bucket 为主要范围，版本状态等前提由各篇明确指定，来源核对日期写在正文中。读写流程与内部布局图属于通用架构示意；API Part、Object Version 与 Internal Storage Unit 不混为同一层。Data Protection、Consistency / Metadata / Partitioning 与 Recovery / Operations 均已有正文，相关机制由对应章节承接。
 
 ## 核心问题
 
@@ -35,6 +35,6 @@
 - 对象级 / Bucket 级复制：触发、顺序、重试、冲突与复制状态。
 - 多租户与服务边界：认证授权、配额、隔离与接口可观测性。
 
-复制和纠删码的通用机制见[数据保护](../07-data-protection/README.md)；一致性与索引机制见[一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md)。这些章节目前为骨架；现有六篇只建立必要的语义与布局边界，没有展开相关机制。
+复制和纠删码的通用机制见[数据保护](../07-data-protection/README.md)；一致性与索引机制见[一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md)；故障恢复与运行验证见[恢复与运维](../10-recovery-operations-observability/README.md)。这些章节均已有正文；本章六篇建立对象语义与布局边界，不重复对应机制。
 
 [返回 Knowledge Map](../../README.md)
