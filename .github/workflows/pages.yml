@@ -31,6 +31,8 @@ jobs:
       - name: Prepare local math and diagram assets
         run: |
           SITE_DEPS_DIR="$RUNNER_TEMP/site-deps" bash tools/prepare_site_assets.sh
+      - name: Prepare browser icon renderer
+        run: python3 -m pip install cairosvg==2.8.2
       - name: Build Jekyll
         env:
           JEKYLL_ENV: production
