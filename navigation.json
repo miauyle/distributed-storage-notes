@@ -411,6 +411,20 @@
           "title": "Disaster Recovery / RPO / RTO：从恢复材料到业务重新可服务",
           "label": "灾难恢复与恢复目标",
           "summary": "RPO / RTO、资格隔离、切换与业务恢复验证"
+        },
+        {
+          "id": "10-recovery-operations-observability-12-failure-drill",
+          "path": "docs/10-recovery-operations-observability/12-failure-drill.md",
+          "title": "Failure Drill：把故障假设变成可验证的运行证据",
+          "label": "故障演练",
+          "summary": "故障假设、健康基线、安全边界与恢复结果验证"
+        },
+        {
+          "id": "10-recovery-operations-observability-13-troubleshooting-method",
+          "path": "docs/10-recovery-operations-observability/13-troubleshooting-method.md",
+          "title": "Troubleshooting Method：从症状到可反驳的故障假设",
+          "label": "排障方法",
+          "summary": "症状范围、跨层证据、反证与修复验证"
         }
       ]
     },

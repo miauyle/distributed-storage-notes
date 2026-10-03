@@ -2,7 +2,7 @@
 
 ## 页面定位
 
-从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复，第四阶段把运行余量、持续证据与健康目标连接起来，第五阶段把跨域与历史材料转化为灾难后的业务恢复；Failure Drill 与 Troubleshooting 仍属于后续规划。
+从故障信号到保护恢复，再进入主动数据移动与布局维护。第一阶段建立最小 Failure Recovery 闭环，第二阶段建立 Rebalance、Online Data Migration 与 Node Evacuation 的目标、切换和退出边界，第三阶段承接 Data Integrity 机制，建立主动验证与安全完整性修复，第四阶段把运行余量、持续证据与健康目标连接起来，第五阶段把跨域与历史材料转化为灾难后的业务恢复，第六阶段用受控故障验证运行假设，并把观测证据用于诊断真实问题。
 
 ## 核心问题
 
@@ -16,6 +16,8 @@
 - 集群还有多少安全写入和恢复余量，怎样避免总体平均值隐藏局部容量风险？
 - 哪些信号支持运行判断，怎样区分服务目标、可行动告警与内部可靠性风险？
 - 大范围服务域不可用后，怎样选择恢复点、切换合法资格，并验证 RPO / RTO 与服务恢复？
+- 怎样在已知基线、受限影响范围和 Abort Condition 内，验证故障后的服务、保护与恢复行为？
+- 怎样从 Symptom / Scope 建立可反驳的假设，关联证据并验证修复，而不把症状消失当作系统健康？
 
 ## 已完成第一阶段：Failure Recovery Core
 
@@ -75,11 +77,21 @@ Data Integrity 的机制基础在 07，本章只承接 **主动验证 → 发现
 
 07 维护 Protection Mechanism / Recovery Material，本章承接 **合法资格 → 有效恢复状态 → 服务激活与验证**。不重复跨域复制或 Backup 基础，不把远端副本存在、字节复制完成或流量已切换直接当作业务恢复。
 
+## 已完成第六阶段：Operational Validation / Troubleshooting
+
+推荐顺序：**Failure Drill → Troubleshooting Method**。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 12 | [Failure Drill](12-failure-drill.md) | 设计假设在实际部署中成立吗？定义基线、故障假设、Blast Radius 与 Abort Condition，验证服务、保护和恢复结果 |
+| 13 | [Troubleshooting Method](13-troubleshooting-method.md) | 如何从症状形成可验证的原因判断？缩小范围，关联跨层证据，寻找反证并区分缓解、恢复与根因修复 |
+
+第六阶段形成 **Observe → Validate Failure Behavior → Diagnose Real Problems**。Observability 不只收集信号，还应支持演练判定与假设检验；任务完成或症状消失，都不能替代保护、完整性和积压收敛的验证。复用已有 Recovery、Queueing 和 Observability 机制，不展开故障注入工具或产品 Runbook。
+
 ## 后续规划
 
-- Failure Drill / Troubleshooting。
 - Incident Timeline / Postmortem。
 
-以上仍为规划，不表示已有正文。本章当前止于五阶段十一篇，不提前展开 Failure Drill、Incident Response、Postmortem 或工具配置。
+以上仍为规划，不表示已有正文。本章当前止于六阶段十三篇，不提前展开完整 Incident Response、Postmortem 或工具配置。
 
 [数据保护机制](../07-data-protection/README.md) · [返回 Knowledge Map](../../README.md)
