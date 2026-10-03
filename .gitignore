@@ -12,3 +12,4 @@ assets/vendor/mermaid/
 site-qa/
 .env.*
 !.env.example
+assets/images/generated-icons/
