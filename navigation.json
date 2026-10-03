@@ -466,14 +466,14 @@
     {
       "id": "12-ai-storage-connections",
       "title": "AI Storage 连接",
-      "summary": "AI 状态、训练供给与 Host / GPU / RDMA 数据路径",
+      "summary": "AI 状态、GPU 数据路径与 KV 分层 / 远端复用",
       "pages": [
         {
           "id": "12-ai-storage-connections-index",
           "path": "docs/12-ai-storage-connections/README.md",
           "title": "AI Storage Connections",
           "label": "专题入口",
-          "summary": "AI 状态、训练供给与 Host / GPU / RDMA 数据路径"
+          "summary": "AI 状态、GPU 数据路径与 KV 分层 / 远端复用"
         },
         {
           "id": "12-ai-storage-connections-01-ai-storage-workload-model",
@@ -516,6 +516,27 @@
           "title": "Object Storage / cuObject / RDMA：对象控制语义与 GPU 数据面分开",
           "label": "对象存储 / cuObject / RDMA",
           "summary": "S3 控制、RDMA 正文、注册生命周期与对象提交"
+        },
+        {
+          "id": "12-ai-storage-connections-07-kv-cache-state-model",
+          "path": "docs/12-ai-storage-connections/07-kv-cache-state-model.md",
+          "title": "KV Cache State Model：可重建状态，也需要精确身份",
+          "label": "KV Cache 状态模型",
+          "summary": "派生状态、Token Prefix 身份、完整性与重建成本"
+        },
+        {
+          "id": "12-ai-storage-connections-08-kv-cache-hierarchy-prefix-reuse",
+          "path": "docs/12-ai-storage-connections/08-kv-cache-hierarchy-prefix-reuse.md",
+          "title": "KV Cache Hierarchy / Prefix Reuse：保存位置与复用价值分开",
+          "label": "KV 分层与 Prefix 复用",
+          "summary": "分层、Offload / Eviction、计算节省、共享与隔离"
+        },
+        {
+          "id": "12-ai-storage-connections-09-remote-disaggregated-kv-cache",
+          "path": "docs/12-ai-storage-connections/09-remote-disaggregated-kv-cache.md",
+          "title": "Remote / Disaggregated KV Cache：搬运状态，也管理分布式生命周期",
+          "label": "远端与解耦 KV Cache",
+          "summary": "P2P / Store、Routing、发布生命周期与 TTFT 成本"
         }
       ]
     }

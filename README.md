@@ -4,7 +4,7 @@
 
 本仓库不作为 Dell ECS / ObjectScale 项目复盘、AI Storage 面试教程或面试速记；产品案例只使用公开资料，不记录内部实现细节。
 
-**当前建设顺序：Object Storage 基础主线已完成 → Data Protection 第一阶段已完成 → Distributed Systems Foundations 已完成 → Consistency / Metadata / Partitioning 第一阶段已完成 → Failure Recovery 第一阶段已完成 → Recovery / Operations 第二阶段已完成 → Data Path / Performance 第一阶段已完成 → Data Path / Performance 第二阶段已完成 → Data Path / Performance 第三阶段已完成 → Data Integrity 阶段已完成 → Operational Health / Observability 阶段已完成 → Cross-region / Backup / DR 阶段已完成 → Typical Storage Systems 第一阶段已完成 → Typical Storage Systems 第二阶段已完成 → AI Storage Connections 第一阶段已完成 → AI Storage Connections 第二阶段已完成。** 十六阶段分别已有 6 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 2 / 3 / 3 篇正文；其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
+**当前建设顺序：Object Storage 基础主线已完成 → Data Protection 第一阶段已完成 → Distributed Systems Foundations 已完成 → Consistency / Metadata / Partitioning 第一阶段已完成 → Failure Recovery 第一阶段已完成 → Recovery / Operations 第二阶段已完成 → Data Path / Performance 第一阶段已完成 → Data Path / Performance 第二阶段已完成 → Data Path / Performance 第三阶段已完成 → Data Integrity 阶段已完成 → Operational Health / Observability 阶段已完成 → Cross-region / Backup / DR 阶段已完成 → Typical Storage Systems 第一阶段已完成 → Typical Storage Systems 第二阶段已完成 → AI Storage Connections 第一阶段已完成 → AI Storage Connections 第二阶段已完成 → AI Storage Connections 第三阶段已完成。** 十七阶段分别已有 6 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 2 / 3 / 3 / 3 篇正文；AI Storage Connections 三阶段九篇基础主线已完成，其余专题仍以目录骨架和后续规划为主。目录编号用于导航，不代表必须依次阅读。
 
 ## Knowledge Map
 
@@ -45,7 +45,7 @@ flowchart TD
 | [09 · Data Path / Performance](docs/09-data-path-performance/README.md) | 请求经过的路径与成本 | I/O、网络、缓存、瓶颈、基准测试 |
 | [10 · Failure Recovery / Operations / Observability](docs/10-recovery-operations-observability/README.md) | 故障后的恢复与持续运行 | 检测、修复、迁移、容量、监控与排障 |
 | [11 · Typical Storage Systems](docs/11-typical-storage-systems/README.md) | 用公开系统检验通用模型 | 对象、块、文件系统的统一维度对照 |
-| [12 · AI Storage Connections](docs/12-ai-storage-connections/README.md) | 连接训练与推理的数据需求 | 已有 Workload / Training State 与 GPU Data Path；后续 KV Cache |
+| [12 · AI Storage Connections](docs/12-ai-storage-connections/README.md) | 连接训练与推理的数据需求 | Workload / Training State、GPU Data Path、Inference State / KV Cache 基础主线完成 |
 
 ## 划分原则与扩展方式
 
@@ -58,10 +58,10 @@ flowchart TD
 
 ## 下一阶段建议优先专题
 
-以下建议承接已完成的十六阶段基础，具体范围由后续任务确定。
+以下建议承接已完成的十七阶段基础，具体范围由后续任务确定。
 
-1. AI Storage Connections 第三阶段：KV Cache。
-2. Failure Drill / Troubleshooting。
-3. 按需要补充 Block / File Typical Systems。
+1. Failure Drill / Troubleshooting。
+2. Distributed Storage 全站收口 / Gap Review。
+3. 按需扩展 Block / File Typical Systems。
 
-以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，Typical Storage Systems 的 Object Storage 主线已完成。本轮止于 Host / GPU Memory、GDS / cuFile 与 Object Storage / cuObject / RDMA 三篇。
+以上是后续优先建议，不代表已完成；正文按明确任务逐一完善，Typical Storage Systems 的 Object Storage 主线已完成。本轮止于 KV State Model、Hierarchy / Prefix Reuse 与 Remote / Disaggregated KV 三篇；AI Storage Connections 先收住，不自动扩展推理产品专章。
