@@ -38,15 +38,22 @@ DataLoader 与 Distributed Checkpoint 使用当前 PyTorch 官方文档实例，
 
 第二阶段建立：Pinned Memory ≠ GDS；Pinned H2D ≠ Storage → GPU Direct Path；GDS ≠ GPUDirect RDMA；cuFile ≠ cuObject；GPUDirect ≠ No Data Movement；调用 cuFile ≠ 每次 I/O 都 Direct；RDMA ≠ S3；S3 Control ≠ Payload Data Plane；S3 over RDMA ≠ 统一标准；RDMA Completion ≠ Object Commit；GPU-direct ≠ 后端成本消失；更高搬运带宽 ≠ 更高端到端训练吞吐。
 
-## 后续规划：第三阶段 Inference State / KV Cache
+## 已完成第三阶段：Inference State / KV Cache
 
-以下仅是待展开方向，没有创建正文：
+按 **KV Cache State Model → KV Cache Hierarchy / Prefix Reuse → Remote / Disaggregated KV Cache** 阅读，形成 **Inference Derived State → Local Reuse / Tiering → Distributed Sharing / Transfer**。
 
-- KV Cache 状态模型、身份与生命周期。
-- 分层、共享、淘汰及复用正确性。
-- Remote / Disaggregated Cache 与资源竞争。
-- 重建成本、持久化边界及端到端验证。
+| 顺序 | 文章 | 回答的问题 |
+| --- | --- | --- |
+| 7 | [KV Cache State Model：可重建状态，也需要精确身份](07-kv-cache-state-model.md) | Derived / Rebuildable State 怎样分类；Model、Token Prefix、Layout 与运行状态怎样决定安全复用？ |
+| 8 | [KV Cache Hierarchy / Prefix Reuse：保存位置与复用价值分开](08-kv-cache-hierarchy-prefix-reuse.md) | GPU / Host / Local / Remote 怎样分层；Offload、Eviction、Prefix Reuse、共享与隔离怎样取舍？ |
+| 9 | [Remote / Disaggregated KV Cache：搬运状态，也管理分布式生命周期](09-remote-disaggregated-kv-cache.md) | Remote Cache、P2P、共享 Store、Prefill / Decode 分离与 Routing 怎样区分；元数据、失败、持久化和 TTFT 怎样验证？ |
 
-本轮止于第二阶段三篇；第三阶段仅保留规划，不创建 KV Cache 正文、推理产品案例或 Demo。
+第三阶段复用 Cache Identity、Working Set、Buffer Lifetime、Backpressure、Metadata 与 Retry；vLLM、LMCache MP、Dynamo、Mooncake 只作为当前公开架构实例，版本 / 文档范围与 2026-10-03 核对日期记录在正文。不提供 Attention 数学、Serving Engine、部署或 Benchmark 工程教程。
+
+第三阶段建立：KV ≠ Weight / Prompt / Primary Durable Data；Rebuildable ≠ Cheap；Text Prefix ≠ Token Prefix；Hash Match ≠ Semantic Identity Proven；Eviction ≠ Offload；Hit Ratio ≠ Compute Saved；Prefix Hit ≠ TPOT 必降；Remote Cache ≠ Prefill / Decode Disaggregation；P2P Transfer ≠ Shared Store；KV-aware Routing ≠ Disaggregation；Metadata Published ≠ Payload Ready；Persisted KV ≠ Primary Durable Data；Fast Transfer ≠ Low TTFT。
+
+## 基础主线完成后的边界
+
+本章三阶段九篇基础主线已完成：**Workload / Training State → GPU Data Path → Inference State / KV Cache**。本轮完成第三阶段后停止，不自动增加 vLLM、SGLang、LMCache、Mooncake 或 Dynamo 产品专章；后续扩展须由明确专题驱动，而不是无限扩张 AI 产品目录。
 
 [数据路径与性能基础](../09-data-path-performance/README.md) · [对象存储主线](../03-object-storage/README.md) · [返回 Knowledge Map](../../README.md)
