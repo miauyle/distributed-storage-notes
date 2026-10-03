@@ -57,7 +57,7 @@ const report = { checks: [], errors: [] };
     assert.match(await brandLogo.getAttribute('src'), /logo-theme\.svg$/);
     const favicon = page.locator('link[rel="icon"]');
     assert.equal(await favicon.count(), 1);
-    assert.match(await favicon.getAttribute('href'), /favicon-storage\.svg$/);
+    assert.match(await favicon.getAttribute('href'), /favicon-storage\.svg\?v=[0-9a-f]{12}$/);
     const aquaLogoBackground = await brandLogo.evaluate(node => getComputedStyle(node).backgroundImage);
     await page.locator('#skinPicker > .navbar__icon-btn').click();
     await page.locator('[data-skin-set="violet"]').click();
