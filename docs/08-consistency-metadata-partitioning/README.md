@@ -29,7 +29,7 @@
 - Partition Split / Merge：分区边界与逻辑映射的演进。
 - Ownership Migration：归属转移过程中的状态传递与切换。
 - Hotspot Mitigation：数据倾斜、Hot Key 与 Hot Partition 的治理。
-- Garbage Collection / Reference Cleanup：有效引用判断与物理回收。
+- Garbage Collection / Reference Cleanup：Metadata Reference Validity → Safe Physical Reclamation Eligibility；关注引用有效性与安全回收资格，不等同于 03 的 Lifecycle Policy。
 
 这些仍是规划，不表示已有正文。本轮止于三篇基础文章，不展开迁移、回收或 Repair / Recovery。
 

@@ -90,7 +90,9 @@ Data Integrity 的机制基础在 07，本章只承接 **主动验证 → 发现
 
 ## 后续规划
 
-- Incident Timeline / Postmortem。
+- Incident Timeline / Postmortem：非优先，仅按实际需要扩展。
+
+维护期说明：Troubleshooting Method 已覆盖 Symptom、Scope、Timeline、Evidence、Hypothesis、Mitigation 与 Recovery Verification。独立 Incident Timeline / Postmortem 属于非优先、按实际需要扩展的规划，不是当前核心知识缺口。
 
 以上仍为规划，不表示已有正文。本章当前止于六阶段十三篇，不提前展开完整 Incident Response、Postmortem 或工具配置。
 

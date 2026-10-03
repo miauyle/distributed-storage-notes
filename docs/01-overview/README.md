@@ -11,11 +11,10 @@
 - 控制面、元数据路径和数据路径如何协作？
 - 容量、延迟、吞吐、可用性、持久性与成本如何影响架构选择？
 
-## 后续准备展开的主题
+## 已完成：Architecture Entry
 
-- 三类存储的接口、语义与工作负载对照。
-- 客户端、网关、元数据服务、存储节点与后台任务的架构位置。
-- 共享状态、数据归属以及控制面 / 数据面的边界。
-- 扩展方式、故障域与架构目标的取舍。
+1. [Storage Models / Architecture Map](01-storage-models-architecture-map.md)：比较 Block / File / Object 的责任边界，区分 Control / Metadata / Data Path，连接分布式职责与架构目标。
+
+该篇只负责统一坐标与阅读入口；具体保护、协调、元数据、性能与恢复机制仍由后续章节维护，不在本章重复扩写。
 
 [返回 Knowledge Map](../../README.md)
