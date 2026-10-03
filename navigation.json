@@ -12,6 +12,13 @@
           "title": "Overview / Storage Architecture",
           "label": "专题入口",
           "summary": "访问模型、系统分层与设计目标"
+        },
+        {
+          "id": "01-overview-01-storage-models-architecture-map",
+          "path": "docs/01-overview/01-storage-models-architecture-map.md",
+          "title": "Storage Models / Architecture Map：进入分布式存储的统一坐标",
+          "label": "存储模型与架构图",
+          "summary": "访问模型、三条职责路径与架构目标"
         }
       ]
     },
@@ -26,6 +33,20 @@
           "title": "Storage Fundamentals",
           "label": "专题入口",
           "summary": "介质、I/O、持久化与性能指标"
+        },
+        {
+          "id": "02-storage-fundamentals-01-io-path-persistence",
+          "path": "docs/02-storage-fundamentals/01-io-path-persistence.md",
+          "title": "I/O Path / Persistence：Write Success 到底把数据送到了哪里",
+          "label": "I/O 路径与持久化",
+          "summary": "完成点、数据与元数据持久化及故障边界"
+        },
+        {
+          "id": "02-storage-fundamentals-02-media-performance-amplification",
+          "path": "docs/02-storage-fundamentals/02-media-performance-amplification.md",
+          "title": "Media / Performance / Amplification：相同字节为什么产生不同成本",
+          "label": "介质、性能与放大",
+          "summary": "设备成本、指标、队列深度与测量边界"
         }
       ]
     },

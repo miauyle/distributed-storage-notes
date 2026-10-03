@@ -25,13 +25,13 @@
 - 共识、Quorum、Leader 与 Lease 分别解决什么问题？
 - 重试、重复请求与成员变更如何避免破坏系统状态？
 
-## 后续规划（尚未撰写）
+## 按需扩展规划（尚未撰写）
 
 - Consensus Protocol 基础：按实际需要学习协议保证、失败条件与边界，当前只完成概念区分。
 - Membership Change：参与集合变化时的资格与状态衔接。
 - Distributed Task Coordination：分布式任务的领取、执行与结果协调；现有正文仅使用任务创建例子。
 - Clock / Ordering：时间假设、事件顺序与状态代际；现有 Lease 正文只说明必要约束。
-- CAP 的适用边界：保留后续专题入口，本轮不展开。
+- CAP 的适用边界：仅按具体缺口扩展，不因其属于经典主题而自动补正文。
 
 后续应用机制见[一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md)，故障后的执行流程见[恢复与运维](../10-recovery-operations-observability/README.md)，两者均已有正文。本章止于上述三篇公共基础，其他专题继续保留规划。
 

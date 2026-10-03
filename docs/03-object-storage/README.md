@@ -30,10 +30,10 @@
 
 ## 后续准备展开的主题（尚未撰写）
 
-- Lifecycle Policy：当前 / 历史版本的到期与保留策略；本文入口不展开规则细节。
-- Garbage Collection：有效引用判定、物理回收安全与后台成本；现有布局篇仅解释边界。
-- 对象级 / Bucket 级复制：触发、顺序、重试、冲突与复制状态。
-- 多租户与服务边界：认证授权、配额、隔离与接口可观测性。
+- Lifecycle Policy：对象 API / Version 生命周期语义及当前 / 历史版本的到期与保留策略；仅保留规划，不等同于物理回收。
+- Garbage Collection：对象状态到物理回收的连接，仅保留规划；Metadata 引用有效性与回收资格由 08 承担。
+- 对象级 / Bucket 级复制：对象 / Bucket API 级的触发、顺序、重试、冲突与复制状态；不重复 07 的通用复制与跨区域保护机制。
+- 多租户与服务边界：认证授权、配额、隔离与接口可观测性；保留服务边界规划，不扩成安全大专题。
 
 复制和纠删码的通用机制见[数据保护](../07-data-protection/README.md)；一致性与索引机制见[一致性 / 元数据 / 分区](../08-consistency-metadata-partitioning/README.md)；故障恢复与运行验证见[恢复与运维](../10-recovery-operations-observability/README.md)。这些章节均已有正文；本章六篇建立对象语义与布局边界，不重复对应机制。
 

@@ -11,11 +11,15 @@
 - 缓存、缓冲与刷盘如何影响性能和故障后的数据状态？
 - IOPS、带宽、延迟、队列深度与容量应如何一起理解？
 
-## 后续准备展开的主题
+## 已完成：Storage Fundamentals
 
-- HDD、SSD、NVMe 的基本访问特性与约束。
-- 应用、页缓存、文件系统、块层与设备之间的 I/O 路径。
-- 日志、写入顺序、校验和与持久化边界。
-- 性能指标、读写放大以及小对象 / 大对象的基础成本。
+推荐顺序：**Persistence Boundary → Device Cost Model**。
+
+| 顺序 | 正文 | 回答的问题 |
+| --- | --- | --- |
+| 1 | [I/O Path / Persistence](01-io-path-persistence.md) | Write Return、Data / Metadata Persistence、Ordering、Atomicity 与故障后的恢复状态如何区分？ |
+| 2 | [Media / Performance / Amplification](02-media-performance-amplification.md) | 介质与接口、请求粒度、IOPS / Bandwidth / Latency、Queue Depth 和内部放大怎样影响成本？ |
+
+本章提供理解分布式存储所需的单机前置，不扩成 Linux / SSD 教科书。端到端成本、排队分析及高性能路径由 [09 Data Path / Performance](../09-data-path-performance/README.md) 承接，对象提交与副本 ACK 由各自专题维护。
 
 [返回 Knowledge Map](../../README.md)
