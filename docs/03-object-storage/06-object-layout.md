@@ -123,4 +123,4 @@ Internal fragmentation 指分配单元内部未被有效内容使用的空间，
 
 这不是固定的性能结论：缓存、访问局部性、请求并发和实现选择会改变重心。应将正文大小、对象数量、Range 分布、元数据请求和实际 I/O 一起测量；方法留给[09 性能专题（目前为骨架）](../09-data-path-performance/README.md)。
 
-至此，六篇形成了从接口到内部成本的链条：对象身份 → 基本操作 → 读写提交 → 分批上传 → 版本与删除 → 物理布局。数据保护只在[07 专题](../07-data-protection/README.md)后续展开；索引、分区机制只连接[08 专题](../08-consistency-metadata-partitioning/README.md)，不在本篇重复写正文
+至此，六篇形成了从接口到内部成本的链条：对象身份 → 基本操作 → 读写提交 → 分批上传 → 版本与删除 → 物理布局。数据保护只在[07 专题](../07-data-protection/README.md)后续展开；索引、分区机制只连接[08 专题](../08-consistency-metadata-partitioning/README.md)，不在本篇重复写正文。

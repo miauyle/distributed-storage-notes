@@ -130,4 +130,4 @@ Abort 不是一个可直接等同于 Drill Failure 的结论，它首先表示 S
 核对日期：**2026-10-03**。
 
 - [AWS Well-Architected REL12-BP04](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_testing_resiliency_failure_injection_resiliency.html)：核对已知基线、假设、受控范围、Stop Condition、恢复与结果记录的原则；不引用其工具接口、产品参数或例子性能为存储标准。
-- 本篇的四类验证、Matrix、T0–T5 和完成门槛是结合仓库已有 Failure / Recovery / Integrity / Observability 正文的通用推导，没有实际注入或产品验证结果
+- 本篇的四类验证、Matrix、T0–T5 和完成门槛是结合仓库已有 Failure / Recovery / Integrity / Observability 正文的通用推导，没有实际注入或产品验证结果。

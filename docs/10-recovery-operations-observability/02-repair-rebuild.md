@@ -121,4 +121,4 @@ Repair 只调整物理保护布局，不改变用户对象内容，并不意味�
 
 [GFS 原论文 §4.3、§4.5](https://research.google.com/archive/gfs-sosp2003.pdf) 提供有效副本克隆、位置约束和陈旧状态检查的历史案例，用于核对职责，不规定本篇九阶段或内部版本格式。EC 模型沿用 [Data Protection 的来源与限定](../07-data-protection/02-erasure-coding.md)。
 
-核对日期：**2026-10-02**。gB / g1、L10 / e7、准备与发布图及成本表为通用示意和工程推导；不描述具体产品算法，也不扩展 Rebalance / Migration
+核对日期：**2026-10-02**。gB / g1、L10 / e7、准备与发布图及成本表为通用示意和工程推导；不描述具体产品算法，也不扩展 Rebalance / Migration。

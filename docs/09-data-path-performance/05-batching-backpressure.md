@@ -91,4 +91,4 @@ flowchart TD
 
 Batch 条件、准入表与反馈图是通用工程模型，不规定固定阈值、接口错误码或事务保证。参考核对日期：**2026-10-02**。
 
-[Google SRE：Addressing Cascading Failures](https://sre.google/sre-book/addressing-cascading-failures/) 的 Queue Management、Load Shedding 与 Retry 部分讨论队列、过载和重复尝试的反馈风险；本文只取这些问题作为存储流控的参考，不套用其服务实例、阈值或调度算法
+[Google SRE：Addressing Cascading Failures](https://sre.google/sre-book/addressing-cascading-failures/) 的 Queue Management、Load Shedding 与 Retry 部分讨论队列、过载和重复尝试的反馈风险；本文只取这些问题作为存储流控的参考，不套用其服务实例、阈值或调度算法。

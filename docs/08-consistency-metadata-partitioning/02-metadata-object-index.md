@@ -96,4 +96,4 @@ Object state recoverability 至少需要能恢复逻辑身份、状态属性、�
 
 Metadata 同样需要 Availability：数据节点正常，关键索引不可查询，也可能无法服务 GET / PUT / LIST。更高的数据 Replication Factor 不能自动消除这个瓶颈。公开的 [GFS 原论文 §2.6](https://research.google.com/archive/gfs-sosp2003.pdf) 展示了 Namespace、逻辑映射、位置等不同 Metadata 职责，以及持久记录与可重建位置状态的区别；这是文件系统的历史案例，不是本仓库对象存储图的产品实现。
 
-这也解释了为何 Metadata 规模变大后不能无限集中：保存正确状态之外，还要承担查询、更新和 Namespace 遍历的负载。[下一篇](03-partition-ownership-routing.md) 将逻辑状态划为 Partition，讨论归属与路由，不展开数据库引擎
+这也解释了为何 Metadata 规模变大后不能无限集中：保存正确状态之外，还要承担查询、更新和 Namespace 遍历的负载。[下一篇](03-partition-ownership-routing.md) 将逻辑状态划为 Partition，讨论归属与路由，不展开数据库引擎。

@@ -92,4 +92,4 @@ AWS 的[条件写文档](https://docs.aws.amazon.com/AmazonS3/latest/userguide/c
 
 ## 8. 把可观察保证交给 Metadata
 
-现在的问题变为：系统如何把“当前是 `B`”记录成可恢复的状态，并保证 GET、HEAD、LIST 不各自选择互相冲突的记录？[下一篇](02-metadata-object-index.md) 从 Object Index 与 Layout Reference 讨论这一发布边界，而不是预设某个产品的数据库实现
+现在的问题变为：系统如何把“当前是 `B`”记录成可恢复的状态，并保证 GET、HEAD、LIST 不各自选择互相冲突的记录？[下一篇](02-metadata-object-index.md) 从 Object Index 与 Layout Reference 讨论这一发布边界，而不是预设某个产品的数据库实现。

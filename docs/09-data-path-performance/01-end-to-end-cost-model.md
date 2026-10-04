@@ -101,4 +101,4 @@ Repair、Rebalance 等后台任务消耗的 Source Read、Target Write、校验�
 
 ## 适用边界
 
-正文路径图、资源预算与大小对象对照均为通用模型及工程推导，机制依据通过相对链接复用现有正文；没有产品性能数字或内部实现结论。单机介质、I/O 与持久化前置继续由 [Storage Fundamentals](../02-storage-fundamentals/README.md) 承担，不展开 HDD / SSD / NVMe、文件系统或 Linux Block Layer
+正文路径图、资源预算与大小对象对照均为通用模型及工程推导，机制依据通过相对链接复用现有正文；没有产品性能数字或内部实现结论。单机介质、I/O 与持久化前置继续由 [Storage Fundamentals](../02-storage-fundamentals/README.md) 承担，不展开 HDD / SSD / NVMe、文件系统或 Linux Block Layer。

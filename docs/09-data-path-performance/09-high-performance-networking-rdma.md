@@ -140,4 +140,4 @@ Transport 微基准可以回答某类消息搬运的带宽与 CPU 成本；对�
 - [Linux Kernel：Userspace Verbs Access](https://docs.kernel.org/infiniband/user_verbs.html)：快路径、资源管理与常见 Pinning 路径。
 - rdma-core：[MR](https://man7.org/linux/man-pages/man3/ibv_reg_mr.3.html)、[QP](https://man7.org/linux/man-pages/man3/ibv_create_qp.3.html)、[CQ](https://man7.org/linux/man-pages/man3/ibv_poll_cq.3.html)、[Send Work / Buffer Lifecycle](https://man7.org/linux/man-pages/man3/ibv_post_send.3.html)：范围、权限、工作与结果。
 - [NVIDIA RDMA-aware Networks Programming Guide，DOCA 3.5.0](https://networking-docs.nvidia.com/doca/archive/3-5-0/rdma-aware-networks-programming-guide)：RDMA Operations 与网络类别。旧 RDMA Aware Programming 手册已迁移，引用现行承接资料，不将厂商描述当普遍性能保证。
-- [RFC 5040](https://www.rfc-editor.org/rfc/rfc5040.html)、[RFC 5041](https://www.rfc-editor.org/rfc/rfc5041.html)、上文 IBTA 发布说明：各自标准范围内的操作完成、协议分层与 RoCEv2 路由
+- [RFC 5040](https://www.rfc-editor.org/rfc/rfc5040.html)、[RFC 5041](https://www.rfc-editor.org/rfc/rfc5041.html)、上文 IBTA 发布说明：各自标准范围内的操作完成、协议分层与 RoCEv2 路由。

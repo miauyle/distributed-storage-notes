@@ -125,4 +125,4 @@ TTFT 是从约定请求起点到首个输出 Token 的时间，受排队、Prefi
 - NVIDIA Dynamo：官方文档当日 **Latest 标为 v1.5.0**，本文采用当前滚动 [Disaggregated Serving](https://docs.nvidia.com/dynamo/knowledge-base/concepts/system-architecture/disaggregated-serving) 与 [KV-aware Routing](https://docs.nvidia.com/dynamo/knowledge-base/concepts/system-architecture/kv-aware-routing) 范围，不据此保证所有 Backend 行为相同。
 - Mooncake：当日最新发布 [v0.3.13.post1](https://github.com/kvcache-ai/Mooncake/releases/tag/v0.3.13.post1)；[Store 当前文档](https://kvcache-ai.github.io/Mooncake/design/store/mooncake-store.html)与 [2026-09-30 源码快照](https://github.com/kvcache-ai/Mooncake/blob/0d1a8040faebb7c127c8901840a38c2ff57e80c5/docs/source/design/store/mooncake-store.md)核对。滚动文档与 Release 范围不强行等同。
 
-至此形成 **Inference Derived State → Local Reuse / Tiering → Distributed Sharing / Transfer**。AI Storage Connections 三阶段九篇基础主线收住，后续只按明确专题扩展，不自动增加推理产品专章
+至此形成 **Inference Derived State → Local Reuse / Tiering → Distributed Sharing / Transfer**。AI Storage Connections 三阶段九篇基础主线收住，后续只按明确专题扩展，不自动增加推理产品专章。

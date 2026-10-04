@@ -91,4 +91,4 @@ Primary / Secondary 或 Active / Passive 是常见角色安排，不是所有跨
 - [AWS Well-Architected：Plan for disaster recovery](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/plan-for-disaster-recovery-dr.html)：用于核对跨域恢复策略与业务恢复目标的关系；具体服务功能不作为通用契约。
 - [Google SRE：Data Integrity](https://sre.google/sre-book/data-integrity/)：用于核对冗余与恢复材料的互补关系，不沿用其中产品实现或时间参数。
 
-核对日期：**2026-10-02**。状态表、g1 → g2 → DELETE → g3 与 Lag 口径为限定范围的通用示意
+核对日期：**2026-10-02**。状态表、g1 → g2 → DELETE → g3 与 Lag 口径为限定范围的通用示意。

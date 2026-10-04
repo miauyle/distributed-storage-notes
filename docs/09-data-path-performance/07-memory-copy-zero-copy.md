@@ -98,4 +98,4 @@ Linux `MSG_ZEROCOPY` 文档明确说明 Copy Avoidance 是提示而非保证；S
 
 - [Linux Kernel：Dynamic DMA Mapping Guide](https://docs.kernel.org/core-api/dma-api-howto.html)：DMA 地址、映射与合格 Buffer。
 - [Linux man-pages：sendfile(2)](https://man7.org/linux/man-pages/man2/sendfile.2.html)、[splice(2)](https://man7.org/linux/man-pages/man2/splice.2.html)：各自传递路径与支持边界。
-- [Linux Kernel：MSG_ZEROCOPY](https://docs.kernel.org/networking/msg_zerocopy.html)：Buffer 生命周期、通知与回退语义；不外推其性能阈值
+- [Linux Kernel：MSG_ZEROCOPY](https://docs.kernel.org/networking/msg_zerocopy.html)：Buffer 生命周期、通知与回退语义；不外推其性能阈值。

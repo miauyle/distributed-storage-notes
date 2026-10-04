@@ -111,4 +111,4 @@ flowchart TD
 - [GFS 原论文 §4.3、§4.5](https://research.google.com/archive/gfs-sosp2003.pdf)：用于核对保护缺口、有效副本与返回节点的陈旧状态问题，不照搬其版本协议或参数。
 - [Google SRE：Handling Overload](https://sre.google/sre-book/handling-overload/)：用于核对过载与重试放大的工程边界；上面的 Recovery Storm 是本篇结合后台修复推导的场景。
 
-核对日期：**2026-10-02**。Healthy 等名称、Grace Period 决策表与状态图均为通用模型，不是固定产品状态机，也不展开 Migration、Rebalance 或 Observability 指标体系
+核对日期：**2026-10-02**。Healthy 等名称、Grace Period 决策表与状态图均为通用模型，不是固定产品状态机，也不展开 Migration、Rebalance 或 Observability 指标体系。

@@ -92,4 +92,4 @@ Restore Test 应记录实际覆盖范围、所用恢复点、缺失或跳过材�
 
 核对日期：**2026-10-02**。状态表、生命周期与 Restore 阶段为通用示意；Versioning 的具体产品行为只回链已有文章，不新增 AWS S3 配置或 API 断言。
 
-已有跨域当前状态或历史材料以后，还需要决定谁能写、激活哪里、怎样切换并验证业务，继续阅读 [Disaster Recovery / RPO / RTO](../10-recovery-operations-observability/11-disaster-recovery-rpo-rto.md)
+已有跨域当前状态或历史材料以后，还需要决定谁能写、激活哪里、怎样切换并验证业务，继续阅读 [Disaster Recovery / RPO / RTO](../10-recovery-operations-observability/11-disaster-recovery-rpo-rto.md)。

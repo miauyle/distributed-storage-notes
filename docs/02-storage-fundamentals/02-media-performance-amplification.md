@@ -107,4 +107,4 @@ Large Request 更容易摊薄固定工作、提高有效带宽，但也可能占
 
 - [NVM Express：Specifications](https://nvmexpress.org/specifications/)：Host 协议、Command Set 与 Transport 的分类。
 - [Micron：Choosing the right NAND](https://www.micron.com/products/storage/nand-flash/choosing-the-right-nand)：管理型 NAND 与 ECC / FTL 等管理职责的边界。
-- [Micron：SSD Latency 分析](https://www.micron.com/about/blog/applications/data-center/why-latency-in-data-center-ssds-matters-and-how-micron-became-best-in-class)：GC 的内部工作与延迟变化，仅引用机制
+- [Micron：SSD Latency 分析](https://www.micron.com/about/blog/applications/data-center/why-latency-in-data-center-ssds-matters-and-how-micron-became-best-in-class)：GC 的内部工作与延迟变化，仅引用机制。

@@ -126,4 +126,4 @@ AWS 将各正文版本按完整对象而非前一版本的差分来计费；这�
 
 **工程推导：**容量与保留决策需要区分 current、noncurrent、Delete Marker 和未完成上传资源。只删除默认名字或统计当前对象大小，会忽略不同生命周期状态的占用。
 
-Lifecycle Policy 回答哪些版本何时到期；Garbage Collection 回答失去有效引用后如何安全回收。二者留在[章节后续规划](README.md)，本篇只建立状态边界，不预建空文章
+Lifecycle Policy 回答哪些版本何时到期；Garbage Collection 回答失去有效引用后如何安全回收。二者留在[章节后续规划](README.md)，本篇只建立状态边界，不预建空文章。

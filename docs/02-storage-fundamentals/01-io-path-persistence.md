@@ -85,4 +85,4 @@ Checksum、Journal、Copy-on-write 与 Generation 等机制有理由存在：检
 
 - [Linux man-pages：write(2)](https://man7.org/linux/man-pages/man2/write.2.html)：短写、延迟错误与返回边界。
 - [Linux man-pages：fsync(2) / fdatasync](https://man7.org/linux/man-pages/man2/fsync.2.html)：同步范围、必要 Metadata 与目录项边界。
-- [Linux Kernel：Writeback Cache Control](https://docs.kernel.org/block/writeback_cache_control.html)：Volatile Cache、Flush 与 FUA
+- [Linux Kernel：Writeback Cache Control](https://docs.kernel.org/block/writeback_cache_control.html)：Volatile Cache、Flush 与 FUA。

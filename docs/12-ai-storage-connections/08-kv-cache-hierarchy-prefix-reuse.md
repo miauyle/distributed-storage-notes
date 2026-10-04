@@ -94,4 +94,4 @@ GPU Full ≠ KV 必须全丢；Evict ≠ Offload；Prefix Match ≠ Safe Reuse�
 核对日期：**2026-10-03**。
 
 - vLLM **v0.30.0**，当日 stable 指向版本：[Release](https://github.com/vllm-project/vllm/releases/tag/v0.30.0)、[Automatic Prefix Caching](https://docs.vllm.ai/en/v0.30.0/features/automatic_prefix_caching/)、[Prefix Caching Design](https://docs.vllm.ai/en/v0.30.0/design/prefix_caching/)。
-- LMCache：当前 **MP 滚动文档**，[MP Overview](https://docs.lmcache.ai/mp/index.html)、[Supported Storages](https://docs.lmcache.ai/mp/l2_storage/supported_storages.html)、[Legacy deprecated notice](https://docs.lmcache.ai/legacy/index.html)；当日最新发布单独核对为 [v0.5.5](https://github.com/LMCache/LMCache/releases/tag/v0.5.5)。Release 与滚动文档范围分开，不承诺滚动页面每项行为均属于该 Release
+- LMCache：当前 **MP 滚动文档**，[MP Overview](https://docs.lmcache.ai/mp/index.html)、[Supported Storages](https://docs.lmcache.ai/mp/l2_storage/supported_storages.html)、[Legacy deprecated notice](https://docs.lmcache.ai/legacy/index.html)；当日最新发布单独核对为 [v0.5.5](https://github.com/LMCache/LMCache/releases/tag/v0.5.5)。Release 与滚动文档范围分开，不承诺滚动页面每项行为均属于该 Release。

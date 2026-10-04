@@ -125,4 +125,4 @@ Object Storage Benchmark 能隔离对象接口的请求处理与读取能力；T
 ## 来源与适用边界
 
 - [PyTorch stable：torch.utils.data](https://docs.pytorch.org/docs/stable/data.html)：核对时重定向到 **2.14**；版本固定来源见 [2.14 DataLoader / 数据加载文档](https://docs.pytorch.org/docs/2.14/data.html)。核对日期：**2026-10-03**。
-- 参数事实来自该官方文档；流水线、瓶颈算术、共享资源与测量表是通用存储工程推导，不是 PyTorch 性能承诺
+- 参数事实来自该官方文档；流水线、瓶颈算术、共享资源与测量表是通用存储工程推导，不是 PyTorch 性能承诺。

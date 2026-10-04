@@ -87,4 +87,4 @@ KV Cache ≠ Weight ≠ Prompt；KV Cache 通常不是 Primary Durable Data；�
 核对日期：**2026-10-03**。
 
 - Hugging Face Transformers **v5.17.0**：[Cache explanation](https://huggingface.co/docs/transformers/v5.17.0/cache_explanation)，只用于最小 KV 背景。
-- vLLM **v0.30.0**，当日 `stable` 指向该版本：[官方 Release](https://github.com/vllm-project/vllm/releases/tag/v0.30.0)、[版本化 Prefix Caching Design](https://docs.vllm.ai/en/v0.30.0/design/prefix_caching/)。身份表及验证图是通用存储模型，不伪装成 vLLM 完整兼容契约
+- vLLM **v0.30.0**，当日 `stable` 指向该版本：[官方 Release](https://github.com/vllm-project/vllm/releases/tag/v0.30.0)、[版本化 Prefix Caching Design](https://docs.vllm.ai/en/v0.30.0/design/prefix_caching/)。身份表及验证图是通用存储模型，不伪装成 vLLM 完整兼容契约。
