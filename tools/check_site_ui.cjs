@@ -1,6 +1,7 @@
 /* Real Chromium checks against the Jekyll artifact, never a substitute renderer. */
 const { chromium } = require('playwright');
 const { checkBrandIcons } = require('../maintenance/check_brand_icons.cjs');
+const { checkNavigation } = require('../maintenance/check_navigation.cjs');
 const { spawn } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -126,6 +127,7 @@ const report = { checks: [], errors: [] };
     await page.locator('#modeToggle').click();
     await checkBrandIcons(page, root);
     await page.setViewportSize({ width: 2560, height: 1440 });
+    await checkNavigation(page, root);
     await open('/');
     await page.screenshot({ animations: 'disabled', path: path.join(evidence, 'home-wide.png'), fullPage: true });
     const homeWidth = await page.locator('.knowledge-home').evaluate(node => node.getBoundingClientRect().width);
@@ -140,6 +142,7 @@ const report = { checks: [], errors: [] };
     report.checks.push('2560px: wider shell/home and larger sidebar/TOC typography');
     await page.setViewportSize({ width: 390, height: 844 });
     await checkBrandIcons(page, root);
+    await checkNavigation(page, root);
     await open('/');
     await page.screenshot({ animations: 'disabled', path: path.join(evidence, 'home-mobile.png') });
     await page.locator('#sidebarToggle').click();
