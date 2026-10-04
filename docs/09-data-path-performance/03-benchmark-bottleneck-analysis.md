@@ -130,4 +130,4 @@ Locate saturation 是寻找哪项限制的候选步骤，不是看见一个高�
 
 资料核对日期：**2026-10-02**。实验流程与变量表是通用工程推导，没有真实跑分结论。本章第一阶段止于 Cost → Queueing → Measurement，不继续展开 Cache / Prefetch、Zero-copy、RDMA 或 AI Storage。
 
-[上一篇：Latency / Throughput / Queueing](02-latency-throughput-queueing.md) · [返回章节入口](README.md) · [前置：Storage Fundamentals](../02-storage-fundamentals/README.md)
+[前置：Storage Fundamentals](../02-storage-fundamentals/README.md)

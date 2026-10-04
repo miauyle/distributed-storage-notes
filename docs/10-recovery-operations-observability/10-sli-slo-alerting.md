@@ -124,4 +124,4 @@ Correlation ≠ Causation。先用 [信号关联](09-observability-signals.md)�
 
 T / W / X、告警分支和 A / B / C 场景是通用工程示意，不代表服务 SLA、真实监测结果或产品实现。本文止于健康目标与告警基础，不展开工具部署、Failure Drill、Postmortem 或下一阶段 DR / AI。
 
-[上一篇：Observability Signals](09-observability-signals.md) · [返回章节入口](README.md) · [回看：Capacity Management](08-capacity-management.md)
+[回看：Capacity Management](08-capacity-management.md)

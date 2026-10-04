@@ -102,6 +102,4 @@ Checksum Mismatch 后不应继续把该来源当作未经限定的合格 Repair 
 核对日期：**2026-10-02**。X / Y、时间线、状态图和候选判断表均为通用工程推导；不规定设备概率、固定多数规则或产品恢复算法。
 
 - [Bairavasundaram 等：An Analysis of Data Corruption in the Storage Stack，FAST 2008，§2](https://www.usenix.org/legacy/events/fast08/tech/full_papers/bairavasundaram/bairavasundaram.pdf)：核对静默错误与显式介质错误、内容与身份检测的区别；研究范围限定在其当时的系统。
-- [Linux Kernel：Data Integrity](https://docs.kernel.org/block/data-integrity.html)：核对迟到的读取验证与路径保护范围问题，不将底层校验外推为当前对象状态保证。
-
-[上一篇：Checksum / Data Integrity](04-checksum-data-integrity.md) · [下一篇：Scrubbing / Integrity Repair](../10-recovery-operations-observability/07-scrubbing-integrity-repair.md) · [返回章节入口](README.md)
+- [Linux Kernel：Data Integrity](https://docs.kernel.org/block/data-integrity.html)：核对迟到的读取验证与路径保护范围问题，不将底层校验外推为当前对象状态保证

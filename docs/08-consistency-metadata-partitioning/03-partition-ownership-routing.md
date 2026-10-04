@@ -109,4 +109,4 @@ Old Owner 从暂停或网络隔离中恢复，内存中的 `e7` 和本地数据�
 
 公开的 [Bigtable 原论文 §2、§5.1](https://research.google.com/archive/bigtable-osdi06.pdf) 展示了按行范围划分 Tablet，以及客户端缓存位置、失效后重新查找的历史案例。它支持理解 Range 与路由缓存的工程问题，不代表对象存储必须采用 Tablet 或同样的查询层次；本轮也不展开其存储引擎与协调实现。
 
-[上一篇：Metadata / Object Index](02-metadata-object-index.md) · [返回章节入口](README.md) · [数据保护中的 Placement](../07-data-protection/03-failure-domain-placement.md)
+[数据保护中的 Placement](../07-data-protection/03-failure-domain-placement.md)

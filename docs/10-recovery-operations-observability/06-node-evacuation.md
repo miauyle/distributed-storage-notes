@@ -111,4 +111,4 @@ Evacuation 的进度应体现剩余责任及验证结果，而不只体现已复
 
 本篇不展开 Capacity Management、Tech Refresh、成员变更算法或物理回收机制；不因节点退出涉及后台复制就扩写 Cross-region Replication / DR。
 
-[上一篇：Online Data Migration](05-data-migration.md) · [返回章节入口](README.md) · [回看：Repair / Rebuild](02-repair-rebuild.md)
+[回看：Repair / Rebuild](02-repair-rebuild.md)

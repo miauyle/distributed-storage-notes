@@ -124,4 +124,4 @@ Pure RDMA Bandwidth ≠ Object Storage End-to-End Performance。更高 GDS / RDM
 
 本阶段到此形成 Host Staging → File-oriented Direct GPU Storage → Object-oriented RDMA GPU Data Path。三者保留各自控制语义、完成边界与恢复责任；KV Cache 仅留在专题后续规划。
 
-[上一篇：GDS / cuFile](05-gpudirect-storage-cufile.md) · [返回专题](README.md) · [对象读写路径](../03-object-storage/03-read-write-path.md)
+[对象读写路径](../03-object-storage/03-read-write-path.md)

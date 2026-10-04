@@ -91,6 +91,4 @@ CPU Socket / NUMA Node、GPU、NIC 和 NVMe 的位置会影响 Host Memory 访�
 
 对照实验至少记录：读取与 decode 时间、batch-ready latency、pinning 时间与内存峰值、H2D 耗时和实际 overlap、CPU / NUMA / 网络流量、GPU input idle、step time 与有效 samples / tokens per second。区分冷 / 热缓存，保留相同样本与变换语义。
 
-若 pinned H2D 加快但 step time 不变，应检查瓶颈是否已转移；若内存峰值上升、尾部等待更差，也不能只凭峰值 H2D GB/s 判断收益。下一篇讨论怎样减少 Host Staging，但同一套完成、资源与测量边界仍然成立。
-
-[上一篇：Weights / Checkpoints](03-model-weights-checkpoints.md) · [下一篇：GPUDirect Storage / cuFile](05-gpudirect-storage-cufile.md) · [返回专题](README.md)
+若 pinned H2D 加快但 step time 不变，应检查瓶颈是否已转移；若内存峰值上升、尾部等待更差，也不能只凭峰值 H2D GB/s 判断收益。下一篇讨论怎样减少 Host Staging，但同一套完成、资源与测量边界仍然成立

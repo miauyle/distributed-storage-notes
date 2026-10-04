@@ -125,4 +125,4 @@ Scrub 未必在 GET 的直接调用链里，却会竞争相同资源，连接 [F
 
 [FAST 2008 原论文 §2.2.2](https://www.usenix.org/legacy/events/fast08/tech/full_papers/bairavasundaram/bairavasundaram.pdf)提供主动读取校验及验证重构输入的公开历史案例，也说明底层 Scrub 有其不能覆盖的身份信息。这里只核对“主动验证需要覆盖范围和有效来源”这一边界，不照搬其 RAID 流程、扫描频率或实现组件。
 
-[机制前置：Silent Corruption Detection](../07-data-protection/05-silent-corruption-detection.md) · [复用：Repair / Rebuild](02-repair-rebuild.md) · [返回章节入口](README.md)
+[机制前置：Silent Corruption Detection](../07-data-protection/05-silent-corruption-detection.md) · [复用：Repair / Rebuild](02-repair-rebuild.md)

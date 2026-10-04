@@ -113,4 +113,4 @@ Replication 的优势是每个合格副本有完整字节，读取与单份数�
 
 来源核对日期：**2026-10-02**。正文的 N=3 / W=2、确认流程和故障表均为通用示意，不构成具体产品的配置建议或可靠性数值保证。
 
-[前置：Object Layout](../03-object-storage/06-object-layout.md) · [章节入口](README.md) · [下一篇：Erasure Coding](02-erasure-coding.md)
+[前置：Object Layout](../03-object-storage/06-object-layout.md)

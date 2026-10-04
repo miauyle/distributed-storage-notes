@@ -108,6 +108,4 @@ flowchart TD
 - [OpenTelemetry：Traces](https://opentelemetry.io/docs/concepts/signals/traces/)与 [Logs](https://opentelemetry.io/docs/concepts/signals/logs/)：核对 Span / Context 关联与日志上下文；这里只使用概念边界，不提供 SDK 教程。
 - [Google SRE：Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)：核对观测服务症状与内部原因的区别。
 
-存储观察表、T42、关联图与状态资格讨论为通用工程推导，复用仓库已有提交和恢复模型，不是特定监控平台的保证。Events 是本文采用的状态历史职责分类，不声称它必须是独立于 Logs / Traces 的标准信号协议。
-
-[上一篇：Capacity Management](08-capacity-management.md) · [下一篇：SLI / SLO / Alerting](10-sli-slo-alerting.md) · [返回章节入口](README.md)
+存储观察表、T42、关联图与状态资格讨论为通用工程推导，复用仓库已有提交和恢复模型，不是特定监控平台的保证。Events 是本文采用的状态历史职责分类，不声称它必须是独立于 Logs / Traces 的标准信号协议

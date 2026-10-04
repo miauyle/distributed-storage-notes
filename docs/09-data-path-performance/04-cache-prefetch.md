@@ -104,6 +104,4 @@ Too Little Prefetch 可能无法覆盖取得数据的等待；Too Much Prefetch 
 本文的分类、身份示意、命中率计算和预取取舍是通用模型与工程推导，没有指定产品的缓存一致性或最佳参数。参考资料核对日期：**2026-10-02**。
 
 - [AWS Builders’ Library：Caching challenges and strategies](https://aws.amazon.com/builders-library/caching-challenges-and-strategies/) 讨论容量、过期与冷缓存的运行风险；这里不将其服务案例中的旧值回退策略当作对象存储通用契约。
-- [AMP: Adaptive Multi-stream Prefetching in a Shared Cache，FAST 2007](https://www.usenix.org/conference/fast-07/amp-adaptive-multi-stream-prefetching-shared-cache) 研究顺序预取的 Pollution 与 Wastage；仅作为问题来源，不外推其算法或性能结果。
-
-[上一篇：Benchmark / Bottleneck Analysis](03-benchmark-bottleneck-analysis.md) · [下一篇：Batching / Backpressure](05-batching-backpressure.md) · [返回章节入口](README.md)
+- [AMP: Adaptive Multi-stream Prefetching in a Shared Cache，FAST 2007](https://www.usenix.org/conference/fast-07/amp-adaptive-multi-stream-prefetching-shared-cache) 研究顺序预取的 Pollution 与 Wastage；仅作为问题来源，不外推其算法或性能结果

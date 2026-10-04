@@ -132,4 +132,4 @@ flowchart TD
 
 核对日期：**2026-10-02**。S3 例外仅适用于上文指定的 general purpose bucket 版本状态；其余表格、O42、Counter 事务图及任务 / 分配例子为通用模型与工程推导，不要求所有存储系统采用同一种 Dedup 实现。
 
-[上一篇：Quorum / Leader / Lease / Fencing](02-quorum-leader-lease-fencing.md) · [章节入口](README.md) · [回看：Failure Model / Timeout](01-failure-model-timeout.md)
+[回看：Failure Model / Timeout](01-failure-model-timeout.md)

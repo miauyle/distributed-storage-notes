@@ -96,4 +96,4 @@ Failure Detector 可以观察心跳、请求结果、连接状态和其他信号
 
 核对日期：**2026-10-02**。时间线、故障分类与检测取舍为通用模型及工程推导。本篇不展开故障恢复任务、形式化故障检测理论或共识算法。
 
-[前置：Read / Write Path](../03-object-storage/03-read-write-path.md) · [章节入口](README.md) · [下一篇：Quorum / Leader / Lease / Fencing](02-quorum-leader-lease-fencing.md)
+[前置：Read / Write Path](../03-object-storage/03-read-write-path.md)

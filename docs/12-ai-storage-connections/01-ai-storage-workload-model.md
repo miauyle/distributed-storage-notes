@@ -67,4 +67,4 @@ Storage Throughput 是路径证据，不是最终目标。需要选择与状态�
 
 本文表格、分类与状态例子是通用工程模型，不包含框架接口契约、固定规模或产品内部实现。后两篇分别回答数据如何供给 GPU，以及持久 Model / Training State 如何加载和恢复；GPU Direct Path 与 KV Cache 机制仅在章节入口规划。
 
-[下一篇：Training Data Path](02-training-data-path.md) · [Model Weights / Checkpoints](03-model-weights-checkpoints.md) · [返回章节入口](README.md)
+[Model Weights / Checkpoints](03-model-weights-checkpoints.md)

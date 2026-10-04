@@ -121,6 +121,4 @@ Source Cleanup 应在新状态和引用得到充分确认之后：当前 Layout 
 - [AWS DMS：Components](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.Components.html)：当前官方资料以数据库迁移说明 Full Load 与 CDC 结合、复制期间收集变化、最终处理余下变化再切换应用。这里仅作为“Base Copy 不包含全部后续变化”的公开案例，不把 DMS 工作流当作对象存储契约。
 - 状态、提交资格和失败处理复用仓库已有 Metadata、Fencing、Retry 与 Repair 正文；g1 / g2 / g3、e7 / e8、边界 c 及流程图均为通用工程示意。
 
-产品资料核对日期：**2026-10-02**。本文不规定 Journal、Dual Write 或某种切换协议，也不展开具体产品迁移命令。
-
-[上一篇：Rebalance](04-rebalance.md) · [下一篇：Node Evacuation](06-node-evacuation.md) · [返回章节入口](README.md)
+产品资料核对日期：**2026-10-02**。本文不规定 Journal、Dual Write 或某种切换协议，也不展开具体产品迁移命令

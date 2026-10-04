@@ -132,4 +132,4 @@ Restore 的逻辑链是 **Select Valid Checkpoint → Read Manifest / Metadata �
 
 第一阶段形成 **Workload → Data Supply → Durable Training State**。GPU Direct Path 和 Inference KV Cache 只保留后续规划，不在本篇展开。
 
-[上一篇：Training Data Path](02-training-data-path.md) · [AI Storage Workload Model](01-ai-storage-workload-model.md) · [返回章节入口](README.md)
+[AI Storage Workload Model](01-ai-storage-workload-model.md)

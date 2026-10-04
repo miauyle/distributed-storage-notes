@@ -103,4 +103,4 @@ Failover 后的新写入可能让原状态不再适合作为直接回退点。�
 
 核对日期：**2026-10-02**。Failover / Failback、切换门槛和 g2 / g3 为通用架构模型与工程推导，不描述具体产品的灾备协议。
 
-[保护材料：Cross-region Protection](../07-data-protection/06-cross-region-protection.md) · [历史恢复点：Backup / Restore](../07-data-protection/07-backup-restore.md) · [上一篇：SLI / SLO / Alerting](10-sli-slo-alerting.md) · [章节入口](README.md)
+[保护材料：Cross-region Protection](../07-data-protection/06-cross-region-protection.md) · [历史恢复点：Backup / Restore](../07-data-protection/07-backup-restore.md)

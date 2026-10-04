@@ -107,4 +107,4 @@ flowchart TD
 
 本篇止于运行余量与准入基础，不展开设备内部、回收机制、完整容量调度器或 Cross-region / DR。
 
-[前置：Scrubbing / Integrity Repair](07-scrubbing-integrity-repair.md) · [下一篇：Observability Signals](09-observability-signals.md) · [返回章节入口](README.md)
+[前置：Scrubbing / Integrity Repair](07-scrubbing-integrity-repair.md)

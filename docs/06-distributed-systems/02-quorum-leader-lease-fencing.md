@@ -117,6 +117,4 @@ Epoch / Term / Generation 常用于区分资格周期或状态代际，但名称
 - [Chubby 原始论文，OSDI 2006，第 2.4 节](https://static.usenix.org/events/osdi06/tech/full_papers/burrows/burrows_html/)：核对延迟请求、lock generation 与接收方检查 sequencer 的公开设计；本文未照搬其接口或参数。
 - [Amazon Builders' Library：Leader election in distributed systems（官方 PDF）](https://d1.awsstatic.com/builderslibrary/pdfs/leader-election-in-distributed-systems.pdf)：核对资格期限、暂停和失联时的工程风险，不将其产品实现作为通用标准。
 
-核对日期：**2026-10-02**。Epoch 7 / 8、门槛安装及资源检查表为明确限定的通用模型与工程推导；本篇不实现 Consensus Protocol，也不展开成员变更或元数据事务机制。
-
-[上一篇：Failure Model / Timeout](01-failure-model-timeout.md) · [章节入口](README.md) · [下一篇：Retry / Idempotency / Deduplication](03-retry-idempotency-deduplication.md)
+核对日期：**2026-10-02**。Epoch 7 / 8、门槛安装及资源检查表为明确限定的通用模型与工程推导；本篇不实现 Consensus Protocol，也不展开成员变更或元数据事务机制
