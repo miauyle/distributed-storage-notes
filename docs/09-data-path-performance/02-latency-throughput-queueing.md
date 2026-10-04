@@ -100,5 +100,3 @@ Disk → Network → CPU → Metadata → Queue 可以表示一条示意的瓶�
 - [Google SRE：Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)：核对延迟、错误、Saturation 和尾部统计的边界，不扩展完整 Observability 专题。
 
 资料核对日期：**2026-10-02**。两组延迟数字、四分支概率及阶段表都是显式条件下的教学示意，不是实测或配置建议。
-
-[上一篇：End-to-End Cost Model](01-end-to-end-cost-model.md) · [下一篇：Benchmark / Bottleneck Analysis](03-benchmark-bottleneck-analysis.md) · [返回章节入口](README.md)

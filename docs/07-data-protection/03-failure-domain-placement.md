@@ -140,4 +140,4 @@ Placement 产生或约束“数据应在哪里”；Routing 则把本次请求�
 
 核对日期：**2026-10-02**。本文的三副本图、4+2 分布表、ACK 跨域约束和 Policy / Algorithm / Routing 区分为通用模型及工程推导，不是任何具体产品的实现说明。
 
-[上一篇：Erasure Coding](02-erasure-coding.md) · [章节入口](README.md) · [前置：Object Layout](../03-object-storage/06-object-layout.md)
+[前置：Object Layout](../03-object-storage/06-object-layout.md)

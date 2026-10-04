@@ -101,4 +101,4 @@ Checksum 主要负责 Detect，不提供恢复原字节所需的信息。Replica
 - [Linux Kernel：Data Integrity](https://docs.kernel.org/block/data-integrity.html)：校验范围、路径保护及关联信息的边界；不外推具体设备支持。
 - [Linux Kernel：dm-integrity](https://docs.kernel.org/admin-guide/device-mapper/dm-integrity.html)：数据与 Tag 的一致更新问题；不展开接口或部署教程。
 
-[前置：Failure Domain & Placement](03-failure-domain-placement.md) · [下一篇：Silent Corruption Detection](05-silent-corruption-detection.md) · [返回章节入口](README.md)
+[前置：Failure Domain & Placement](03-failure-domain-placement.md)

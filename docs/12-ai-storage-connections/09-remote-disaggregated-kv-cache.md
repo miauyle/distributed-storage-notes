@@ -126,5 +126,3 @@ TTFT 是从约定请求起点到首个输出 Token 的时间，受排队、Prefi
 - Mooncake：当日最新发布 [v0.3.13.post1](https://github.com/kvcache-ai/Mooncake/releases/tag/v0.3.13.post1)；[Store 当前文档](https://kvcache-ai.github.io/Mooncake/design/store/mooncake-store.html)与 [2026-09-30 源码快照](https://github.com/kvcache-ai/Mooncake/blob/0d1a8040faebb7c127c8901840a38c2ff57e80c5/docs/source/design/store/mooncake-store.md)核对。滚动文档与 Release 范围不强行等同。
 
 至此形成 **Inference Derived State → Local Reuse / Tiering → Distributed Sharing / Transfer**。AI Storage Connections 三阶段九篇基础主线收住，后续只按明确专题扩展，不自动增加推理产品专章。
-
-[上一篇：Hierarchy / Prefix Reuse](08-kv-cache-hierarchy-prefix-reuse.md) · [返回 AI Storage Connections](README.md)

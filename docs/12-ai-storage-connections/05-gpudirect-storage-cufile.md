@@ -96,5 +96,3 @@ Baseline 为 Storage → Host → GPU，候选为满足条件的 GDS Storage →
 Configuration Guide 的统计和跟踪可为路径判别提供证据；“Direct-path ratio”是测试中按明确分类得到的量，不假设所有版本都有同名内置指标，也不凭 API 名称认定路径。
 
 **GDS throughput ↑ ≠ Training throughput 一定同比 ↑。** Decode、GPU Compute 或同步若成为限制，减少 Host Staging 可能降低 CPU 消耗，却不改变 step time。复用 [Benchmark / Bottleneck Analysis](../09-data-path-performance/03-benchmark-bottleneck-analysis.md)，解释收益发生在哪一层及瓶颈如何转移。
-
-[上一篇：Host / GPU Memory](04-host-gpu-memory-data-path.md) · [下一篇：Object Storage / cuObject / RDMA](06-object-storage-cuobject-rdma.md) · [返回专题](README.md)

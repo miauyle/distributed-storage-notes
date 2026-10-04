@@ -134,4 +134,4 @@ flowchart TD
 
 资料核对日期：**2026-10-02**。依据：**MinIO AIStor Server 当前 `/aistor/` 滚动文档**，正文各节链接对应具体行为；Product Brief 仅用于 Metadata 共置与可计算定位的架构说明，不采纳其泛化性能比较。没有用历史开源 MinIO 博客证明当前功能，没有给未核实的 release 默认数值。
 
-下一阶段保留 OpenStack Swift，再进行三系统统一对照；本篇不提前展开。[Ceph RGW](02-ceph-rgw.md) · [比较框架](01-comparison-framework.md) · [返回专题入口](README.md)。
+下一阶段保留 OpenStack Swift，再进行三系统统一对照；本篇不提前展开。[Ceph RGW](02-ceph-rgw.md) · [比较框架](01-comparison-framework.md)

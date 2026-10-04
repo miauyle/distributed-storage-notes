@@ -90,5 +90,3 @@ Block 暴露“卷里的哪个位置”，上层通常负责把这些位置解�
 | AI Workload | [12 AI Storage Connections](../12-ai-storage-connections/README.md) |
 
 本文对照表与职责模型是通用架构归纳，不是特定产品保证。机制与公开来源由链接的专题维护；读者可按问题进入正文，无需把目录编号当作严格依赖顺序。
-
-[下一步：I/O Path / Persistence](../02-storage-fundamentals/01-io-path-persistence.md) · [返回章节入口](README.md)

@@ -140,4 +140,4 @@ Restart 可能暂时清空队列或恢复请求，却没有解释队列为什么
 - [Google SRE：Effective Troubleshooting](https://sre.google/sre-book/effective-troubleshooting/)：核对假设、支持与反证、受控干预、混杂因素，以及降低影响与根因分析分开的方法；不照搬其系统案例或工具。
 - Timeline / 身份、七层候选、A / B / C 场景和存储完成检查是结合已有 Failure、Metadata、Recovery、Queueing 与 Observability 正文的通用工程推导，不是产品保证或真实 Incident 分析。
 
-[上一篇：Failure Drill](12-failure-drill.md) · [返回章节入口](README.md) · [回看：Observability Signals](09-observability-signals.md)
+[回看：Observability Signals](09-observability-signals.md)

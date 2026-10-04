@@ -161,5 +161,3 @@ Placement 可能从 Metadata 取得引用，也可能用算法解析数据归属
 AWS 接口来源核对日期：**2026-10-02**。本文流程图、准备 / 发布模型和故障表是通用示意及工程推导，不描述 AWS 内部实现。
 
 接下来把一次上传拆成会话内的准备与最终提交：[Multipart Upload](04-multipart-upload.md)。上传 Part 与内部单元不是同一种身份；这也是后续版本和布局章节的连接点。
-
-[上一篇：API Semantics](02-s3-core-semantics.md) · [章节入口](README.md) · [下一篇：Multipart Upload](04-multipart-upload.md)

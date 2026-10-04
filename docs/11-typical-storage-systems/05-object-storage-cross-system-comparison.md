@@ -181,4 +181,4 @@ Ring 与 CRUSH 的共同目标是位置选择，关键差别是：Swift 路径 H
 
 因此 **Generic Model 是 Reasoning Framework，不是统一实现模板**。本轮完成对象存储的三系统案例链；Block / File 案例只按后续需要扩展，不继续增加对象产品或进入 AI Storage。
 
-[OpenStack Swift](04-openstack-swift.md) · [比较框架](01-comparison-framework.md) · [返回专题入口](README.md)。
+[OpenStack Swift](04-openstack-swift.md) · [比较框架](01-comparison-framework.md)

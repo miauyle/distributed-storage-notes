@@ -120,5 +120,3 @@ flowchart TD
 本篇建立了“名字、当前状态、可选版本、正文、元数据和底层布局”的区别。下一篇用同一个报告说明操作如何改变这些状态：[S3 Core Semantics](02-s3-core-semantics.md)。通用一致性、索引与分区问题见[08 专题（目前为骨架）](../08-consistency-metadata-partitioning/README.md)。
 
 AWS 来源核对日期：**2026-10-02**。本文中的 AWS 结论以链接文档为准，内部映射与布局图为通用示意。
-
-[章节入口](README.md) · [下一篇：API Semantics](02-s3-core-semantics.md)

@@ -97,5 +97,3 @@ Rebalance 完成声明应带上范围和目标，例如“在本次成员集合�
 - Generation、Layout、Placement 和任务提交边界复用上述仓库正文；Watermark 数值、候选表和流程图为通用工程示意，不代表产品行为。
 
 公开资料核对日期：**2026-10-02**。本篇止于平衡目标与安全移动边界，不展开 Capacity Management 或具体平衡算法。
-
-[上一篇：Recovery Task Coordination](03-recovery-task-coordination.md) · [下一篇：Online Data Migration](05-data-migration.md) · [返回章节入口](README.md)

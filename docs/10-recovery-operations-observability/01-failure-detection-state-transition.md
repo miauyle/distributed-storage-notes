@@ -112,5 +112,3 @@ flowchart TD
 - [Google SRE：Handling Overload](https://sre.google/sre-book/handling-overload/)：用于核对过载与重试放大的工程边界；上面的 Recovery Storm 是本篇结合后台修复推导的场景。
 
 核对日期：**2026-10-02**。Healthy 等名称、Grace Period 决策表与状态图均为通用模型，不是固定产品状态机，也不展开 Migration、Rebalance 或 Observability 指标体系。
-
-[下一篇：Repair / Rebuild](02-repair-rebuild.md) · [返回章节入口](README.md)

@@ -140,4 +140,4 @@ flowchart TD
 
 资料核对日期：**2026-10-02**。行为依据：**Ceph Tentacle `/en/tentacle/` 文档分支**；正文各节链接是对应证据。Release Index 的 `latest` 仅用于版本分支选择。没有使用旧博客或无 Workload 的营销性能数字；未明确公开的 ACK 与扩大的一致性保证保留为证据边界。
 
-下一篇：[MinIO](03-minio.md)。[比较框架](01-comparison-framework.md) · [返回专题入口](README.md)。
+[比较框架](01-comparison-framework.md)

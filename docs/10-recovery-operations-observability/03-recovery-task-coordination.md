@@ -142,4 +142,4 @@ Priority 决定先恢复什么，Throttling / Admission Control 决定同时做�
 
 核对日期：**2026-10-02**。T / C1 / t7 / t8、Checkpoint 表与提交图均为通用模型和工程推导；不实现 Recovery Scheduler，也不扩展 Rebalance、Data Migration 或 Observability 第二阶段。
 
-[上一篇：Repair / Rebuild](02-repair-rebuild.md) · [返回章节入口](README.md) · [回看：Failure Detection / State Transition](01-failure-detection-state-transition.md)
+[回看：Failure Detection / State Transition](01-failure-detection-state-transition.md)

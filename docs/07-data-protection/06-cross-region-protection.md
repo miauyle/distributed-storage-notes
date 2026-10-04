@@ -92,5 +92,3 @@ Primary / Secondary 或 Active / Passive 是常见角色安排，不是所有跨
 - [Google SRE：Data Integrity](https://sre.google/sre-book/data-integrity/)：用于核对冗余与恢复材料的互补关系，不沿用其中产品实现或时间参数。
 
 核对日期：**2026-10-02**。状态表、g1 → g2 → DELETE → g3 与 Lag 口径为限定范围的通用示意。
-
-[上一篇：Silent Corruption Detection](05-silent-corruption-detection.md) · [章节入口](README.md) · [下一篇：Backup / Restore](07-backup-restore.md)

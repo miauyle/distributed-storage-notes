@@ -133,5 +133,3 @@ Small Write 还不等于 Partial Update：一个新建小对象可能只是填�
 - [Backblaze：Reed-Solomon 编码公开说明](https://www.backblaze.com/blog/reed-solomon/)，2015：核对 systematic 编码与 4+2 的任意四片恢复示例，不描述其产品当前内部布局或性能。
 
 核对日期：**2026-10-02**。16 MiB、ACK 预算、范围读取、重构流量及比较表为限定条件下的通用模型与工程推导，不是具体产品的实测或 API 承诺。
-
-[上一篇：Replication](01-replication.md) · [章节入口](README.md) · [下一篇：Failure Domain & Placement](03-failure-domain-placement.md)

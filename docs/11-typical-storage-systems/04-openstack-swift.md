@@ -176,4 +176,4 @@ flowchart TD
 
 资料核对日期：**2026-10-02**。基准：**2026.2 Hibiscus、Swift 2.38.2 tag**；可读资料使用 `/swift/2026.2/` 稳定系列文档。其 `2.38.3.dev1` 构建号和 `latest` 的开发号均不当作已发布版本。源码仅用于核对普通 PUT 的结果条件、读取与校验范围，不展开实现教程；EC 开发者说明用于解释分片提交状态，不等于承诺所有后端与设备的精确断电行为。
 
-下一篇：[Object Storage Cross-system Comparison](05-object-storage-cross-system-comparison.md)。[MinIO](03-minio.md) · [比较框架](01-comparison-framework.md) · [返回专题入口](README.md)。
+[MinIO](03-minio.md) · [比较框架](01-comparison-framework.md)

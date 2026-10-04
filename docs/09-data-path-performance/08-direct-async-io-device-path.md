@@ -99,5 +99,3 @@ Linux `fsync` / `fdatasync` 等属于另一个明确边界，不是选择 Direct
 - [Linux man-pages：open(2)](https://man7.org/linux/man-pages/man2/open.2.html)：Direct 路径、Alignment、回退与 `O_SYNC` 边界。
 - [io_uring 项目：io_uring(7)](https://man7.org/linux/man-pages/man7/io_uring.7.html)：提交 / 完成、乱序结果与数据 Buffer 生命周期；仅引用模型，不提供接口教程。
 - [Linux man-pages：fsync(2)](https://man7.org/linux/man-pages/man2/fsync.2.html)：与缓存选择分离的持久化要求。
-
-[上一篇：Memory Copy / Zero-copy](07-memory-copy-zero-copy.md) · [下一篇：High-performance Networking / RDMA](09-high-performance-networking-rdma.md) · [返回章节入口](README.md)

@@ -122,5 +122,3 @@ Source Cleanup 应在新状态和引用得到充分确认之后：当前 Layout 
 - 状态、提交资格和失败处理复用仓库已有 Metadata、Fencing、Retry 与 Repair 正文；g1 / g2 / g3、e7 / e8、边界 c 及流程图均为通用工程示意。
 
 产品资料核对日期：**2026-10-02**。本文不规定 Journal、Dual Write 或某种切换协议，也不展开具体产品迁移命令。
-
-[上一篇：Rebalance](04-rebalance.md) · [下一篇：Node Evacuation](06-node-evacuation.md) · [返回章节入口](README.md)

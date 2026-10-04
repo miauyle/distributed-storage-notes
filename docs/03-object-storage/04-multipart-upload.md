@@ -110,5 +110,3 @@ Abort 不是给正常对象加 Delete Marker，也不能用来撤销已完成的
 Part 大小与底层 chunk 大小没有必须相等的契约。服务可以重新切分、聚合或保留内部引用；Complete 的逻辑拼接也不证明服务必须将所有字节重新复制进一个物理文件。此处是通用模型推导，不声称 AWS 采用其中任何一种实现。
 
 Multipart 解决传输准备与提交；Versioning 决定提交后保留哪些可寻址状态；[Object Layout](06-object-layout.md)讨论这些状态如何映射到内部单元。
-
-[上一篇：Read / Write Path](03-read-write-path.md) · [章节入口](README.md) · [下一篇：Versioning / Delete](05-versioning-delete.md)

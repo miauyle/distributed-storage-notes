@@ -95,4 +95,4 @@ Repair 恢复的是 Protection Gap，其价值不能只用后台吞吐衡量。�
 
 本阶段形成 **Cache / Prefetch → Batching / Backpressure → Shared-resource Interference**：减少慢层访问、限制粒度与积压、分配共享预算。低层数据移动与高性能网络仍是后续规划，不在这里展开。
 
-[上一篇：Batching / Backpressure](05-batching-backpressure.md) · [返回章节入口](README.md) · [Recovery / Operations](../10-recovery-operations-observability/README.md)
+[Recovery / Operations](../10-recovery-operations-observability/README.md)
