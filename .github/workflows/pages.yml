@@ -38,6 +38,10 @@ jobs:
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --baseurl /distributed-storage-notes
+      - name: Generate content-hashed theme icons
+        run: |
+          "$RUNNER_TEMP/site-deps/node_modules/.bin/playwright" install --with-deps chromium
+          NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node maintenance/build_theme_icons.cjs /distributed-storage-notes
       - name: Check rendered routes, links and index
         run: python tools/check_site.py
       - name: Browser verification
@@ -45,6 +49,10 @@ jobs:
           "$RUNNER_TEMP/site-deps/node_modules/.bin/playwright" install --with-deps chromium
           sudo apt-get install -y fonts-noto-cjk
           NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node tools/check_site_ui.cjs
+      - name: Mobile WebKit icon verification
+        run: |
+          "$RUNNER_TEMP/site-deps/node_modules/.bin/playwright" install --with-deps webkit
+          NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node maintenance/check_webkit_icons.cjs /distributed-storage-notes
       - name: Save browser evidence
         if: always()
         uses: actions/upload-artifact@v7
