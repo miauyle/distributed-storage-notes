@@ -4,6 +4,7 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { chromium } = require('playwright');
 const { buildFaviconProbe } = require('./build_favicon_probe.cjs');
+const { buildFaviconPilot } = require('./build_favicon_pilot.cjs');
 
 async function boundedStyle(page, content, href) {
   let timer;
@@ -21,7 +22,7 @@ async function boundedStyle(page, content, href) {
   if (!/^\/[a-z0-9-]+$/.test(base || '')) throw new Error('Provide the project baseurl');
   const home = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
   const browser = await chromium.launch({ headless: true });
-  let palettes, source;
+  let palettes, source, profiles;
   try {
     // Permit Playwright's injected style load callbacks, but never run site scripts.
     const context = await browser.newContext();
@@ -38,11 +39,12 @@ async function boundedStyle(page, content, href) {
       await boundedStyle(page, fs.readFileSync(file, 'utf8'), href);
     }
     source = await page.locator('link[data-static-brand-icon][type="image/svg+xml"]').getAttribute('href');
-    palettes = await page.evaluate(() => {
+    const sampled = await page.evaluate(() => {
       const root = document.documentElement;
       const defaultSkin = root.getAttribute('data-skin');
       const skins = [...new Set([defaultSkin, ...[...document.querySelectorAll('[data-skin-set]')].map(n => n.dataset.skinSet)])];
       const result = {};
+      const profiles = {};
       const probe = document.createElement('span');
       document.body.append(probe);
       for (const skin of skins) {
@@ -55,11 +57,14 @@ async function boundedStyle(page, content, href) {
             return getComputedStyle(probe).color;
           });
           result[colors.join('|')] = colors;
+          profiles[`${skin}/${mode}`] = colors.join('|');
         }
       }
       probe.remove();
-      return result;
+      return { palettes: result, profiles };
     });
+    palettes = sampled.palettes;
+    profiles = sampled.profiles;
   } finally { await browser.close(); }
   if (!source.startsWith(base + '/assets/')) throw new Error('Invalid favicon source');
   const rendered = spawnSync('python3', [path.join(__dirname, 'render_theme_icons.py'),
@@ -86,5 +91,6 @@ async function boundedStyle(page, content, href) {
   patch(site);
   if (!count) throw new Error('No pages received the icon manifest');
   buildFaviconProbe(site, base, JSON.parse(rendered.stdout));
+  buildFaviconPilot(site, base, JSON.parse(rendered.stdout), profiles);
   console.log(`Theme icons: ${Object.keys(palettes).length} computed palettes, ${count} pages, content-hashed PNG files.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });

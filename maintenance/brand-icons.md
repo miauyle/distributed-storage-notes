@@ -28,6 +28,23 @@ Chromium 和移动尺寸 WebKit 检查的是资源、声明、PNG 像素、缓�
 
 ## Safari 初始候选时序
 
+该方案的 Safari 真机效果未通过用户复核。普通站点暂保留原实现；下面的静态文档试点不使用该逻辑。
+
 默认图标的元数据节点初始没有有效 rel；无 JS 时由 noscript 声明默认图标。脚本请求失败时 onerror 恢复默认声明。
 首次加载时，带 hash 的同步 head 脚本在解析阶段用 document.write 声明已保存主题对应的 PNG favicon / Apple Touch；严格限制为 parser-inserted、非 async/defer、document.readyState=loading，事件回调绝不调用 document.write。
 这是针对默认候选抢先被收集的兼容性修正，不等于保证 Safari 浏览器 UI 支持即时动态更新。不会强制刷新、改页面 URL 或清除用户缓存。Chrome 的后续 DOM 切换逻辑保持不变。
+
+## 静态配色文档试点
+
+入口 `/favicon-pilot/`。仅复用两篇真实文章：存储模型与架构图、I/O 路径与持久化。
+支持 aqua / ember 和 light / dark，生成八份 HTML，不新增或复制 Markdown 正文。
+配色与 PNG 仍来自实际主题 CSS；试点脚本也使用内容 hash 文件名。
+变体地址形如 `/favicon-pilot/aqua/light/docs/.../`，原始 HTML 只声明该配色的 PNG favicon 和 Apple Touch 图标。
+试点不运行 `favicon-accent.js`，也不使用 `document.write`。
+进入时读取原主题的 `docsteer-skin` / `docsteer-mode`；已保存主题与地址不同时，跳转到相应静态页面。
+切色或切换明暗模式只保存主题选择并更新两篇文档的链接，不改当前地址，不自动刷新，不动态修改图标。
+手动刷新时若旧配色地址与保存的主题不同，会真正跳转一次到新配色地址；跨页链接直接进入新配色地址。
+不使用 `history.replaceState`，避免旧图标可能提前关联到新配色 URL。其他页面保持原地址并退出试点。
+其他强调色在试点中暂用 aqua，保持原来的 localStorage 选择，主题菜单只提供这两种已支持配色。
+变体保留原正文 canonical / og:url，声明 noindex,nofollow，不进入搜索、目录和 sitemap。
+WebKit 自动检查刷新、跨页、保存配色、明暗模式、无 JS 静态声明和退出试点；实际标签栏效果仍需 iPhone / Mac Safari 复核。
