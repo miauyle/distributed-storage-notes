@@ -6,6 +6,7 @@ const assert = require('node:assert/strict');
 const { createHash } = require('node:crypto');
 const { webkit } = require('playwright');
 const { checkBrandIcons } = require('./check_brand_icons.cjs');
+const { checkFaviconPilot } = require('./check_favicon_pilot.cjs');
 
 (async () => {
   const base = process.argv[2];
@@ -30,6 +31,7 @@ const { checkBrandIcons } = require('./check_brand_icons.cjs');
     const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 3, hasTouch: true });
     const page = await context.newPage();
     const root = `http://127.0.0.1:${server.address().port}${base}`;
+    await checkFaviconPilot(browser, root);
     // Validate static declarations without JS; Safari's tab UI is not exposed here.
     const probeContext = await browser.newContext({ javaScriptEnabled: false });
     try {
