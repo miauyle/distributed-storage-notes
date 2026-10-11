@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { chromium } = require('playwright');
+const { buildFaviconProbe } = require('./build_favicon_probe.cjs');
 
 async function boundedStyle(page, content, href) {
   let timer;
@@ -84,5 +85,6 @@ async function boundedStyle(page, content, href) {
   }
   patch(site);
   if (!count) throw new Error('No pages received the icon manifest');
+  buildFaviconProbe(site, base, JSON.parse(rendered.stdout));
   console.log(`Theme icons: ${Object.keys(palettes).length} computed palettes, ${count} pages, content-hashed PNG files.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });
