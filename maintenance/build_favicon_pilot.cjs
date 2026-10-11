@@ -37,7 +37,9 @@ function buildFaviconPilot(site, base, palettes, profiles) {
       .replace(/<script\b[^>]*data-favicon-script[^>]*>[\s\S]*?<\/script>/g, '')
       .replace(/<script>\s*\(function\s*\(\)\s*\{[\s\S]*?localStorage\.getItem\('docsteer-mode'\)[\s\S]*?<\/script>/, '');
     if (html.includes('data-static-brand-icon') || html.includes('data-favicon-script')) throw new Error('Pilot retained dynamic icon declarations');
-    html = html.replace(/data-skin="[^"]*"/, `data-skin="${skin}"`).replace(/data-mode="[^"]*"/, `data-mode="${mode}"`);
+    html = html.replace(/<html\b[^>]*>/, tag => tag
+      .replace(/\sdata-(?:skin|mode)="[^"]*"/g, '')
+      .replace(/>$/, ` data-skin="${skin}" data-mode="${mode}">`));
     // Keep canonical / og:url on the original document; no indexing of pilot copies.
     const config = { skins, skin, mode, canonical: base + doc, routes, reverse };
     html = html.replace('</head>', `<meta name="robots" content="noindex,nofollow">
