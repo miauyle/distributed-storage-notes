@@ -30,19 +30,23 @@ async function checkFaviconPilot(browser, root) {
       // Use the actual theme picker, not only the pilot convenience buttons.
       await page.locator('#skinPicker > .navbar__icon-btn').click();
       await page.locator('[data-skin-set="aqua"]').click();
-      await page.waitForURL(root + '/favicon-pilot/aqua/light' + docs[0]);
+      await page.waitForFunction(() => document.documentElement.dataset.skin === 'aqua');
+      assert.equal(page.url(), root + '/favicon-pilot/ember/light' + docs[0], 'Skin change does not alter the page URL');
       assert.equal(await page.evaluate(() => window.pilotDocumentMarker), 'same-document');
       assert.equal(await page.locator('[data-pilot-icon]').getAttribute('href'), loaded, 'No dynamic icon swapping in pilot');
       assert.equal(await page.evaluate(() => localStorage.getItem('docsteer-skin')), 'aqua');
       await page.reload({ waitUntil: 'networkidle' });
+      await page.waitForURL(root + '/favicon-pilot/aqua/light' + docs[0]);
       const aqua = await page.locator('[data-pilot-icon]').getAttribute('href');
       assert.notEqual(aqua, loaded, 'Refresh loads static icon for saved skin');
       await page.getByRole('link', { name: '另一篇试点文章', exact: true }).click();
       await page.waitForURL(root + '/favicon-pilot/aqua/light' + docs[1]);
       assert.equal(await page.locator('[data-pilot-icon]').getAttribute('href'), aqua);
       await page.locator('#modeToggle').click();
-      await page.waitForURL(root + '/favicon-pilot/aqua/dark' + docs[1]);
+      await page.waitForFunction(() => document.documentElement.dataset.mode === 'dark');
+      assert.equal(page.url(), root + '/favicon-pilot/aqua/light' + docs[1]);
       await page.reload({ waitUntil: 'networkidle' });
+      await page.waitForURL(root + '/favicon-pilot/aqua/dark' + docs[1]);
       assert.equal(await page.locator('html').getAttribute('data-mode'), 'dark');
       // Visiting an old profile URL uses the current saved selection, without loops.
       await page.goto(root + '/favicon-pilot/ember/light' + docs[0], { waitUntil: 'networkidle' });

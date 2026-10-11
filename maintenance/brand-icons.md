@@ -42,8 +42,9 @@ Chromium 和移动尺寸 WebKit 检查的是资源、声明、PNG 像素、缓�
 变体地址形如 `/favicon-pilot/aqua/light/docs/.../`，原始 HTML 只声明该配色的 PNG favicon 和 Apple Touch 图标。
 试点不运行 `favicon-accent.js`，也不使用 `document.write`。
 进入时读取原主题的 `docsteer-skin` / `docsteer-mode`；已保存主题与地址不同时，跳转到相应静态页面。
-切色或切换明暗模式只用 `history.replaceState` 更新试点地址及两篇文档的链接，不自动刷新，不动态修改图标。
-手动刷新或跨页后才加载新图标。其他页面保持原地址并退出试点。
+切色或切换明暗模式只保存主题选择并更新两篇文档的链接，不改当前地址，不自动刷新，不动态修改图标。
+手动刷新时若旧配色地址与保存的主题不同，会真正跳转一次到新配色地址；跨页链接直接进入新配色地址。
+不使用 `history.replaceState`，避免旧图标可能提前关联到新配色 URL。其他页面保持原地址并退出试点。
 其他强调色在试点中暂用 aqua，保持原来的 localStorage 选择，主题菜单只提供这两种已支持配色。
 变体保留原正文 canonical / og:url，声明 noindex,nofollow，不进入搜索、目录和 sitemap。
 WebKit 自动检查刷新、跨页、保存配色、明暗模式、无 JS 静态声明和退出试点；实际标签栏效果仍需 iPhone / Mac Safari 复核。

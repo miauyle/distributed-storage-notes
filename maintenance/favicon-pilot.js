@@ -27,8 +27,9 @@
   }
   function update() {
     const routes = target();
-    // Refresh now requests the new profile's real HTML. No automatic reload on skin change.
-    history.replaceState(history.state, '', routes[config.canonical] + location.search + location.hash);
+    // Keep the current URL until a real navigation: replacing history could associate
+    // the old static icon with the next profile URL in Safari's icon database.
+    // A manual reload enters the initial preference redirect above.
     for (const link of document.querySelectorAll('a[href]')) {
       const url = new URL(link.href, location.href);
       if (url.origin !== location.origin) continue;
