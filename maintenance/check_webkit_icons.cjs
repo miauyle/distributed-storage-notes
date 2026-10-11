@@ -2,6 +2,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
+const assert = require('node:assert/strict');
+const { createHash } = require('node:crypto');
 const { webkit } = require('playwright');
 const { checkBrandIcons } = require('./check_brand_icons.cjs');
 
@@ -28,6 +30,32 @@ const { checkBrandIcons } = require('./check_brand_icons.cjs');
     const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 3, hasTouch: true });
     const page = await context.newPage();
     const root = `http://127.0.0.1:${server.address().port}${base}`;
+    // Validate static declarations without JS; Safari's tab UI is not exposed here.
+    const probeContext = await browser.newContext({ javaScriptEnabled: false });
+    try {
+      const probe = await probeContext.newPage();
+      const icons = [];
+      for (const name of ['a', 'b']) {
+        const response = await probe.goto(`${root}/favicon-check/${name}/`);
+        assert.equal(response.status(), 200);
+        assert.equal(await probe.locator('script').count(), 0);
+        assert.equal(await probe.locator('link[rel="icon"]').count(), 1);
+        const href = await probe.locator('link[rel="icon"]').getAttribute('href');
+        const png = await probeContext.request.get(new URL(href, root).href);
+        assert.equal(png.status(), 200);
+        const hash = createHash('sha256').update(await png.body()).digest('hex').slice(0, 12);
+        assert.ok(href.endsWith(`-${hash}.png`));
+        assert.equal(await probe.locator('img').getAttribute('src'), href);
+        icons.push(href);
+        await probe.reload();
+        assert.equal(await probe.locator('link[rel="icon"]').getAttribute('href'), href);
+      }
+      assert.notEqual(icons[0], icons[1]);
+      await probe.getByRole('link', { name: '进入 A 页', exact: true }).click();
+      await probe.waitForURL(`${root}/favicon-check/a/`);
+      assert.equal(await probe.locator('link[rel="icon"]').getAttribute('href'), icons[0]);
+      console.log('Static A/B probe declarations, PNG content hashes and navigation passed; actual Safari tab icons remain unverified.');
+    } finally { await probeContext.close(); }
     await page.goto(root + '/', { waitUntil: 'networkidle' });
     await checkBrandIcons(page, root);
     console.log('Mobile WebKit icon resource and theme regression passed (browser UI requires real-device confirmation).');

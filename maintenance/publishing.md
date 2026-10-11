@@ -29,6 +29,15 @@ bundle exec jekyll serve --baseurl /distributed-storage-notes
 
 宽屏（≥1440px）使用 17px root、1640px shell、300px Sidebar、248px TOC、900px content、76ch measure 和 1480px 首页。手机保持主题 drawer 和本地 mobile TOC；正文阅读行长与图表可用宽度分开控制。
 
+## 临时 Safari 图标实验
+
+`maintenance/build_theme_icons.cjs` 额外生成 `/favicon-check/a/` 与 `/favicon-check/b/`。
+两页在原始 HTML 中声明不同配色的 hash PNG，禁用脚本也能显示，不读取或修改主题设置。
+页面不进入知识导航、搜索或 Jekyll sitemap，并声明 `noindex,nofollow`。
+移动 WebKit 检查仅验证静态声明、图片 hash、刷新与跨页后的文档；不能验证 Safari 标签栏。
+需要 iPhone 与 Mac Safari 真机记录跨页、刷新、切回标签、关闭后重新打开四种行为。
+实验失败则移除该生成器及测试，并清理无效的 Safari 专用补丁；成功也需先验证正常文档适用性。
+
 ## 发布
 
 `.github/workflows/pages.yml` 对 PR 与 master 构建并验证，失败不部署。PR 只构建；仅 master push 的构建通过后发布 Pages，deploy job 使用 `pages: write` 与 OIDC。手动触发只用于验证。
