@@ -29,11 +29,11 @@ bundle exec jekyll serve --baseurl /distributed-storage-notes
 
 宽屏（≥1440px）使用 17px root、1640px shell、300px Sidebar、248px TOC、900px content、76ch measure 和 1480px 首页。手机保持主题 drawer 和本地 mobile TOC；正文阅读行长与图表可用宽度分开控制。
 
-## Safari 静态配色页面
+## Safari 与 iPhone Chrome 静态配色页面
 
 主题图标生成后，为首页、目录和正文生成 `/theme/<skin>/<light|dark>/...` 静态 HTML。
-Safari 从普通链接进入时读取已保存主题并跳转到对应页面；切色后刷新或跨页同步 favicon。
-不在切色时自动刷新或修改页面地址，不使用 `document.write`。Chrome 保持原地址和动态图标。
+Safari 与 iPhone Chrome 从普通链接进入时读取已保存主题并跳转到对应页面；切色后刷新或跨页同步 favicon。
+不在切色时自动刷新或修改页面地址，不使用 `document.write`。电脑与 Android Chrome 保持原地址和动态图标；Android 标签栏即时更新尚未实机验证。
 原 canonical、搜索与 sitemap 保持不变，变体声明 noindex。详情见 [图标维护](brand-icons.md)。
 
 ## 发布
