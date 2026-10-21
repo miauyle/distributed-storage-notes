@@ -298,7 +298,7 @@
           "path": "docs/09-data-path-performance/03-benchmark-bottleneck-analysis.md",
           "title": "Benchmark / Bottleneck Analysis：把性能判断变成实验",
           "label": "基准测试与瓶颈分析",
-          "summary": "工作负载、环境、客户端边界和受控实验"
+          "summary": "建立可复现实验与瓶颈证据，区分 KV 逻辑命中、Page Cache 和真实设备 I/O。"
         },
         {
           "id": "09-data-path-performance-04-cache-prefetch",
@@ -438,7 +438,7 @@
           "path": "docs/10-recovery-operations-observability/12-failure-drill.md",
           "title": "Failure Drill：把故障假设变成可验证的运行证据",
           "label": "故障演练",
-          "summary": "故障假设、健康基线、安全边界与恢复结果验证"
+          "summary": "定义故障假设与恢复判据，覆盖共享 KV 缓存重启、重算压力及保护恢复。"
         },
         {
           "id": "10-recovery-operations-observability-13-troubleshooting-method",
@@ -557,21 +557,21 @@
           "path": "docs/12-ai-storage-connections/07-kv-cache-state-model.md",
           "title": "KV Cache State Model：可重建状态，也需要精确身份",
           "label": "KV Cache 状态模型",
-          "summary": "派生状态、Token Prefix 身份、完整性与重建成本"
+          "summary": "KV 状态身份、容量与恢复依赖，区分精确复用、完整重算和模型特定近似恢复。"
         },
         {
           "id": "12-ai-storage-connections-08-kv-cache-hierarchy-prefix-reuse",
           "path": "docs/12-ai-storage-connections/08-kv-cache-hierarchy-prefix-reuse.md",
           "title": "KV Cache Hierarchy / Prefix Reuse：保存位置与复用价值分开",
           "label": "KV 分层与 Prefix 复用",
-          "summary": "分层、Offload / Eviction、计算节省、共享与隔离"
+          "summary": "KV 分层与前缀复用，连接共享闪存、Raw Block 重启恢复及 CXL 研究原型。"
         },
         {
           "id": "12-ai-storage-connections-09-remote-disaggregated-kv-cache",
           "path": "docs/12-ai-storage-connections/09-remote-disaggregated-kv-cache.md",
           "title": "Remote / Disaggregated KV Cache：搬运状态，也管理分布式生命周期",
           "label": "远端与解耦 KV Cache",
-          "summary": "P2P / Store、Routing、发布生命周期与 TTFT 成本"
+          "summary": "远端 KV 的目录、路由、传输与恢复；结合 DeepSeek、Mooncake 和 NIXL/EFA 说明边界。"
         }
       ]
     }

@@ -116,6 +116,40 @@ TTFT 是从约定请求起点到首个输出 Token 的时间，受排队、Prefi
 
 比较无缓存、本地复用和远端复用时，保持 Model、Prompt / Prefix 分布、输出长度、并发与 Batch 策略可解释；区分 Cold / Warm、热目录 / 热 Payload，并测试缓存失效和 Transfer Failure。GB/s 高但 TTFT 不降，可能是 Lookup、排队、格式安装或重算本来就更便宜。不要把纯 RDMA 带宽当作端到端 Serving 性能。
 
+## 2026-10 补充：共享状态的恢复与运维
+
+<a id="deepseek-state-recovery"></a>
+
+### DeepSeek：开源引擎与部署系统分别描述
+
+[DeepInfer README](https://github.com/deepseek-ai/DeepInfer/blob/main/README.md)明确：本次公开引擎提供离线推理，完整服务仍需外部 KV Cache、完整分离部署和负载均衡。下面依据 [官方部署 QA](https://github.com/deepseek-ai/DeepInfer/blob/main/doc/inference_deployment_qa.md)，属于其系统说明，不能称作已随引擎公开的完整实现。
+
+部署说明将块状 KV 放在独立 3FS 集群，SWA（Sliding Window Attention，滑动窗口注意力）状态留在主机内存；缺失窗口状态时，可用有限后缀重放产生近似状态。独立块缓存池使 Prefill 可访问共享前缀，减轻亲和路由与计算负载均衡之间的冲突。其加载经过 Host Shared Memory 再进入 GPU，不能因使用 RDMA 就写成全程 Storage → GPU Direct。
+
+**由此推导的存储问题：**同一请求不必对每种状态采用同样保护；缺失、回退与重建必须按状态类型判定。共享池让计算节点失效和持久缓存失效可以分开，却不能消除共享池自身的故障域。窗口近似恢复是模型特定策略，应与 [精确复用与重建契约](07-kv-cache-state-model.md)分别验证。
+
+### Mooncake：HA 与异步持久化是不同承诺
+
+[Mooncake 当前部署指南](https://github.com/kvcache-ai/Mooncake/blob/main/docs/source/deployment/mooncake-store-deployment-guide.md)分别描述 etcd 协调的 Master HA、OpLog，以及内存 Put 后异步 SSD offload；Redis HA 明确为实验路径，不提供同等严格持久恢复承诺。本节描述滚动指南，不反推此前 Release 已具备所有能力。
+
+**通用故障示意：**Put 在内存完成，SSD 队列尚未完成时节点丢失；能否保留条目取决于其他有效副本和已完成的持久写，不能由 Put 的名字判断。Master 切换成功也不证明每个 Payload 仍可读。恢复时要分别核对 Directory、Payload、Generation 和正在传输的 Buffer，复用 [恢复任务资格](../10-recovery-operations-observability/03-recovery-task-coordination.md)。
+
+| 故障边界 | 应验证的结果 |
+| --- | --- |
+| Cache Server 重启，设备仍在 | 目录与槽位能恢复；半写条目被拒绝；恢复时间可测 |
+| Master 切换 | 新 Authority 有效；旧 Writer 不能迟到发布；读端位置经过验证 |
+| 计算节点退出 | 已共享状态仍可获取；活跃请求是否迁移另按引擎契约判断 |
+| 缓存节点或池不可用 | Miss / Recompute 有界；没有重试和重算级联放大 |
+| Offload 长期落后 | 暴露队列年龄、在途字节和持久完成滞后；不能无限吸收 |
+
+### NIXL / EFA：搬运抽象不替代网络与存储契约
+
+[AWS 2026-03-19 公告](https://aws.amazon.com/about-aws/whats-new/2026/03/aws-support-nixl-with-efa/)说明 NIXL 与 EFA 集成，覆盖 Prefill / Decode 和存储层间的 KV 搬运。由此只能确认所述集成范围；不能推出各 NIXL Backend 拥有相同传输、拓扑、失效处理或性能。
+
+验证应固定 Backend、硬件与版本，拆开 Lookup、Payload Transfer、GPU Install 和请求排队；在多节点扩容、缓存恢复与后台修复同时发生时测聚合压力。对象路径仍遵守 [cuObject 的客户端 / 服务端集成与提交边界](06-object-storage-cuobject-rdma.md)。
+
+本节新增来源核对日期：**2026-10-21**。上面的故障表和验证条件是通用工程推导，并非产品运行结果。完整演练见 [KV 缓存故障矩阵](../10-recovery-operations-observability/12-failure-drill.md#kv-cache-drill)。
+
 ## 官方资料范围与章节收口
 
 核对日期：**2026-10-03**。版本与滚动文档分开记录；上面的流程、状态机和成本模型是通用推导，不是产品统一协议。

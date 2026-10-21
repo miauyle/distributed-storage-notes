@@ -52,8 +52,21 @@ DataLoader 与 Distributed Checkpoint 使用当前 PyTorch 官方文档实例，
 
 第三阶段建立：KV ≠ Weight / Prompt / Primary Durable Data；Rebuildable ≠ Cheap；Text Prefix ≠ Token Prefix；Hash Match ≠ Semantic Identity Proven；Eviction ≠ Offload；Hit Ratio ≠ Compute Saved；Prefix Hit ≠ TPOT 必降；Remote Cache ≠ Prefill / Decode Disaggregation；P2P Transfer ≠ Shared Store；KV-aware Routing ≠ Disaggregation；Metadata Published ≠ Payload Ready；Persisted KV ≠ Primary Durable Data；Fast Transfer ≠ Low TTFT。
 
+## 2026-10-21 定向维护：从共享缓存连接到恢复验证
+
+本轮更新现有正文，不增加产品专章。基础资料仍保留原核对日期；新增滚动资料和论文按各节记录日期、版本及实现范围。
+
+| 更新入口 | 新增问题与案例 |
+| --- | --- |
+| [State Model](07-kv-cache-state-model.md) | 原样加载、完整重算、局部精确与近似恢复的契约 |
+| [Hierarchy / Prefix Reuse](08-kv-cache-hierarchy-prefix-reuse.md) | CMX 共享闪存层、LMCache Raw Block 重启恢复、HyMCache CXL 原型 |
+| [Remote KV](09-remote-disaggregated-kv-cache.md) | DeepInfer 公开范围与 DeepSeek 部署说明、Mooncake HA / 异步 SSD、NIXL / EFA |
+| [cuObject](06-object-storage-cuobject-rdma.md) | SDK / 服务端支持证据、集群扩容与恢复的聚合压力 |
+| [Benchmark](../09-data-path-performance/03-benchmark-bottleneck-analysis.md#kv-cache-measurement) | Page Cache 冷热、Direct I/O、重复分布与后台干扰 |
+| [Failure Drill](../10-recovery-operations-observability/12-failure-drill.md#kv-cache-drill) | 索引恢复、半写、目录失效、重算压力与保护恢复 |
+
 ## 基础主线完成后的边界
 
-本章三阶段九篇基础主线已完成：**Workload / Training State → GPU Data Path → Inference State / KV Cache**。本轮完成第三阶段后停止，不自动增加 vLLM、SGLang、LMCache、Mooncake 或 Dynamo 产品专章；后续扩展须由明确专题驱动，而不是无限扩张 AI 产品目录。
+本章三阶段九篇基础主线已完成：**Workload / Training State → GPU Data Path → Inference State / KV Cache**。后续仅做有明确来源和知识缺口的定向维护，不自动增加 vLLM、SGLang、LMCache、Mooncake 或 Dynamo 产品专章；后续扩展须由明确专题驱动，而不是无限扩张 AI 产品目录。
 
 [数据路径与性能基础](../09-data-path-performance/README.md) · [对象存储主线](../03-object-storage/README.md) · [返回 Knowledge Map](../../README.md)

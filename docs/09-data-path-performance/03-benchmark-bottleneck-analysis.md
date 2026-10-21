@@ -122,12 +122,35 @@ Locate saturation 是寻找哪项限制的候选步骤，不是看见一个高�
 
 一份可解释的结果应能连成：**问题与边界 → Workload / Environment → 端到端结果及资源证据 → 受控改动 → 比较与适用限制**。不能复现时先补条件，证据不足时保留候选解释，而不是立刻引入下一种优化技术。
 
+<a id="kv-cache-measurement"></a>
+
+## 8. 应用到 KV Offload：命中缓存时到底读了哪一层？
+
+[2026-10-15 的 KV SSD Offload 研究](https://arxiv.org/abs/2610.21249v1)比较两个 LMCache 部署快照，指出 Page Cache 可隐藏设备读取，而 Direct I/O 可使读取成本更显式，却未必降低平均延迟。论文是观察性比较，版本、去重和 I/O 路径同时变化，不能将差异全部归因于 O_DIRECT；也不能据旧快照判断当前版本的所有行为。
+
+把这一问题映射为以下**通用实验矩阵**，连接 [KV 分层](../12-ai-storage-connections/08-kv-cache-hierarchy-prefix-reuse.md)：
+
+| 条件 | 要确认的实际路径与证据 |
+| --- | --- |
+| 逻辑 KV 命中、Page Cache 热 | 设备读字节是否接近零；测到的是内存还是介质 |
+| 相同逻辑命中、Page Cache 冷 | 设备实际字节、请求粒度、队列和 TTFT |
+| Buffered / Direct I/O | 保持软件和布局可比；无法隔离时标明混杂条件 |
+| 精确重复 / 部分前缀 / 一次性上下文 | 去重是否只惠及某类请求；记录避免重算量与写放大 |
+| 本地命中 / 远端命中 / 无缓存 | Lookup、传输、GPU 安装和重算的关键路径成本 |
+| 后台 Offload / Repair 同时运行 | 队列年龄、SSD 与网络竞争，以及前台 P95 / P99 |
+
+记录 Engine 与 Cache Commit、模型和格式、输入 / 输出长度、并发、工作集、每层容量、预热方法、NUMA / 网络拓扑、设备填充率和对齐。Dataset 大并不够：重复访问的工作集仍可能落在 Page Cache。不要通过生产环境全局清缓存制造 Cold 条件，应使用可隔离测试环境或可解释的工作集。
+
+分别统计 API 有效字节、设备读写字节和链路流量；预取、重复副本和重试会放大后两者。即使 Hit Ratio 不变，加载成本也可能超过重算，应同时报告 Avoided Prefill、TTFT、吞吐、错误和资源占用。软件路径验证与真实 NVMe 性能验证分开；普通文件测试不能证明设备 DMA、介质持久性或实际吞吐。
+
+新增研究核对日期：**2026-10-21**。本节是实验设计，没有在本站运行 KV Offload 性能测试。
+
 ## 来源与适用边界
 
 - [Google SRE：Effective Troubleshooting，Test and Treat](https://sre.google/sre-book/effective-troubleshooting/)：核对用实验检验假设、识别混杂因素和记录条件的工程方法；不扩展完整排障专题。
 - [fio 官方文档：Measurements / Output / I/O Depth](https://fio.readthedocs.io/en/latest/fio_doc.html)：用于核对工具统计与实际队列边界需明确、配置深度不替代实际运行分布等问题。fio 的 I/O 数值不自动代表对象 API 的端到端性能，本文不提供 fio 配置教程。
 - 延迟和 Saturation 定义沿用 [上一篇及其来源](02-latency-throughput-queueing.md)，路径和内部流量口径沿用 [Cost Model](01-end-to-end-cost-model.md)。
 
-资料核对日期：**2026-10-02**。实验流程与变量表是通用工程推导，没有真实跑分结论。本章第一阶段止于 Cost → Queueing → Measurement，不继续展开 Cache / Prefetch、Zero-copy、RDMA 或 AI Storage。
+资料核对日期：**2026-10-02**。基础实验流程与变量表是通用工程推导，没有本站真实跑分结论；第 8 节另标新增研究日期和适用范围，用 KV Offload 检验既有测量方法。
 
 [前置：Storage Fundamentals](../02-storage-fundamentals/README.md)
