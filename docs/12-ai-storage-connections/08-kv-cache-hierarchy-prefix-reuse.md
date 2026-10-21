@@ -89,6 +89,28 @@ GPU Full ≠ KV 必须全丢；Evict ≠ Offload；Prefix Match ≠ Safe Reuse�
 
 下一篇 [Remote / Disaggregated KV Cache](09-remote-disaggregated-kv-cache.md)把 Lookup、Transfer、Metadata 与 Failure 放进分布式模型。
 
+## 2026-10 补充：共享闪存层与可恢复本地层
+
+### 独立共享层：容量扩展也改变故障域
+
+NVIDIA 在 [2026-03-16 的 CMX 技术说明](https://developer.nvidia.com/blog/introducing-nvidia-bluefield-4-powered-inference-context-memory-storage-platform-for-the-next-frontier-of-ai)中，将基于 STX / BlueField-4 的共享闪存层放在 GPU / Host Memory 与通用共享存储之间，配合 Dynamo / NIXL 预取上下文。这是厂商架构说明，不是本站独立验证的性能结论；G3.5 是其分层命名，不是通用存储标准。
+
+**通用推导：**独立容量池允许计算和缓存分别扩容，也引入共享目录、网络热点和相关失效。比较本地层与独立池时，应同时记录命中成本、共享范围、节点故障后的缓存保留，以及存储池失效后的重算压力。不能只按每 TB 成本选层，也不能从“专用 KV 层”推断其具备备份或跨区域保护。
+
+### 可恢复本地层：LMCache Raw Block
+
+[LMCache 2026-09-22 技术文章](https://blog.lmcache.ai/en/2026/09/22/raw-block-in-lmcache-building-a-fast-recoverable-nvme-tier-for-kv-cache/)及 [MP Raw Block 文档](https://docs.lmcache.ai/mp/l2_storage/raw_block.html)描述固定槽位和同设备恢复元数据，用于本地 NVMe 缓存重启恢复。当前路径是 CPU Buffer → Storage，不是 NVMe → GPU 的 GDS 路径；重启可恢复也不等于设备丢失后可恢复。
+
+**通用验证模型：**Payload 存活 → 找回索引与槽位 → 验证格式、身份和完整性 → 排除未完成条目 → 恢复容量账目 → 发布可用记录。具体实现可能合并这些步骤；必须测试中途退出、旧元数据和槽位重新分配，不能凭磁盘上仍有字节就算恢复成功。
+
+固定槽位还要计入内部碎片，长期缓存需计入写放大和 SSD 寿命。比较 Raw Block、文件后端时，应测超过实际缓存容量的工作集，连同 TTFT 和设备 I/O 一起报告；Direct I/O 不保证比热 Page Cache 更快。见 [缓存测量矩阵](../09-data-path-performance/03-benchmark-bottleneck-analysis.md#kv-cache-measurement)。
+
+### 研究方向：CXL 接口后的 SSD 容量
+
+[HyMCache：A CXL Memory Rack for Multi-Turn LLM Serving，v3](https://arxiv.org/abs/2607.18141v3)（2026-08-05 修订；初稿 07-20）研究少量设备 DRAM 与 SSD 容量组成的 CXL 混合内存，验证了 KV 复用原型。它提示“以内存接口访问”与“后端是 DRAM”需要分开；预取命中、设备内部缓冲和访问模式都会改变延迟。该结果限于论文原型与实验，不能写成一般 CXL 池已经具备相同能力。
+
+本节资料核对日期：**2026-10-21**；不把滚动文档全部能力绑定到此前列出的 LMCache Release。
+
 ## 官方资料范围
 
 核对日期：**2026-10-03**。

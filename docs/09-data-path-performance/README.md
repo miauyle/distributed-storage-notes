@@ -49,6 +49,10 @@
 
 三阶段形成 **Analysis → Control → Low-level Data Path**：先测清成本与等待，再约束工作和共享资源，最后讨论局部路径怎样降低开销。Zero-copy 不等于字节不移动，Direct 不等于 Zero-copy，Async 不保证单请求更快，RDMA Completion 也不代替应用提交与存储 Durability。
 
+## 定向维护：KV 缓存的分层测量
+
+2026-10-21 在 [Benchmark 正文](03-benchmark-bottleneck-analysis.md#kv-cache-measurement)补充 Page Cache 冷热、Buffered / Direct I/O、精确重复与部分复用、后台修复干扰的验证矩阵。它是通用测量方法在 AI 存储上的应用，不是已执行的性能报告。
+
 ## 后续规划
 
 - 高性能路径的受控实验与成本验证，按明确任务确定范围。

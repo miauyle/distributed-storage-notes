@@ -122,6 +122,14 @@ Multipath / failover 保持 RDMA 路径可用与切换 TCP payload 是不同动�
 
 Pure RDMA Bandwidth ≠ Object Storage End-to-End Performance。更高 GDS / RDMA bandwidth 也不保证训练吞吐同比增加：后端、Metadata、decode、GPU compute 或同步都可能限速。复用 [Benchmark / Bottleneck Analysis](../09-data-path-performance/03-benchmark-bottleneck-analysis.md)，先证明路径，再解释资源与应用收益。
 
-本阶段到此形成 Host Staging → File-oriented Direct GPU Storage → Object-oriented RDMA GPU Data Path。三者保留各自控制语义、完成边界与恢复责任；KV Cache 仅留在专题后续规划。
+## 11. 2026-10 复核：集成可用性与集群压力分开判断
+
+2026-10-21 复核 [NVIDIA cuObject Overview](https://docs.nvidia.com/gpudirect-storage/cuobject/index.html)：当前页面继续区分 Client / Server 集成及 S3 控制面与 RDMA 数据面。这次复核不替代第 1 节的历史 Release 记录，也不声称所有 SDK、存储服务和操作已经支持同一能力。
+
+对新的 KV Cache Backend 集成，应分别寻找已发布版本文档、实现和实际路径证据；Issue 中的功能请求不等于已交付能力。仅有一个支持 S3 的 URL，也不能证明服务端完成了 cuObject 集成。
+
+**通用验证补充：**多个计算节点同时扩容或恢复时，记录源端读取、注册缓冲、Gateway / Metadata 请求率、内部副本或 EC 流量，以及最终 GPU-ready 时间。共享 NIC 上的后台 Repair 可能与 GPU 取数竞争；单连接 RDMA 跑分不能代表这种聚合压力。使用 [KV 缓存测量矩阵](../09-data-path-performance/03-benchmark-bottleneck-analysis.md#kv-cache-measurement)区分逻辑命中、设备读取和端到端收益。
+
+本阶段到此形成 Host Staging → File-oriented Direct GPU Storage → Object-oriented RDMA GPU Data Path。三者保留各自控制语义、完成边界与恢复责任；KV Cache 的分层与恢复由后续已有正文承接。
 
 [对象读写路径](../03-object-storage/03-read-write-path.md)

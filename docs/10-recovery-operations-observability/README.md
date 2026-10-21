@@ -88,6 +88,10 @@ Data Integrity 的机制基础在 07，本章只承接 **主动验证 → 发现
 
 第六阶段形成 **Observe → Validate Failure Behavior → Diagnose Real Problems**。Observability 不只收集信号，还应支持演练判定与假设检验；任务完成或症状消失，都不能替代保护、完整性和积压收敛的验证。复用已有 Recovery、Queueing 和 Observability 机制，不展开故障注入工具或产品 Runbook。
 
+## 定向维护：共享 KV 缓存的恢复验证
+
+2026-10-21 在 [Failure Drill 正文](12-failure-drill.md#kv-cache-drill)增加缓存重启、异步写出缺口、目录命中但数据不可达、Master 切换、重算压力和后台竞争的设计矩阵。服务恢复、缓存预热与底层保护恢复分别判定；这些是演练设计，没有声称完成真实注入。
+
 ## 后续规划
 
 - Incident Timeline / Postmortem：非优先，仅按实际需要扩展。

@@ -10,7 +10,7 @@ GitHub Markdown 保持原文件相对链接。网站在构建时重写相对链�
 
 ## 构建、预览与验证
 
-CI 使用 Ruby 3.3、Bundler 2.5.22、Node 22。Gemfile / lock 沿用基准仓库；资源脚本固定 KaTeX 0.16.22、Mermaid 11.6.0、Playwright 1.51.1 的直接版本。浏览器运行时使用本地资源，包括字体。
+CI 构建固定使用 Ubuntu 24.04、Ruby 3.3、Bundler 2.5.22、Node 22。避免 ubuntu-latest 升到 Playwright 1.51.1 不支持的系统版本；浏览器验证仍须完整执行。Gemfile / lock 沿用基准仓库；资源脚本固定 KaTeX 0.16.22、Mermaid 11.6.0、Playwright 1.51.1 的直接版本。浏览器运行时使用本地资源，包括字体。
 
 ```sh
 bundle install
