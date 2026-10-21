@@ -33,6 +33,14 @@
 
 Swift 沿用相同十四节结构，范围固定为 2026.2 Hibiscus 稳定系列、`stable/2026.2` 与发布 tag 2.38.2；稳定文档的开发构建号和 `latest` 的开发版本另作区分。综合篇继承各案例的资料范围，比较 Architecture Decision，不做性能排名；最后检验通用模型能解释什么，以及哪里仍需产品模型。
 
+## 定向扩展：File Interface over Object Storage
+
+| 顺序 | 正文 | 关注的问题 |
+| --- | --- | --- |
+| 6 | [JuiceFS：文件语义、独立元数据与对象后端的组合](06-juicefs.md) | 文件如何映射成对象块；缓存、写入完成、元数据保护与 AI 数据供给如何衔接？ |
+
+2026-10-21 新增正式案例，以社区版发布基准和官方滚动资料分别标注范围，企业版共享缓存单独对照。它沿用既有比较坐标，补齐文件语义层的案例，不将其当作第四个对象服务加入三系统综合比较。连接 [File Storage](../05-file-storage/README.md)、[Training Data Path](../12-ai-storage-connections/02-training-data-path.md) 和 [Checkpoint](../12-ai-storage-connections/03-model-weights-checkpoints.md)。
+
 ## 回到通用比较坐标
 
 案例通过相对链接复用基础章节，基础章节既有的典型系统入口在这里汇合，再进入对应案例；不复制一套通用机制正文。
@@ -49,8 +57,7 @@ Swift 沿用相同十四节结构，范围固定为 2026.2 Hibiscus 稳定系列
 
 - Ceph RBD / CephFS：按需要扩展 Block / File 案例。
 - HDFS：按需要扩展分布式文件系统案例。
-- JuiceFS：按需要研究文件接口与对象后端的组合。
 
-以上是规划，不表示已完成，不预创建空文章。本轮止于 Swift 与三系统综合比较，Object Storage 典型案例主线已完成，不自动展开其他产品或 AI Storage。
+以上两项仍为规划，不表示已完成，不预创建空文章。Object Storage 典型案例主线已完成；JuiceFS 是已落地的定向扩展，后续不自动展开其他产品。
 
 [返回 Knowledge Map](../../README.md)

@@ -39,6 +39,12 @@ AI Framework 常期待 file-like / dataset-like access，源却可能是 Object 
 
 这些形态解决的是“上层怎样找到、读取并复用样本”，可能承担范围读取、缓存身份、访问并发与错误映射。挂载出来像文件，不自动把底层对象协议变成完整文件系统事务，也不保证降低复制次数。直接调用对象客户端则把格式解释、读取范围和重试责任更多交给应用。应检查实际契约与路径，不按产品名称推断性能。
 
+### 系统案例：JuiceFS 的文件层放在哪里？
+
+[JuiceFS 案例](../11-typical-storage-systems/06-juicefs.md)把文件路径与对象数据块之间的映射交给客户端和独立元数据引擎，并通过缓存组织读取。它适合检验本节的职责划分：CSI 负责挂载接入，JuiceFS Client 处理实际文件访问，DataLoader 仍负责样本选择和准备，CPU 解码与 H2D 成本仍需计入。
+
+通用比较时保持 Dataset 和缓存预算相同，分别测冷节点、重复 epoch、多 Rank 和扩容回源；小文件 open / lookup、对象 GET 与预取放大都可能限制 batch-ready，不能因文件接口透明就省略测量。社区版本地缓存与企业版共享缓存的范围在案例中分别注明。
+
 ## 4. DataLoader：公开框架实例与通用存储推导分开
 
 **资料范围：核对日期 2026-10-03（Asia/Shanghai）；PyTorch stable 文档入口在核对时指向 2.14。** 以下参数事实来自 [PyTorch 2.14：torch.utils.data / DataLoader](https://docs.pytorch.org/docs/2.14/data.html)，不是所有加载框架的统一接口。
