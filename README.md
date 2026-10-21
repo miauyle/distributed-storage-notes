@@ -20,7 +20,7 @@
 
 ## Applied Systems
 
-- [Typical Storage Systems](docs/11-typical-storage-systems/README.md)：Ceph RGW / MinIO / Swift 的公开架构比较。
+- [Typical Storage Systems](docs/11-typical-storage-systems/README.md)：Ceph RGW / MinIO / Swift 的公开架构比较，以及 JuiceFS 文件接口与对象后端组合案例。
 - [AI Storage Connections](docs/12-ai-storage-connections/README.md)：Training State、GPU Data Path 与 KV Cache 基础连接。
 
 ## Knowledge Map

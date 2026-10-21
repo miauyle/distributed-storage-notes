@@ -495,6 +495,13 @@
           "title": "Object Storage Cross-system Comparison：相同问题，不同架构边界",
           "label": "对象存储跨系统比较",
           "summary": "三系统的架构决策、证据边界与通用模型检验"
+        },
+        {
+          "id": "11-typical-storage-systems-06-juicefs",
+          "path": "docs/11-typical-storage-systems/06-juicefs.md",
+          "title": "JuiceFS：文件语义、独立元数据与对象后端的组合",
+          "label": "JuiceFS 文件与对象组合",
+          "summary": "独立元数据、Chunk / Slice / Block、读写缓存及 AI 数据供给与恢复边界"
         }
       ]
     },

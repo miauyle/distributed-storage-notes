@@ -125,6 +125,12 @@ Restore 的逻辑链是 **Select Valid Checkpoint → Read Manifest / Metadata �
 
 按 [Benchmark / Bottleneck Analysis](../09-data-path-performance/03-benchmark-bottleneck-analysis.md) 分开记录 Save Pause、Staging Time、Durable Completion Lag、Restore Time 与 Lost Progress，在声明环境和恢复目标下验证实际可用性。复用 [Backup / Restore](../07-data-protection/07-backup-restore.md) 的恢复测试原则，不把 save 成功替代恢复证据；本轮不新增 Failure Drill 实现。
 
+## 11. 文件后端案例：JuiceFS 的配置会改变恢复边界
+
+[JuiceFS 写入与恢复分析](../11-typical-storage-systems/06-juicefs.md)区分默认对象上传后更新元数据，以及客户端 writeback 先暂存、本地 flush 后异步上传的路径。具体行为按案例列出的官方范围核对；不要仅根据接口叫 fsync / close，就认定所有挂载配置已经完成相同远端保护。
+
+**通用 Checkpoint 推导：**一个训练恢复点除了相容 shard 和应用发布依据，还依赖文件系统元数据、引用对象与必要密钥。采用本地写暂存时，训练节点退出可能同时丢失尚未上传的材料；对象仍在但命名空间回滚时，也需要重新判定可用恢复点。验证应从空缓存、目标故障域和真实恢复流程出发，而非只检查路径存在。
+
 ## 来源与第一阶段边界
 
 - [PyTorch stable：Distributed Checkpoint](https://docs.pytorch.org/docs/stable/distributed.checkpoint.html)：核对时指向 **2.14**；固定版本来源为 [PyTorch 2.14 DCP](https://docs.pytorch.org/docs/2.14/distributed.checkpoint.html)，包括多 Rank、load-time resharding、async_save 与 staging。核对日期：**2026-10-03**。
