@@ -53,6 +53,8 @@ jobs:
         run: |
           "$RUNNER_TEMP/site-deps/node_modules/.bin/playwright" install --with-deps webkit
           NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node maintenance/check_webkit_icons.cjs /distributed-storage-notes
+      - name: Verify system, light and dark modes in Chromium and WebKit
+        run: NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node maintenance/check_theme_mode.cjs /distributed-storage-notes
       - name: Save browser evidence
         if: always()
         uses: actions/upload-artifact@v7
